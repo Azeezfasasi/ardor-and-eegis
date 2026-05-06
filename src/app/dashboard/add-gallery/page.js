@@ -57,37 +57,21 @@ export default function AddGalleryPage() {
     try {
       // Process files sequentially to avoid timeout issues
       for (const file of files) {
-        const reader = new FileReader();
-        
-        await new Promise((resolve, reject) => {
-          reader.onloadend = async () => {
-            try {
-              const base64 = reader.result;
+        try {
+          const result = await uploadImageToCloudinary(file, 'rayob/gallery');
 
-              const result = await uploadImageToCloudinary(base64, 'rayob/gallery');
-
-              setFormData(prev => ({
-                ...prev,
-                images: [...prev.images, {
-                  url: result.url,
-                  publicId: result.publicId,
-                  alt: '',
-                  displayOrder: prev.images.length,
-                }],
-              }));
-
-              resolve();
-            } catch (err) {
-              reject(new Error(`Failed to upload ${file.name}: ${err.message}`));
-            }
-          };
-
-          reader.onerror = () => {
-            reject(new Error(`Failed to read ${file.name}`));
-          };
-
-          reader.readAsDataURL(file);
-        });
+          setFormData(prev => ({
+            ...prev,
+            images: [...prev.images, {
+              url: result.url,
+              publicId: result.publicId,
+              alt: '',
+              displayOrder: prev.images.length,
+            }],
+          }));
+        } catch (err) {
+          throw new Error(`Failed to upload ${file.name}: ${err.message}`);
+        }
       }
 
       setSuccess(`${files.length} image(s) uploaded successfully`);
