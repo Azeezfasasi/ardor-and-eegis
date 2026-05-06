@@ -1,0 +1,208 @@
+"use client"
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { useAuth } from '../../context/AuthContext';
+
+// Client-only last updated time to prevent hydration mismatch
+function LastUpdated({ timestamp }) {
+  const [now, setNow] = useState('');
+  
+  useEffect(() => {
+    // Update time on client side only
+    const updateTime = () => setNow(new Date().toLocaleString());
+    updateTime();
+    
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
+  
+  return now ? <p className="text-sm text-gray-500 font-semibold">Last updated: <span className='font-normal'><time>{now}</time></span></p> : null;
+}
+
+function Icon({ name }) {
+  switch (name) {
+    case 'activeUsers':
+      return (
+        <svg className="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
+          <circle cx="12" cy="7" r="4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    case 'registrations':
+      return (
+        <svg className="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 12h6M9 16h6" />
+        </svg>
+      )
+    case 'programmes':
+      return (
+        <svg className="w-6 h-6 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C6.5 6.253 2 10.771 2 16.5S6.5 26.75 12 26.75s10-4.518 10-10.25S17.5 6.253 12 6.253z" />
+          <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2" />
+        </svg>
+      )
+    case 'admins':
+      return (
+        <svg className="w-6 h-6 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
+          <circle cx="12" cy="7" r="4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )
+    case 'subscribers':
+      return (
+        <svg className="w-6 h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      )
+    default:
+      return null
+  }
+}
+
+function Count({ value = 0, duration = 800 }) {
+  const [display, setDisplay] = useState(0)
+
+  useEffect(() => {
+    let frame
+    const start = performance.now()
+    const from = display
+    const to = Number(value) || 0
+
+    function step(now) {
+      const t = Math.min(1, (now - start) / duration)
+      const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t // easeInOutQuad-like
+      const current = Math.round(from + (to - from) * eased)
+      setDisplay(current)
+      if (t < 1) frame = requestAnimationFrame(step)
+    }
+
+    frame = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(frame)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+
+  return <span className="text-2xl md:text-3xl font-bold text-gray-900">{display.toLocaleString()}</span>
+}
+
+export default function DashboardStats({ data = {} }) {
+  const { token } = useAuth();
+  const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [lastUpdated, setLastUpdated] = useState(new Date().toISOString());
+
+  // Fetch stats from backend
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const response = await axios.get('/api/dashboard/stats', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.data.success && response.data.stats) {
+          setStats(response.data.stats);
+          setLastUpdated(response.data.timestamp || new Date().toISOString());
+        }
+      } catch (err) {
+        console.error('Failed to fetch dashboard stats:', err);
+        setError('Failed to load statistics');
+
+        // Fallback to provided data or defaults
+        const defaults = {
+          activeUsers: 0,
+          registrations: 0,
+          programmes: 0,
+          admins: 0,
+          subscribers: 0,
+        };
+        setStats({ ...defaults, ...data });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (token) {
+      fetchStats();
+
+      // Refresh stats every 5 minutes
+      const interval = setInterval(fetchStats, 5 * 60 * 1000);
+      return () => clearInterval(interval);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
+
+  // Use provided data if no token, otherwise use fetched stats
+  const displayStats = stats || data || {
+    activeUsers: 0,
+    registrations: 0,
+    programmes: 0,
+    admins: 0,
+    subscribers: 0,
+  };
+
+  const items = [
+    { key: 'activeUsers', label: 'Active Users', value: displayStats.activeUsers, icon: 'activeUsers' },
+    { key: 'registrations', label: 'Programme Registrations', value: displayStats.registrations, icon: 'registrations' },
+    { key: 'programmes', label: 'Total Programmes', value: displayStats.programmes, icon: 'programmes' },
+    { key: 'admins', label: 'Admin Users', value: displayStats.admins, icon: 'admins' },
+    { key: 'subscribers', label: 'Subscribers', value: displayStats.subscribers, icon: 'subscribers' },
+  ];
+
+  if (error && !stats) {
+    return (
+      <section aria-labelledby="dashboard-stats" className="mt-6">
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-yellow-800">
+          <p className="text-sm">{error}. Using fallback data.</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section aria-labelledby="dashboard-stats" className="mt-6">
+      <div className="flex flex-col md:flex-row items-start md:justify-between mb-4">
+        <h2 id="dashboard-stats" className="text-lg font-semibold text-gray-800">
+          Overview {loading && <span className="text-xs text-gray-500">(updating...)</span>}
+        </h2>
+        <LastUpdated timestamp={lastUpdated} />
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {items.map((item) => (
+          <div
+            key={item.key}
+            className={`bg-white rounded-lg shadow-sm p-3 md:p-4 flex items-start gap-4 ${
+              loading ? 'opacity-60' : ''
+            }`}
+          >
+            <div className="shrink-0">
+              <Icon name={item.icon} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center justify-between">
+                <div className="lg:truncate">
+                  <div className="text-xs font-medium text-gray-500">{item.label}</div>
+                  <div className="mt-1">
+                    {loading ? (
+                      <div className="h-6 bg-gray-200 rounded animate-pulse w-12"></div>
+                    ) : (
+                      <Count value={item.value} />
+                    )}
+                  </div>
+                </div>
+                <div className="text-right text-xs text-gray-400">&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
