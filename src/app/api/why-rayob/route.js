@@ -14,8 +14,9 @@ export async function GET() {
     const content = await getWhyRayobContent();
     return Response.json({ success: true, data: content });
   } catch (error) {
+    console.error('[API] why-rayob GET error:', error);
     return Response.json(
-      { success: false, error: error.message },
+      { success: false, error: error.message || 'Failed to fetch content' },
       { status: 500 }
     );
   }
@@ -53,8 +54,9 @@ export async function POST(req) {
       { status: 400 }
     );
   } catch (error) {
+    console.error('[API] why-rayob POST error:', error);
     return Response.json(
-      { success: false, error: error.message },
+      { success: false, error: error.message || 'Failed to process request' },
       { status: 500 }
     );
   }
@@ -71,8 +73,8 @@ export async function PUT(req) {
     }
 
     if (body.action === "reorder") {
-      const reasons = await reorderReasons(body.reasons);
-      return Response.json({ success: true, reasons });
+      const content = await reorderReasons(body.reasons);
+      return Response.json({ success: true, data: content });
     }
 
     return Response.json(
@@ -80,8 +82,9 @@ export async function PUT(req) {
       { status: 400 }
     );
   } catch (error) {
+    console.error('[API] why-rayob PUT error:', error);
     return Response.json(
-      { success: false, error: error.message },
+      { success: false, error: error.message || 'Failed to update' },
       { status: 500 }
     );
   }
@@ -103,8 +106,9 @@ export async function DELETE(req) {
     await deleteReason(reasonId);
     return Response.json({ success: true });
   } catch (error) {
+    console.error('[API] why-rayob DELETE error:', error);
     return Response.json(
-      { success: false, error: error.message },
+      { success: false, error: error.message || 'Failed to delete reason' },
       { status: 500 }
     );
   }

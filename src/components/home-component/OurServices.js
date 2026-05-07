@@ -227,7 +227,7 @@ function ServiceModal({ service, isOpen, onClose }) {
         <div className="bg-gray-50 p-6 border-t text-center">
           <button
             onClick={onClose}
-            className="bg-[#7B542F] text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition font-semibold"
+            className="bg-[#7B542F] text-white px-6 py-2 rounded-lg hover:bg-[#7B542F]/80 transition font-semibold"
           >
             Close
           </button>
@@ -307,7 +307,7 @@ export default function OurServices() {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Our Services</h2>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Engineering-grade delivery with structured, measurable execution—built for safety, reliability, and long-term impact.
+              At Ador Aegis Security Company, we deliver professional security and protection services designed to safeguard people, properties, businesses, and critical assets. Our highly trained personnel and advanced security strategies ensure reliable protection, rapid response, and peace of mind for every client.
             </p>
           </div>
 

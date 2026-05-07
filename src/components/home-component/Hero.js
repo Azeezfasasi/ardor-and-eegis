@@ -154,7 +154,7 @@ export default function Hero() {
           >
             {slides.map((s, i) => (
               <div key={s._id} className="min-w-full flex-none" style={{ flex: '0 0 100%' }}>
-                <div className="h-[480px] md:h-[540px] flex items-center">
+                <div className="h-[480px] md:h-[750px] flex items-center">
                   <div className="w-full h-full p-8 md:p-12 flex items-center justify-between gap-6 bg-gradient-to-br from-[#7B542F]/10 to-[#7B542F]/50">
                     <div className="flex-1 max-w-full md:max-w-2xl pt-20 lg:pt-40">
                       <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">{s.title}</h2>

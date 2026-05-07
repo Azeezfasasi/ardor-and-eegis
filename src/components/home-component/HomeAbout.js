@@ -158,7 +158,7 @@ export default function HomeAbout() {
 
               <div className="absolute left-6 top-6">
                 <span className="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-gray-900 backdrop-blur">
-                  Engineering • Management • Delivery
+                  Vigilance • Integrity • Protection
                 </span>
               </div>
             </div>

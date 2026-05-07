@@ -5,25 +5,25 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 const features = [
   {
-    title: 'Expert Engineering Team',
+    title: 'Elite Security Personnel',
     description:
-      'Our team consists of certified professionals with extensive experience across industrial, commercial, and residential projects.',
+      'Our team consists of professionally trained and disciplined security officers equipped to handle corporate, residential, executive, and high-risk security operations with confidence and professionalism.',
     icon: ShieldCheck,
   },
   {
-    title: 'Innovative Solutions',
-    description: 'We apply the latest technology and best practices to deliver innovative and cost-effective engineering solutions.',
+    title: 'Advanced Protection Solutions',
+    description: 'We utilize modern surveillance systems, strategic risk assessment, and proactive security measures to deliver reliable and effective protection tailored to every client’s needs.',
     icon: Sparkles,
   },
   {
-    title: 'On-Time Delivery',
+    title: 'Rapid Response & Reliability',
     description:
-      'We pride ourselves on meeting deadlines without compromising quality, ensuring client satisfaction on every project.',
+      'We pride ourselves on maintaining swift response times, operational readiness, and dependable service to ensure the safety and peace of mind of our clients at all times',
     icon: Clock,
   },
   {
-    title: 'Sustainable Practices',
-    description: 'We implement sustainable engineering practices that minimize environmental impact and maximize efficiency.',
+    title: 'Integrity & Vigilance',
+    description: 'At Ador Aegis, integrity, vigilance, and protection are at the core of everything we do. We are committed to maintaining the highest standards of trust, confidentiality, and operational excellence.',
     icon: Wrench,
   },
 ];
@@ -80,7 +80,7 @@ function FeatureCard({ feature, delayMs = 0 }) {
 }
 
 export default function WhyChooseUs() {
-  const header = useMemo(() => ({ title: 'Why Choose Ardors & Aegis', subtitle: 'Engineering-grade reliability with customer-first delivery.' }), []);
+  const header = useMemo(() => ({ title: 'Why Choose Ardors Aegis', subtitle: 'Trusted security solutions driven by vigilance, professionalism, and rapid response. At Ador Aegis Security Company, we combine highly trained personnel, modern security strategies, and a commitment to excellence to provide dependable protection for individuals, businesses, and organizations.' }), []);
 
   const { ref: headerRef, inView: headerInView } = useInView({ threshold: 0.15 });
 

@@ -52,27 +52,25 @@ export default function HomeCTAManager() {
 
     setImageUploading(true);
     try {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        try {
-          const result = await uploadImageToCloudinary(reader.result, 'rayob/home-about');
-          setContent(prev => ({
-            ...prev,
-            image: {
-              url: result.url,
-              alt: prev.image?.alt || 'Home About Image',
-            },
-          }));
-          toast.success('Image uploaded successfully');
-        } catch (error) {
-          toast.error('Failed to upload image');
-        } finally {
-          setImageUploading(false);
-        }
-      };
-      reader.readAsDataURL(file);
+      const result = await uploadImageToCloudinary(file, 'rayob/home-about');
+      const imageUrl = typeof result === 'string' ? result : result.url;
+      
+      if (!imageUrl) {
+        throw new Error('No URL returned from upload');
+      }
+      
+      setContent(prev => ({
+        ...prev,
+        image: {
+          url: imageUrl,
+          alt: prev.image?.alt || 'Home About Image',
+        },
+      }));
+      toast.success('Image uploaded successfully');
     } catch (error) {
-      toast.error('Failed to upload image');
+      console.error('Image upload error:', error);
+      toast.error(error.message || 'Failed to upload image');
+    } finally {
       setImageUploading(false);
     }
   };

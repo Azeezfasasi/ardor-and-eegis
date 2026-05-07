@@ -63,14 +63,21 @@ export default function HeroSliderManager() {
     setImageUploading(true);
     try {
       const result = await uploadImageToCloudinary(file, 'rayob/hero-slider');
+      const imageUrl = typeof result === 'string' ? result : result.url;
+      
+      if (!imageUrl) {
+        throw new Error('No URL returned from upload');
+      }
+      
       setFormData(prev => ({
         ...prev,
-        image: result.url,
+        image: imageUrl,
         alt: prev.alt || 'Hero slide image',
       }));
       toast.success('Image uploaded successfully');
     } catch (error) {
-      toast.error('Failed to upload image');
+      console.error('Image upload error:', error);
+      toast.error(error.message || 'Failed to upload image');
     } finally {
       setImageUploading(false);
     }
@@ -83,8 +90,24 @@ export default function HeroSliderManager() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.title || !formData.subtitle || !formData.ctaLabel || !formData.ctaHref || !formData.image) {
-      toast.error('Please fill in all required fields');
+    if (!formData.title) {
+      toast.error('Please fill in the Title field');
+      return;
+    }
+    if (!formData.subtitle) {
+      toast.error('Please fill in the Subtitle field');
+      return;
+    }
+    if (!formData.ctaLabel) {
+      toast.error('Please fill in the CTA Button Label');
+      return;
+    }
+    if (!formData.ctaHref) {
+      toast.error('Please fill in the CTA URL');
+      return;
+    }
+    if (!formData.image) {
+      toast.error('Please upload an image before creating the slide');
       return;
     }
 
@@ -487,11 +510,11 @@ export default function HeroSliderManager() {
                     </button>
                     <button
                       type="submit"
-                      disabled={isSaving}
+                      disabled={isSaving || imageUploading}
                       className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
                     >
-                      {isSaving && <Loader className="w-4 h-4 animate-spin" />}
-                      {editingId ? 'Update Slide' : 'Create Slide'}
+                      {(isSaving || imageUploading) && <Loader className="w-4 h-4 animate-spin" />}
+                      {imageUploading ? 'Uploading Image...' : editingId ? 'Update Slide' : 'Create Slide'}
                     </button>
                   </div>
                 </form>

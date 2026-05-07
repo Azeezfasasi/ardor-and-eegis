@@ -1,16 +1,18 @@
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
-export default function FooterSection() {
+export default function FooterSectionNew() {
   return (
     <>
-    <div className="relative overflow-hidden bg-[#1A1A1A] py-16 mt-20">
+    <div className="relative">
       {/* Ambient accents */}
       <div className="pointer-events-none absolute inset-0 opacity-60">
         <div className="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-[rgba(123,84,47,0.25)] blur-3xl" />
         <div className="absolute -top-16 right-1/3 h-64 w-64 rounded-full bg-[rgba(123,84,47,0.18)] blur-3xl" />
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[rgba(123,84,47,0.18)] to-transparent" />
       </div>
+
+      ssh
 
       <div className="container relative mx-auto px-6 lg:px-20">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-4" aria-label="Footer content">
@@ -22,7 +24,7 @@ export default function FooterSection() {
               </span>
               <div>
                 <h3 className="text-white text-xl font-bold leading-tight">Ador Aegis Security</h3>
-                <p className="text-xs text-gray-200 mt-0.5">Vigilance • Integrity • Protection</p>
+                <p className="text-xs text-gray-400 mt-0.5">Discipline • Vigilance • Elite Protection</p>
               </div>
             </div>
 
@@ -58,7 +60,7 @@ export default function FooterSection() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="/" className="group inline-flex items-center gap-2 text-gray-300 hover:text-white transition">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-100 group-hover:opacity-100 transition" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-0 group-hover:opacity-100 transition" />
                   Home
                   <span className="ml-auto text-gray-500 group-hover:text-gray-300 transition">→</span>
                 </Link>
@@ -68,7 +70,7 @@ export default function FooterSection() {
                   href="/about-us"
                   className="group inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-100 group-hover:opacity-100 transition" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-0 group-hover:opacity-100 transition" />
                   About Us
                   <span className="ml-auto text-gray-500 group-hover:text-gray-300 transition">→</span>
                 </Link>
@@ -78,7 +80,7 @@ export default function FooterSection() {
                   href="/services"
                   className="group inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-100 group-hover:opacity-100 transition" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-0 group-hover:opacity-100 transition" />
                   Services
                   <span className="ml-auto text-gray-500 group-hover:text-gray-300 transition">→</span>
                 </Link>
@@ -88,7 +90,7 @@ export default function FooterSection() {
                   href="/programmes"
                   className="group inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-100 group-hover:opacity-100 transition" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-0 group-hover:opacity-100 transition" />
                   Programmes
                   <span className="ml-auto text-gray-500 group-hover:text-gray-300 transition">→</span>
                 </Link>
@@ -98,7 +100,7 @@ export default function FooterSection() {
                   href="/contact-us"
                   className="group inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-100 group-hover:opacity-100 transition" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-0 group-hover:opacity-100 transition" />
                   Contact Us
                   <span className="ml-auto text-gray-500 group-hover:text-gray-300 transition">→</span>
                 </Link>
@@ -106,7 +108,7 @@ export default function FooterSection() {
             </ul>
           </div>
 
-          {/* Services - add a link to the services */} 
+          {/* Services */}
           <div className="animate-[fadeInUp_700ms_ease-out_forwards] opacity-0 [animation-delay:200ms]">
             <h4 className="text-white text-lg font-semibold mb-4">Security Solutions</h4>
             <ul className="space-y-3 text-sm">
@@ -122,7 +124,7 @@ export default function FooterSection() {
               ].map((item) => (
                 <li key={item} className="group">
                   <span className="relative inline-flex items-center text-gray-300 hover:text-white transition">
-                    <span className="mr-2 h-1.5 w-1.5 rounded-full bg-[#7B542F] group-hover:bg-[#7B542F] transition" />
+                    <span className="mr-2 h-1 w-1 rounded-full bg-white/20 group-hover:bg-[#7B542F] transition" />
                     {item}
                     <span className="ml-2 text-[11px] text-gray-500 group-hover:text-gray-300 transition">•</span>
                   </span>
@@ -134,31 +136,29 @@ export default function FooterSection() {
           {/* Contact Info */}
           <div className="animate-[fadeInUp_700ms_ease-out_forwards] opacity-0 [animation-delay:260ms]">
             <h4 className="text-white text-lg font-semibold mb-4">Contact</h4>
-            <div className="rounded-2xl border border-white/10 bg-white/15 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <ul className="space-y-4 text-sm">
                 <li className="flex items-start gap-3">
-                  <div className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
-                    <MapPin size={18} className="text-[#7B542F] mt-0.5 w-[38px]" />
-                  </div>
+                  <MapPin size={18} className="text-[#7B542F] mt-0.5 w-[38px]" />
                   <span className="text-gray-300">
-                    Plot 104, House 3, tos Douglas kaura district, 
-                    <br /> 
-                    Abuja, Nigeria
+                    Suite 26 Sure-Peace Plaza,
+                    <br />
+                    Plot CP 02 Nigerian Army Post Service Housing Estate Commercial Layout,
+                    <br />
+                    LASU-Isheri Road, Ojo, Lagos.
                   </span>
                 </li>
 
                 <li className="flex items-center gap-3">
-                  <div className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
-                    <Phone size={18} className="text-[#7B542F]" />
-                  </div>
-                  <a href="tel:+2348152260336" className="text-gray-300 hover:text-white transition relative">
+                  <Phone size={18} className="text-[#7B542F]" />
+                  <a href="tel:+2348152260336" className="hover:text-white transition relative">
                     (+234) 08152260336
                     <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[#7B542F] transition-all group-hover:w-full" />
                   </a>
                 </li>
 
                 <li className="flex items-center gap-3">
-                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/5">
                     <svg
                       className="w-4 h-4"
                       viewBox="0 0 24 24"
@@ -181,16 +181,14 @@ export default function FooterSection() {
                       </g>
                     </svg>
                   </span>
-                  <a href="https://wa.me/08030960533" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition">
+                  <a href="https://wa.me/08030960533" target="_blank" rel="noreferrer" className="hover:text-white transition">
                     (+234) 08030960533
                   </a>
                 </li>
 
                 <li className="flex items-center gap-3">
-                  <div className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
-                    <Mail size={18} className="text-[#7B542F]" />
-                  </div>
-                  <a href="mailto:info@adoreagis.com" className="text-gray-300 hover:text-white transition">
+                  <Mail size={18} className="text-[#7B542F]" />
+                  <a href="mailto:info@adoreagis.com" className="hover:text-white transition">
                     info@adoreagis.com
                   </a>
                 </li>

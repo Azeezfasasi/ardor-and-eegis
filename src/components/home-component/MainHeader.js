@@ -36,9 +36,8 @@ export default function MainHeader() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/services', label: 'Services' },
     { href: '/about-us', label: 'About Us' },
-    { href: '/testimonials', label: 'Testimonials' },
+    { href: '/services', label: 'Services' },
     { href: '/contact-us', label: 'Contact Us' }
   ]
   const pathname = usePathname()
@@ -91,7 +90,7 @@ export default function MainHeader() {
   return (
     <>
     <header className="w-full left-0 right-0 sticky top-0 z-50 px-2 lg:px-20 py-3">
-      <div className="mx-auto sm:px-6 lg:px-12 rounded-[100px] bg-white/60 backdrop-blur-sm border-b border-gray-200 shadow-md">
+      <div className="mx-auto sm:px-6 lg:px-12 rounded-[100px] bg-white/80 backdrop-blur-sm border border-gray-200 shadow-md">
         <div className="flex items-center justify-between h-23 md:h-27">
           {/* Logo */}
           <div className="flex items-center gap-3 p-1">
@@ -103,12 +102,12 @@ export default function MainHeader() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex lg:items-center lg:space-x-6" ref={aboutRef}>
             {navLinks.map((l) => {
-              if (l.label === 'About Us-hiden') {
+              if (l.label === 'About Us') {
                 const submenu = [
                   { href: '/about-us', label: 'About Us' },
-                  { href: '/projects', label: 'Projects' },
-                  { href: '/gallery', label: 'Gallery' },
-                  { href: '/careers', label: 'Careers' }
+                  { href: '/request-a-quote', label: 'Request a Quote' },
+                  // { href: '/gallery', label: 'Gallery' },
+                  // { href: '/careers', label: 'Careers' }
                 ]
 
                 return (

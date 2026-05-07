@@ -1,6 +1,5 @@
 import WhyRayob from "../models/WhyRayob";
 import { connectDB } from "../../server/db/connect";
-import mongoose from "mongoose";
 
 // GET all why rayob content
 export async function getWhyRayobContent() {
@@ -11,7 +10,6 @@ export async function getWhyRayobContent() {
   if (!content) {
     const defaultReasons = [
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 1,
         title: "Proven Multidisciplinary Engineering Expertise",
         description:
@@ -20,7 +18,6 @@ export async function getWhyRayobContent() {
         order: 1,
       },
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 2,
         title: "Innovative, Extensive Industry Experience with Real Project Success",
         description:
@@ -29,7 +26,6 @@ export async function getWhyRayobContent() {
         order: 2,
       },
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 3,
         title: "Strong Project Management and Delivery Discipline",
         description:
@@ -38,7 +34,6 @@ export async function getWhyRayobContent() {
         order: 3,
       },
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 4,
         title: "Commitment to Quality, Safety, and Standards Compliance",
         description:
@@ -47,7 +42,6 @@ export async function getWhyRayobContent() {
         order: 4,
       },
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 5,
         title: "Client-Centric and Solution-Driven Approach",
         description:
@@ -56,15 +50,14 @@ export async function getWhyRayobContent() {
         order: 5,
       },
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 6,
         title: "Strong Technical Leadership and Skilled Workforce",
         description:
           "Projects at Rayob are led by experienced engineers and managed by skilled professionals with strong technical and leadership capabilities. The company invests in continuous training and capacity development, ensuring that clients benefit from competent personnel who are up-to- date with modern technologies and industry trends.",
+        icon: "Target",
         order: 6,
       },
       {
-        _id: new mongoose.Types.ObjectId(),
         id: 7,
         title: "Integrity, Reliability, and Long-Term Partnership Focus",
         description:
@@ -103,7 +96,6 @@ export async function createReason(reasonData) {
   await connectDB();
 
   const newReason = {
-    _id: new mongoose.Types.ObjectId(),
     ...reasonData,
   };
 
@@ -182,7 +174,7 @@ export async function reorderReasons(reorderedReasons) {
   });
 
   await content.save();
-  return content.reasons;
+  return content;
 }
 
 // UPDATE CTA content

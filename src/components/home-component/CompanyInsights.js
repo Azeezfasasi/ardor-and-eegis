@@ -56,21 +56,21 @@ export default function CompanyInsights() {
     () => [
       {
         id: 1,
-        number: 36,
+        number: 15,
         suffix: '+',
         label: 'Years of Experience',
         icon: ShieldCheck,
       },
       {
         id: 2,
-        number: 1000,
+        number: 10000,
         suffix: '+',
         label: 'Trained Personnel',
         icon: Users,
       },
       {
         id: 3,
-        number: 5,
+        number: 10,
         suffix: '+',
         label: 'Quality & Awards',
         icon: Trophy,
@@ -88,9 +88,9 @@ export default function CompanyInsights() {
 
   const { ref: statsRef, inView: statsInView } = useInView({ threshold: 0.2 });
 
-  const countA = useCountUp({ start: 0, end: 36, durationMs: 900, enabled: statsInView });
-  const countB = useCountUp({ start: 0, end: 1000, durationMs: 1100, enabled: statsInView });
-  const countC = useCountUp({ start: 0, end: 5, durationMs: 700, enabled: statsInView });
+  const countA = useCountUp({ start: 0, end: 15, durationMs: 900, enabled: statsInView });
+  const countB = useCountUp({ start: 0, end: 10000, durationMs: 1100, enabled: statsInView });
+  const countC = useCountUp({ start: 0, end: 10, durationMs: 700, enabled: statsInView });
   const countD = useCountUp({ start: 0, end: 2000, durationMs: 1200, enabled: statsInView });
 
   const countsById = useMemo(
@@ -123,8 +123,7 @@ export default function CompanyInsights() {
               <div className="w-20 h-1 mx-auto rounded-full mb-6" style={{ backgroundColor: brand }} />
 
               <p className="text-gray-700 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
-                Rayob Engineering &amp; Mgt. Co. Ltd delivers engineering-grade reliability with security-focused execution. Decades of experience,
-                disciplined operations, and client-first service—built to protect people, assets, and critical infrastructure.
+                Ador Aegis Security Company stands as a symbol of trust, discipline, and elite protection in today&apos;s evolving security landscape. Our insight is driven by the understanding that modern security goes beyond physical presence, it requires intelligence, vigilance, rapid response, and strategic risk management.
               </p>
             </div>
 
@@ -197,8 +196,7 @@ export default function CompanyInsights() {
 
             <div className="text-center px-2">
               <p className="text-gray-700 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-                With disciplined operations and a culture of excellence, we deliver dependable security execution. Our approach blends trained personnel,
-                modern processes, and measurable accountability—so organizations can move with confidence.
+                At Ador Aegis, we believe that every client deserves a security solution tailored to their unique environment and challenges. By combining professionally trained personnel, advanced surveillance systems, and proactive security strategies, we provide comprehensive protection that ensures confidence and peace of mind.
               </p>
             </div>
           </div>

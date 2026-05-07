@@ -33,22 +33,28 @@ export default function WhyChooseUs() {
   const fetchContent = async () => {
     try {
       const response = await fetch('/api/why-rayob')
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`)
+      }
       const result = await response.json()
-      if (result.success) {
+      if (result.success && result.data) {
         setContent(result.data)
         setHeadingData({
-          heading: result.data.heading,
-          subheading: result.data.subheading,
+          heading: result.data.heading || '',
+          subheading: result.data.subheading || '',
         })
         setCtaData({
-          ctaHeading: result.data.ctaHeading,
-          ctaDescription: result.data.ctaDescription,
-          ctaButton1: result.data.ctaButton1,
-          ctaButton2: result.data.ctaButton2,
+          ctaHeading: result.data.ctaHeading || '',
+          ctaDescription: result.data.ctaDescription || '',
+          ctaButton1: result.data.ctaButton1 || { label: '', href: '' },
+          ctaButton2: result.data.ctaButton2 || { label: '', href: '' },
         })
+      } else {
+        throw new Error(result.error || 'Failed to fetch content')
       }
     } catch (error) {
       console.error('Error fetching content:', error)
+      alert(`Failed to load content: ${error.message}`)
     } finally {
       setLoading(false)
     }
@@ -183,12 +189,13 @@ export default function WhyChooseUs() {
   const moveReason = async (index, direction) => {
     if (!content.reasons) return
 
-    const newReasons = [...content.reasons]
-    const newIndex = direction === 'up' ? index - 1 : index + 1
+    const validReasons = content.reasons.filter(r => r); // Filter out null reasons
+    const newReasons = [...validReasons];
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
 
-    if (newIndex < 0 || newIndex >= newReasons.length) return
+    if (newIndex < 0 || newIndex >= newReasons.length) return;
 
-    ;[newReasons[index], newReasons[newIndex]] = [newReasons[newIndex], newReasons[index]]
+    [newReasons[index], newReasons[newIndex]] = [newReasons[newIndex], newReasons[index]];
 
     try {
       const response = await fetch('/api/why-rayob', {
@@ -199,22 +206,30 @@ export default function WhyChooseUs() {
           reasons: newReasons.map((r, idx) => ({
             _id: r._id,
             order: idx + 1,
-            id: idx + 1,
+            id: r.id || idx + 1,
           })),
         }),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.success) {
-        await fetchContent()
+        await fetchContent();
+      } else {
+        alert('Failed to reorder reasons');
+        console.error('Reorder failed:', result.error);
       }
     } catch (error) {
-      console.error('Error reordering reasons:', error)
+      console.error('Error reordering reasons:', error);
+      alert('Error reordering reasons');
     }
-  }
+  };
 
   if (loading) {
     return <div className="p-8 text-center">Loading...</div>
+  }
+
+  if (!content) {
+    return <div className="p-8 text-center text-red-600">Error loading content. Please refresh the page.</div>
   }
 
   return (
@@ -474,11 +489,12 @@ export default function WhyChooseUs() {
 
         {/* Reasons List */}
         <div className="space-y-4">
-          {content.reasons && content.reasons.length > 0 ? (
+          {content.reasons && content.reasons.filter(r => r).length > 0 ? (
             content.reasons
-              .sort((a, b) => a.order - b.order)
+              .filter(r => r) // Remove null/undefined reasons
+              .sort((a, b) => (a.order || 0) - (b.order || 0))
               .map((reason, index) => (
-                <div key={reason._id} className="border border-gray-200 rounded-lg p-4">
+                <div key={reason._id || index} className="border border-gray-200 rounded-lg p-4">
                   {editingReason?._id === reason._id ? (
                     <div className="space-y-3">
                       <div className="flex justify-between items-center mb-3">

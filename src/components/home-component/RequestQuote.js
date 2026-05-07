@@ -63,10 +63,17 @@ export default function RequestQuote() {
   };
 
   const services = [
-    'Engineering Consultancy',
-    'Project Management',
-    'Fibre Optics',
-    'Maintenance Services',
+    'Guard Force Services',
+    'Executive Protection & Protocol',
+    'Surveillance & Technical Security',
+    'Alarm & Emergency Response Systems',
+    'Event Security Management',
+    'Critical Facility Protection',
+    'Security Outsourcing & Personnel Screening',
+    'Security Training & Capacity Development',
+    'Security Consultancy & Risk Assessment',
+    'Compliance & Security Advisory',
+    'Crowd Control & Access Management',
     'Other',
   ];
 
@@ -78,7 +85,7 @@ export default function RequestQuote() {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Request a Quote</h1>
             <p className="text-lg text-gray-600">
-              Get a free quote for your project. Fill out the form below and our team will contact you shortly.
+              Get a free quote. Fill out the form below and our team will contact you shortly.
             </p>
           </div>
 
@@ -88,8 +95,8 @@ export default function RequestQuote() {
               <div className="space-y-8">
                 <div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <Mail className="w-6 h-6 text-blue-600" />
+                    <div className="bg-[#B59C5B]/15 p-3 rounded-lg">
+                      <Mail className="w-6 h-6 text-[#B59C5B]" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
@@ -100,8 +107,8 @@ export default function RequestQuote() {
 
                 <div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <Phone className="w-6 h-6 text-blue-600" />
+                    <div className="bg-[#B59C5B]/15 p-3 rounded-lg">
+                      <Phone className="w-6 h-6 text-[#B59C5B]" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
@@ -112,8 +119,8 @@ export default function RequestQuote() {
 
                 <div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-lg">
-                      <MapPin className="w-6 h-6 text-blue-600" />
+                    <div className="bg-[#B59C5B]/15 p-3 rounded-lg">
+                      <MapPin className="w-6 h-6 text-[#B59C5B]" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
@@ -140,7 +147,7 @@ export default function RequestQuote() {
                       onChange={handleChange}
                       placeholder="Your full name"
                       required
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B59C5B]"
                     />
                   </div>
 
@@ -156,7 +163,7 @@ export default function RequestQuote() {
                       onChange={handleChange}
                       placeholder="your.email@example.com"
                       required
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B59C5B]"
                     />
                   </div>
 
@@ -172,7 +179,7 @@ export default function RequestQuote() {
                       onChange={handleChange}
                       placeholder="+234 (0) 123 456 7890"
                       required
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B59C5B]"
                     />
                   </div>
 
@@ -187,7 +194,7 @@ export default function RequestQuote() {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your company name"
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B59C5B]"
                     />
                   </div>
 
@@ -201,7 +208,7 @@ export default function RequestQuote() {
                       value={formData.service}
                       onChange={handleChange}
                       required
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B59C5B]"
                     >
                       <option value="">Select a service</option>
                       {services.map((service) => (
@@ -215,15 +222,15 @@ export default function RequestQuote() {
                   {/* Message */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Project Details
+                      Quote Details
                     </label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your project requirements and scope..."
+                      placeholder="Tell us about your requirements..."
                       rows="5"
-                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#B59C5B]"
                     />
                   </div>
 
@@ -231,7 +238,7 @@ export default function RequestQuote() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-[#B59C5B] text-white font-semibold py-3 rounded-lg hover:bg-[#9A7D4A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Submitting...' : 'Request Quote'}
                   </button>
