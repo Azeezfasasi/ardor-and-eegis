@@ -8,7 +8,6 @@ import SubscribeToNewsletter from '@/components/home-component/SubscribeToNewsle
 import OurGallantOfficers from '@/components/home-component/OurGallantOfficers'
 import AskUs from '@/components/home-component/AskUs'
 import CompanyInsights from '@/components/home-component/CompanyInsights'
-import Footer from '@/components/home-component/Footer'
 
 
 

@@ -109,7 +109,7 @@ export default function CompanyInsights() {
       <div className="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:48px_48px]" />
 
       <div className="relative z-10">
-        <div className="py-12 md:py-16">
+        <div className="py-2 lg:py-6 md:py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 md:mb-12">
               <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-white/60 px-4 py-2 ring-1 ring-gray-200 backdrop-blur mb-4">
@@ -160,7 +160,8 @@ export default function CompanyInsights() {
           </div>
         </div>
 
-        <div ref={statsRef} className="py-16 md:py-20 border-t border-slate-700/40">
+        {/* Fun facts section  */}
+        <div ref={statsRef} className="py2 lg:py-6 md:py-20 lg:border-t border-[#B59C5B]/40">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
               {stats.map((stat) => {

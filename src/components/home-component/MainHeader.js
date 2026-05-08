@@ -8,31 +8,14 @@ import { useAuth } from '../../context/AuthContext';
 
 export default function MainHeader() {
   const [open, setOpen] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
   const btnRef = useRef(null)
   const panelRef = useRef(null)
-  const router = useRouter()
+  // const router = useRouter()
+
   const { user, logout } = useAuth()
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)
-
-  // Close on Escape or click outside
-  useEffect(() => {
-    function onKey(e) {
-      if (e.key === 'Escape') setOpen(false)
-    }
-    function onClick(e) {
-      if (!panelRef.current || !btnRef.current) return
-      if (open && !panelRef.current.contains(e.target) && !btnRef.current.contains(e.target)) {
-        setOpen(false)
-      }
-    }
-    document.addEventListener('keydown', onKey)
-    document.addEventListener('mousedown', onClick)
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.removeEventListener('mousedown', onClick)
-    }
-  }, [open])
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -46,6 +29,48 @@ export default function MainHeader() {
   const [aboutOpen, setAboutOpen] = useState(false)
   const aboutRef = useRef(null)
   const mobileSubmenuRef = useRef(null)
+
+  const DRAWER_DURATION_MS = 220
+
+  // Close on Escape or click outside + prevent background scroll
+  useEffect(() => {
+    function closeDrawer() {
+      setIsClosing(true)
+      setOpen(false)
+      setAboutOpen(false)
+      window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+    }
+
+    function onKey(e) {
+      if (e.key === 'Escape') closeDrawer()
+    }
+
+    function onClick(e) {
+      if (!panelRef.current || !btnRef.current) return
+      if (open && !panelRef.current.contains(e.target) && !btnRef.current.contains(e.target)) {
+        closeDrawer()
+      }
+    }
+
+    function onBodyScrollLock() {
+      if (open) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    }
+
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('mousedown', onClick)
+    onBodyScrollLock()
+
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('mousedown', onClick)
+      document.body.style.overflow = ''
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open])
 
   // Close about submenu on outside click or Escape
   useEffect(() => {
@@ -86,6 +111,8 @@ export default function MainHeader() {
     if (href === '/') return pathname === '/'
     return pathname === href || pathname.startsWith(href + '/') || pathname.startsWith(href)
   }
+
+  const shouldRenderDrawer = open || isClosing
 
   return (
     <>
@@ -233,94 +260,205 @@ export default function MainHeader() {
       </div>
     </header>
 
-    {/* Mobile panel (render only when open) */}
-    {open && (
+    {/* Mobile panel (animated) */}
+    {shouldRenderDrawer && (
       <div ref={panelRef} className="fixed inset-0 z-50" aria-hidden={!open}>
-        <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)}></div>
+        {/* Overlay */}
+        <div
+          className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-200 ${open && !isClosing ? 'opacity-100' : 'opacity-0'}`}
+          onClick={() => {
+            // close immediately with closing animation
+            setAboutOpen(false)
+            setIsClosing(true)
+            setOpen(false)
+            window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+          }}
+        />
 
-        <div className="absolute right-0 top-0 h-full w-80 max-w-full bg-white shadow-2xl">
-          <div className="p-6">
-            <div className="flex items-center justify-between mb-6">
-              <Link href="/" className="flex items-center gap-3">
-                <Image src="/img/ardorlogotrans.png" alt="Ador Aegis Logo" width={100} height={50} className="w-30 block rounded-md" />
-              </Link>
-              <button onClick={() => setOpen(false)} className="text-red-600 text-2xl font-semibold">✕</button>
+        {/* Drawer */}
+        <div
+          className={`absolute right-0 top-0 h-full w-80 max-w-full bg-white shadow-2xl border-l border-gray-100 transition-transform duration-220 ease-out ${open && !isClosing ? 'translate-x-0' : 'translate-x-full'}`}
+        >
+          <div className="h-full overflow-y-auto">
+            {/* Drawer header */}
+            <div className="p-6 pb-4">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <Link href="/" className="flex items-center gap-3">
+                    <Image
+                      src="/img/ardorlogotrans.png"
+                      alt="Ador Aegis Logo"
+                      width={100}
+                      height={50}
+                      className="w-[84px] block rounded-md"
+                    />
+                  </Link>
+                  <div className="hidden sm:flex flex-col">
+                    <span className="text-xs font-semibold tracking-wide text-gray-500">PORTAL HOUSE</span>
+                    <span className="text-sm font-bold text-[#7B542F]">Ardor Aegis</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setAboutOpen(false)
+                    setIsClosing(true)
+                    setOpen(false)
+                    window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                  }}
+                  className="relative flex items-center justify-center w-10 h-10 rounded-xl border border-gray-200 bg-white/70 hover:bg-white transition"
+                  aria-label="Close menu"
+                >
+                  <span className="text-red-600 text-2xl leading-none font-semibold">✕</span>
+                </button>
+              </div>
+
+              <div className="rounded-2xl border border-gray-100 bg-gradient-to-r from-amber-50 via-white to-purple-50 p-4 shadow-sm">
+                <p className="text-sm font-semibold text-gray-900">Your safety starts with great security</p>
+                <p className="text-xs text-gray-600 mt-1">Explore our services, about us or request a quote.</p>
+              </div>
             </div>
 
-            <nav className="flex flex-col space-y-3">
-              {navLinks.map((l) => {
-                if (l.label === 'About Us') {
-                  const submenu = [
-                    { href: '/about-us', label: 'About Us' }
-                  ]
+            {/* Drawer nav */}
+            <div className="px-4 pb-4">
+              <nav className="flex flex-col space-y-2 pt-2">
+                {navLinks.map((l) => {
+                  if (l.label === 'About Us') {
+                    const submenu = [
+                      { href: '/about-us', label: 'About Us' },
+                      { href: '/request-a-quote', label: 'Request a Quote' }
+                    ]
+
+                    return (
+                      <div key={l.href}>
+                        <button
+                          onClick={() => setAboutOpen((s) => !s)}
+                          className={`w-full group flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl border transition ${isActive(l.href) ? 'border-[#7B542F]/30 bg-[#7B542F]/5 text-[#7B542F]' : 'border-gray-100 bg-white hover:bg-gray-50 text-[#7B542F]'}`}
+                        >
+                          <span className="font-semibold">{l.label}</span>
+                          <svg
+                            className={`w-4 h-4 text-[#7B542F] transition-transform duration-200 ${aboutOpen ? 'rotate-180' : 'rotate-0'}`}
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden
+                          >
+                            <path d="M5.23 7.21a.75.75 0 011.06-.02L10 10.672l3.71-3.484a.75.75 0 111.04 1.08l-4.24 3.99a.75.75 0 01-1.04 0l-4.24-3.99a.75.75 0 01-.02-1.06z" />
+                          </svg>
+                        </button>
+
+                        {/* Animated submenu */}
+                        <div
+                          ref={mobileSubmenuRef}
+                          className={`mt-1 pl-2 overflow-hidden transition-all duration-220 ease-out ${aboutOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+                        >
+                          <div className="flex flex-col gap-1.5 pr-1">
+                            {submenu.map((si) => (
+                              <Link
+                                key={si.href}
+                                href={si.href}
+                                onClick={() => {
+                                  setAboutOpen(false)
+                                  setIsClosing(true)
+                                  setOpen(false)
+                                  window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                                }}
+                                className={`px-3 py-2 rounded-xl border transition ${isActive(si.href) ? 'border-blue-500/30 bg-blue-50 text-blue-700' : 'border-gray-100 bg-white hover:bg-gray-50 text-gray-700'}`}
+                              >
+                                <span className="font-medium text-sm">{si.label}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
 
                   return (
-                    <div key={l.href}>
-                      <button
-                        onClick={() => setAboutOpen(s => !s)}
-                        className={`w-full text-left px-3 py-2 rounded-md hover:bg-gray-50 ${isActive(l.href) ? 'text-[#7B542F] font-semibold' : 'text-[#7B542F] hover:text-gray-900'}`}
-                      >
-                        {l.label}
-                      </button>
-                      {aboutOpen && (
-                        <div ref={mobileSubmenuRef} className="pl-4 mt-1 flex flex-col gap-1">
-                          {submenu.map(si => (
-                            <Link key={si.href} href={si.href} onClick={() => {
-                              setOpen(false)
-                              setAboutOpen(false)
-                            }} className={`block px-3 py-2 rounded-md ${isActive(si.href) ? 'text-blue-600 font-medium' : 'text-gray-700 hover:bg-gray-50'}`}>
-                              {si.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      onClick={() => {
+                        setIsClosing(true)
+                        setOpen(false)
+                        window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                      }}
+                      className={`block px-3 py-2.5 rounded-xl border transition ${isActive(l.href) ? 'border-[#7B542F]/30 bg-[#7B542F]/5 text-[#7B542F] font-semibold' : 'border-gray-100 bg-white hover:bg-gray-50 text-[#7B542F]'} `}
+                    >
+                      {l.label}
+                    </Link>
                   )
-                }
+                })}
+              </nav>
 
-                return (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className={`block px-3 py-2 rounded-md hover:bg-gray-50 ${isActive(l.href) ? 'text-[#7B542F] font-semibold' : 'text-[#7B542F]'}`}
-                  >
-                    {l.label}
-                  </Link>
-                )
-              })}
-            </nav>
-            <div className="mt-6 border-t pt-6 flex flex-col gap-3">
-              {user ? (
-                <>
-                  <div className="flex items-center gap-3 px-3 py-3 bg-gray-50 rounded-lg mb-3">
-                    <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center border border-gray-300">
-                      {user.avatar ? (
-                        <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
-                      ) : (
-                        <span className="text-sm font-semibold text-gray-700">
-                          {user.firstName?.charAt(0)?.toUpperCase() || 'U'}
-                        </span>
-                      )}
+              {/* Drawer bottom actions */}
+              <div className="mt-6 border-t border-gray-100 pt-5">
+                {user ? (
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3 px-3 py-3 bg-gray-50 rounded-xl border border-gray-100">
+                      <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center border border-gray-300">
+                        {user.avatar ? (
+                          <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
+                        ) : (
+                          <span className="text-sm font-semibold text-gray-700">
+                            {user.firstName?.charAt(0)?.toUpperCase() || 'U'}
+                          </span>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-gray-900 truncate">{user.firstName} {user.lastName}</p>
+                        <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-900">{user.firstName} {user.lastName}</p>
-                      <p className="text-xs text-gray-500">{user.email}</p>
-                    </div>
+
+                    <Link
+                      href="/dashboard"
+                      onClick={() => {
+                        setIsClosing(true)
+                        setOpen(false)
+                        window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                      }}
+                      className="block text-center text-gray-700 border border-[#B59C5B]/40 bg-[#B59C5B]/10 rounded-xl px-4 py-2.5 font-semibold hover:bg-blue-100 transition"
+                    >
+                      Dashboard
+                    </Link>
+                    <Link
+                      href="/dashboard/my-profile"
+                      onClick={() => {
+                        setIsClosing(true)
+                        setOpen(false)
+                        window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                      }}
+                      className="block text-center text-gray-700 border border-[#B59C5B]/40 bg-[#B59C5B]/10 rounded-xl px-4 py-2.5 font-semibold hover:bg-blue-100 transition"
+                    >
+                      My Profile
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout()
+                        setAboutOpen(false)
+                        setIsClosing(true)
+                        setOpen(false)
+                        window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                      }}
+                      className="block w-full bg-red-500 text-white px-4 py-2.5 rounded-xl text-center font-semibold hover:bg-red-600 transition"
+                    >
+                      Logout
+                    </button>
                   </div>
-                  <Link href="/dashboard" onClick={() => setOpen(false)} className="block text-center text-gray-700 border border-blue-500 rounded-md px-4 py-2 hover:text-blue-600">Dashboard</Link>
-                  <Link href="/dashboard/my-profile" onClick={() => setOpen(false)} className="block text-center text-gray-700 border border-blue-500 rounded-md px-4 py-2 hover:text-blue-600">My Profile</Link>
-                  <button onClick={() => {
-                    logout()
-                    setOpen(false)
-                  }} className="block w-full bg-red-500 text-white px-4 py-2 rounded-md text-center hover:bg-red-600">Logout</button>
-                </>
-              ) : (
-                <>
-                  {/* <Link href="/login" onClick={() => setOpen(false)} className="block text-center text-gray-700 border border-purple-500 rounded-md px-4 py-2 hover:text-purple-600">Login</Link> */}
-                  <Link href="/request-a-quote" onClick={() => setOpen(false)} className="block text-center text-[#7B542F] border border-[#7B542F] rounded-md px-4 py-2 hover:text-[#7B542F]">Request a Quote</Link>
-                </>
-              )}
+                ) : (
+                  <Link
+                    href="/request-a-quote"
+                    onClick={() => {
+                      setIsClosing(true)
+                      setOpen(false)
+                      window.setTimeout(() => setIsClosing(false), DRAWER_DURATION_MS)
+                    }}
+                    className="block text-center bg-[#7B542F] text-white rounded-xl px-4 py-2.5 font-semibold hover:brightness-110 transition"
+                  >
+                    Request a Quote
+                  </Link>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -329,3 +467,4 @@ export default function MainHeader() {
     </>
   )
 }
+

@@ -6,3 +6,39 @@
 body.hide-site-header .site-main-header {
   display: none !important;
 }
+
+/* Lightweight entrance animations used across the marketing site */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softGlow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-up {
+  animation: fadeUp 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.soft-glow {
+  animation: softGlow 900ms ease-out both;
+}
+
+/* Helps when using fade-up before IntersectionObserver sets classes */
+.opacity-0 {
+  opacity: 0;
+}
+
+

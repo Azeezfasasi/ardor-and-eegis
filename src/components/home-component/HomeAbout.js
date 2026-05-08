@@ -144,19 +144,19 @@ export default function HomeAbout() {
               <div className="absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[#7B542F]/10 blur-2xl" />
               <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[#7B542F]/10 blur-2xl" />
 
-              <div className="relative aspect-[4/3] w-full">
+              <div className="relative aspect-[3/3] w-full">
                 <Image
                   src={imageUrl}
                   alt={imageAlt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
+                  className="object-cover object-top transition-transform duration-700 ease-out hover:scale-[1.03]"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
               </div>
 
-              <div className="absolute left-6 top-6">
+              <div className="hidden lg:block absolute left-6 top-6">
                 <span className="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-gray-900 backdrop-blur">
                   Vigilance • Integrity • Protection
                 </span>

@@ -112,7 +112,7 @@ export default function OurGallantOfficers() {
               <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/25" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
 
-              <div className="absolute left-5 top-5 md:left-7 md:top-7 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
+              <div className="hidden absolute left-5 top-5 md:left-7 md:top-7 lg:inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
                 <Sparkles size={16} color="white" />
                 <span className="text-xs md:text-sm font-semibold text-white/90">
                   Officer Showcase • {currentIndex + 1}/{images.length}
