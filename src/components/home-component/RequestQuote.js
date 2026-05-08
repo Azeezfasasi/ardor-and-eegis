@@ -100,7 +100,7 @@ export default function RequestQuote() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                      <p className="text-gray-600">info@rayob.com</p>
+                      <p className="text-gray-600">info@adoreagis.com</p>
                     </div>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export default function RequestQuote() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                      <p className="text-gray-600">+234 (0) 123 456 7890</p>
+                      <p className="text-gray-600">(+234) 08152260336</p>
                     </div>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export default function RequestQuote() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
-                      <p className="text-gray-600">Lagos, Nigeria</p>
+                      <p className="text-gray-600">Plot 104, House 3, tos Douglas kaura district, Abuja, Nigeria</p>
                     </div>
                   </div>
                 </div>
