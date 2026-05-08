@@ -54,7 +54,7 @@ export default function MessageSlider() {
   return (
     <div className="w-full bg-[#B59C5B] py-3 md:py-4 overflow-hidden shadow-lg border-b border-[#B59C5B]">
       <div className="relative flex items-center h-full">
-        <div className="absolute left-[-1px] z-40 m-0 bg-white text-[#B59C5B] font-semibold flex items-center px-3 py-5 shadow-md border-2 border-[#B59C5B] rounded-r-lg">
+        <div className="absolute left-[-1.5px] z-40 m-0 bg-[#7B542F] text-white font-semibold flex items-center px-3 py-5 shadow-md border-2 border-[#B59C5B] rounded-r-lg">
           <Megaphone className="w-6 h-6 inline-block mr-1" /> 
         </div>
       {/* Marquee */}
