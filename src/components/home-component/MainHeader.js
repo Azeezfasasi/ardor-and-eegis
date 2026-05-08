@@ -242,7 +242,7 @@ export default function MainHeader() {
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
               <Link href="/" className="flex items-center gap-3">
-                <Image src="/img/portal1.png" alt="Portal House" width={100} height={50} className="w-40 block rounded-md" />
+                <Image src="/img/ardorlogotrans.png" alt="Ador Aegis Logo" width={100} height={50} className="w-30 block rounded-md" />
               </Link>
               <button onClick={() => setOpen(false)} className="text-red-600 text-2xl font-semibold">✕</button>
             </div>
