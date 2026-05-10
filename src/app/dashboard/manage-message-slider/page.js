@@ -189,7 +189,7 @@ export default function ManageMessageSlider() {
       {/* Add New Message Button */}
       <button
         onClick={() => setShowModal(true)}
-        className="mb-6 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-200"
+        className="mb-6 bg-[#7B542F] hover:bg-[#7B542F]/80 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-200"
       >
         + Add New Message
       </button>
@@ -225,7 +225,7 @@ export default function ManageMessageSlider() {
                   placeholder="Enter the message content (max 500 characters)"
                   maxLength="500"
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-purple-500 resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#7B542F] resize-none"
                   rows="3"
                 />
                 <p className="text-xs text-gray-500 mt-1">{formData.content.length}/500</p>
@@ -242,7 +242,7 @@ export default function ManageMessageSlider() {
                   onChange={handleInputChange}
                   placeholder="Add a brief description or additional context"
                   maxLength="1000"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-purple-500 resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#7B542F] resize-none"
                   rows="2"
                 />
                 <p className="text-xs text-gray-500 mt-1">{formData.description.length}/1000</p>
@@ -294,7 +294,7 @@ export default function ManageMessageSlider() {
                     name="startDate"
                     value={formData.startDate}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#7B542F]"
                   />
                 </div>
 
@@ -307,7 +307,7 @@ export default function ManageMessageSlider() {
                     name="endDate"
                     value={formData.endDate}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#7B542F]"
                   />
                 </div>
               </div>
@@ -324,7 +324,7 @@ export default function ManageMessageSlider() {
                   onChange={handleInputChange}
                   min="0"
                   max="1000"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-purple-500"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#7B542F]"
                 />
               </div>
 
@@ -363,7 +363,7 @@ export default function ManageMessageSlider() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200 disabled:opacity-50"
+                  className="flex-1 bg-[#7B542F] hover:bg-[#7B542F]/80 text-white font-bold py-3 px-6 rounded-lg transition duration-200 disabled:opacity-50"
                 >
                   {loading ? 'Saving...' : editingId ? 'Update Message' : 'Create Message'}
                 </button>
@@ -390,7 +390,7 @@ export default function ManageMessageSlider() {
 
         {loading && !showModal ? (
           <div className="p-8 text-center">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#7B542F]"></div>
             <p className="mt-2 text-gray-600">Loading messages...</p>
           </div>
         ) : messages.length === 0 ? (

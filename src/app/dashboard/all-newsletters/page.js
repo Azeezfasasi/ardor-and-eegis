@@ -124,14 +124,14 @@ export default function AllNewsletter() {
       <div className="flex flex-col lg:flex-row items-center justify-between">
         <div>
           <h1 className="text-[20px] md:text-2xl font-bold text-gray-900 flex items-center space-x-2">
-            <BarChart3 className="w-8 h-8 text-purple-600" />
+            <BarChart3 className="w-8 h-8 text-[#7B542F]" />
             <span>All Newsletters</span>
           </h1>
           <p className="text-gray-600 mt-2">Manage and track all your newsletter campaigns</p>
         </div>
         <Link
           href="/dashboard/send-newsletter"
-          className="px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center space-x-2 mt-4 lg:mt-0"
+          className="px-4 py-2 bg-[#7B542F] text-white rounded-lg font-medium hover:bg-[#7B542F]/80 transition-colors flex items-center space-x-2 mt-4 lg:mt-0"
         >
           <Plus className="w-4 h-4" />
           <span>New Campaign</span>
@@ -152,7 +152,7 @@ export default function AllNewsletter() {
                 setSearchTerm(e.target.value);
                 setPage(1);
               }}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F]"
             />
           </div>
 
@@ -163,7 +163,7 @@ export default function AllNewsletter() {
               setStatusFilter(e.target.value);
               setPage(1);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F]"
           >
             {STATUS_OPTIONS.map(option => (
               <option key={option.value} value={option.value}>
@@ -179,7 +179,7 @@ export default function AllNewsletter() {
               setTypeFilter(e.target.value);
               setPage(1);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F]"
           >
             {TYPE_OPTIONS.map(option => (
               <option key={option.value} value={option.value}>
@@ -191,7 +191,7 @@ export default function AllNewsletter() {
           {/* Sort */}
           <select
             defaultValue="recent"
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F]"
           >
             <option value="recent">Most Recent</option>
             <option value="oldest">Oldest</option>
@@ -204,7 +204,7 @@ export default function AllNewsletter() {
       {isLoading ? (
         <div className="flex items-center justify-center py-12">
           <div className="text-center">
-            <div className="w-12 h-12 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-12 h-12 border-4 border-[#7B542F]/20 border-t-[#7B542F]/60 rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600">Loading campaigns...</p>
           </div>
         </div>
@@ -214,7 +214,7 @@ export default function AllNewsletter() {
           <p className="text-gray-600">No campaigns found</p>
           <Link
             href="/dashboard/send-newsletter"
-            className="mt-4 inline-block px-4 py-2 text-purple-600 hover:text-purple-700 font-medium"
+            className="mt-4 inline-block px-4 py-2 text-[#7B542F] hover:text-[#7B542F]/80 font-medium"
           >
             Create your first campaign
           </Link>

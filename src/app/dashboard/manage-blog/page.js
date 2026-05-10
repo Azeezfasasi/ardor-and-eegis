@@ -147,7 +147,7 @@ const ManageBlogPage = () => {
 				<h2 className="text-xl md:text-2xl font-bold text-gray-900">Manage Blog Posts</h2>
 				<Link
 					href="/dashboard/add-blog"
-					className="inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors whitespace-nowrap"
+					className="inline-flex items-center justify-center px-4 py-2 bg-[#7B542F] text-white font-medium rounded-lg hover:bg-[#7B542F]/80 transition-colors whitespace-nowrap"
 				>
 					+ Create New Post
 				</Link>
@@ -165,7 +165,7 @@ const ManageBlogPage = () => {
 								placeholder="Search posts..."
 								value={searchQuery}
 								onChange={(e) => setSearchQuery(e.target.value)}
-								className="w-full pl-10 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+								className="w-full pl-10 pr-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent transition"
 							/>
 							<Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
 						</div>
@@ -177,7 +177,7 @@ const ManageBlogPage = () => {
 						<select
 							value={statusFilter}
 							onChange={(e) => setStatusFilter(e.target.value)}
-							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent transition"
 						>
 							<option value="all">All Status</option>
 							<option value="published">Published</option>
@@ -191,7 +191,7 @@ const ManageBlogPage = () => {
 						<select
 							value={authorFilter}
 							onChange={(e) => setAuthorFilter(e.target.value)}
-							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent transition"
 						>
 							<option value="all">All Authors</option>
 							{authors.map((author) => (
@@ -208,7 +208,7 @@ const ManageBlogPage = () => {
 						<select
 							value={sortBy}
 							onChange={(e) => setSortBy(e.target.value)}
-							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+							className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent transition"
 						>
 							<option value="date-desc">Newest First</option>
 							<option value="date-asc">Oldest First</option>
@@ -223,11 +223,11 @@ const ManageBlogPage = () => {
 					<div className="mt-3 md:mt-4 pt-3 md:pt-4 border-t border-gray-200 flex flex-wrap gap-2">
 						<span className="text-xs md:text-sm text-gray-600">Active filters:</span>
 						{searchQuery && (
-							<span className="inline-flex items-center gap-2 px-2 md:px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">
+							<span className="inline-flex items-center gap-2 px-2 md:px-3 py-1 bg-[#7B542F]/10 text-[#7B542F] rounded-full text-xs">
 								Search: {searchQuery}
 								<button
 									onClick={() => setSearchQuery('')}
-									className="hover:text-blue-900"
+									className="hover:text-[#7B542F]/80"
 									aria-label="Clear search"
 								>
 									×
@@ -247,11 +247,11 @@ const ManageBlogPage = () => {
 							</span>
 						)}
 						{authorFilter !== 'all' && (
-							<span className="inline-flex items-center gap-2 px-2 md:px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
+							<span className="inline-flex items-center gap-2 px-2 md:px-3 py-1 bg-[#7B542F]/10 text-[#7B542F] rounded-full text-xs">
 								Author: {authors.find((a) => a.id === parseInt(authorFilter))?.name}
 								<button
 									onClick={() => setAuthorFilter('all')}
-									className="hover:text-purple-900"
+									className="hover:text-[#7B542F]/80"
 									aria-label="Clear author filter"
 								>
 									×
@@ -272,7 +272,7 @@ const ManageBlogPage = () => {
 			{/* Posts Table */}
 			<div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
 				{loading ? (
-					<div className="p-8 text-center text-gray-500"><Commet color="#155dfc" size="medium" text="Loading" textColor="#155dfc" /></div>
+					<div className="p-8 text-center text-gray-500"><Commet color="#7B542F" size="medium" text="Loading" textColor="#7B542F" /></div>
 				) : currentPosts.length === 0 ? (
 					<div className="p-8 text-center text-gray-500">
 						<p className="text-lg font-medium">No posts found</p>
@@ -357,7 +357,7 @@ const ManageBlogPage = () => {
 												<button
 													onClick={() => handleEdit(post._id)}
 													title="Edit Post"
-													className="p-1 md:p-2 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors bg-blue-50"
+													className="p-1 md:p-2 text-[#7B542F] hover:bg-[#7B542F]/15 rounded-lg transition-colors bg-[#7B542F]/10"
 												>
 													<Edit2 className="w-3 h-3 md:w-4 md:h-4" />
 												</button>
@@ -414,7 +414,7 @@ const ManageBlogPage = () => {
 											onClick={() => setCurrentPage(page)}
 											className={`px-3 py-2 text-sm rounded-lg transition-colors ${
 												currentPage === page
-													? 'bg-indigo-600 text-white'
+													? 'bg-[#7B542F] text-white'
 													: 'border border-gray-300 hover:bg-gray-50'
 											}`}
 										>

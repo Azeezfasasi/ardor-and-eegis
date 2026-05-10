@@ -242,7 +242,7 @@ export default function WhyChooseUs() {
           <h2 className="text-xl font-bold text-gray-900">Heading & Subheading</h2>
           <button
             onClick={() => (editingHeading ? updateHeading() : setEditingHeading(true))}
-            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="flex items-center gap-2 bg-[#7B542F] text-white px-4 py-2 rounded hover:bg-[#7B542F]/80"
           >
             {editingHeading ? <Save size={18} /> : <Edit2 size={18} />}
             {editingHeading ? 'Save' : 'Edit'}
@@ -261,7 +261,7 @@ export default function WhyChooseUs() {
                 onChange={(e) =>
                   setHeadingData({ ...headingData, heading: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               />
             </div>
             <div>
@@ -274,7 +274,7 @@ export default function WhyChooseUs() {
                   setHeadingData({ ...headingData, subheading: e.target.value })
                 }
                 rows="2"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               />
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function WhyChooseUs() {
           <h2 className="text-xl font-bold text-gray-900">Call to Action</h2>
           <button
             onClick={() => (editingCTA ? updateCTA() : setEditingCTA(true))}
-            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="flex items-center gap-2 bg-[#7B542F] text-white px-4 py-2 rounded hover:bg-[#7B542F]/80"
           >
             {editingCTA ? <Save size={18} /> : <Edit2 size={18} />}
             {editingCTA ? 'Save' : 'Edit'}
@@ -311,7 +311,7 @@ export default function WhyChooseUs() {
                 onChange={(e) =>
                   setCtaData({ ...ctaData, ctaHeading: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               />
             </div>
             <div>
@@ -324,7 +324,7 @@ export default function WhyChooseUs() {
                   setCtaData({ ...ctaData, ctaDescription: e.target.value })
                 }
                 rows="2"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -341,7 +341,7 @@ export default function WhyChooseUs() {
                       ctaButton1: { ...ctaData.ctaButton1, label: e.target.value },
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 />
               </div>
               <div>
@@ -357,7 +357,7 @@ export default function WhyChooseUs() {
                       ctaButton1: { ...ctaData.ctaButton1, href: e.target.value },
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 />
               </div>
               <div>
@@ -373,7 +373,7 @@ export default function WhyChooseUs() {
                       ctaButton2: { ...ctaData.ctaButton2, label: e.target.value },
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 />
               </div>
               <div>
@@ -389,7 +389,7 @@ export default function WhyChooseUs() {
                       ctaButton2: { ...ctaData.ctaButton2, href: e.target.value },
                     })
                   }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 />
               </div>
             </div>
@@ -444,7 +444,7 @@ export default function WhyChooseUs() {
                 onChange={(e) =>
                   setReasonData({ ...reasonData, title: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               />
             </div>
             <div>
@@ -457,7 +457,7 @@ export default function WhyChooseUs() {
                   setReasonData({ ...reasonData, description: e.target.value })
                 }
                 rows="3"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               />
             </div>
             <div>
@@ -469,7 +469,7 @@ export default function WhyChooseUs() {
                 onChange={(e) =>
                   setReasonData({ ...reasonData, icon: e.target.value })
                 }
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               >
                 {AVAILABLE_ICONS.map((icon) => (
                   <option key={icon} value={icon}>
@@ -512,7 +512,7 @@ export default function WhyChooseUs() {
                         onChange={(e) =>
                           setEditingReason({ ...editingReason, title: e.target.value })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                         placeholder="Title"
                       />
                       <textarea
@@ -524,7 +524,7 @@ export default function WhyChooseUs() {
                           })
                         }
                         rows="3"
-                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                         placeholder="Description"
                       />
                       <select
@@ -532,7 +532,7 @@ export default function WhyChooseUs() {
                         onChange={(e) =>
                           setEditingReason({ ...editingReason, icon: e.target.value })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                       >
                         {AVAILABLE_ICONS.map((icon) => (
                           <option key={icon} value={icon}>
@@ -542,7 +542,7 @@ export default function WhyChooseUs() {
                       </select>
                       <button
                         onClick={() => updateReason(reason._id)}
-                        className="w-full bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700"
+                        className="w-full bg-[#7B542F] text-white px-3 py-2 rounded text-sm hover:bg-[#7B542F]/80"
                       >
                         Save Changes
                       </button>
@@ -563,7 +563,7 @@ export default function WhyChooseUs() {
                               onClick={() => moveReason(index, 'up')}
                               className="p-2 hover:bg-gray-100 rounded"
                             >
-                              <ChevronUp size={18} className="text-blue-600" />
+                              <ChevronUp size={18} className="text-[#7B542F]" />
                             </button>
                           )}
                           {index < (content.reasons?.length || 0) - 1 && (
@@ -571,7 +571,7 @@ export default function WhyChooseUs() {
                               onClick={() => moveReason(index, 'down')}
                               className="p-2 hover:bg-gray-100 rounded"
                             >
-                              <ChevronDown size={18} className="text-blue-600" />
+                              <ChevronDown size={18} className="text-[#7B542F]" />
                             </button>
                           )}
                         </div>
@@ -579,7 +579,7 @@ export default function WhyChooseUs() {
                       <div className="flex gap-2 mt-3">
                         <button
                           onClick={() => setEditingReason(reason)}
-                          className="flex items-center gap-1 text-blue-600 hover:bg-blue-50 px-3 py-1 rounded text-sm"
+                          className="flex items-center gap-1 text-[#7B542F] hover:bg-[#7B542F]/10 px-3 py-1 rounded text-sm"
                         >
                           <Edit2 size={16} />
                           Edit

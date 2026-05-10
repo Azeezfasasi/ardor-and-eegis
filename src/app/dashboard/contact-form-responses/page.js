@@ -220,7 +220,7 @@ const ContactFormResponses = () => {
 	if (loading) {
 		return (
 			<div className="flex justify-center items-center py-12">
-				<p className="text-gray-600"><Commet color="#155dfc" size="medium" text="Loading" textColor="#155dfc" /></p>
+				<p className="text-gray-600"><Commet color="#7B542F" size="medium" text="Loading" textColor="#7B542F" /></p>
 			</div>
 		)
 	}

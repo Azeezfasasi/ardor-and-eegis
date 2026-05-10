@@ -243,7 +243,7 @@ export default function HomeCTAManager() {
     return (
       <ProtectedRoute allowedRoles={['admin', 'staff-member']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <Loader className="w-8 h-8 animate-spin text-blue-600" />
+          <Loader className="w-8 h-8 animate-spin text-[#7B542F]" />
         </div>
       </ProtectedRoute>
     );
@@ -274,7 +274,7 @@ export default function HomeCTAManager() {
                 type="text"
                 value={content.title}
                 onChange={handleTitleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                 placeholder="e.g., About Rayob Engineering & Mgt. Co. Ltd."
               />
             </div>
@@ -282,7 +282,7 @@ export default function HomeCTAManager() {
             {/* Image Section */}
             <div className="mb-6">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Section Image {imageUploading && <span className="text-blue-600">(Uploading...)</span>}
+                Section Image {imageUploading && <span className="text-[#7B542F]">(Uploading...)</span>}
               </label>
 
               {content.image?.url ? (
@@ -311,7 +311,7 @@ export default function HomeCTAManager() {
                     accept="image/*"
                     onChange={handleImageUpload}
                     disabled={imageUploading}
-                    className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50"
+                    className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#7B542F] file:text-[#7B542F] hover:file:bg-[#7B542F]/80 disabled:opacity-50"
                   />
                 </div>
               )}
@@ -321,7 +321,7 @@ export default function HomeCTAManager() {
                 value={content.image?.alt || ''}
                 onChange={handleImageAltChange}
                 placeholder="Image alt text"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
               />
             </div>
 
@@ -336,7 +336,7 @@ export default function HomeCTAManager() {
                   value={content.ctaButton?.label || ''}
                   onChange={handleCtaLabelChange}
                   placeholder="Learn More"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                 />
               </div>
               <div>
@@ -348,7 +348,7 @@ export default function HomeCTAManager() {
                   value={content.ctaButton?.href || ''}
                   onChange={handleCtaHrefChange}
                   placeholder="/about-us"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                 />
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function HomeCTAManager() {
             <button
               onClick={handleSaveMainContent}
               disabled={saving}
-              className="w-full px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full px-4 py-2.5 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {saving && <Loader className="w-4 h-4 animate-spin" />}
               Save Content
@@ -380,13 +380,13 @@ export default function HomeCTAManager() {
                           value={editingParagraphText}
                           onChange={(e) => setEditingParagraphText(e.target.value)}
                           rows="4"
-                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                         />
                         <div className="flex gap-2">
                           <button
                             onClick={() => handleSaveParagraph(para._id)}
                             disabled={saving}
-                            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 text-sm"
+                            className="flex-1 px-4 py-2 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80 font-medium disabled:opacity-50 text-sm"
                           >
                             Save
                           </button>
@@ -406,7 +406,7 @@ export default function HomeCTAManager() {
                           <div className="flex gap-2">
                             <button
                               onClick={() => handleEditParagraph(para)}
-                              className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center gap-1"
+                              className="text-[#7B542F] hover:text-[#7B542F]/80 text-sm font-medium flex items-center gap-1"
                             >
                               <Edit2 className="w-4 h-4" />
                               Edit
@@ -436,12 +436,12 @@ export default function HomeCTAManager() {
                 onChange={(e) => setNewParagraphText(e.target.value)}
                 placeholder="Enter paragraph text..."
                 rows="4"
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm mb-3"
+                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm mb-3"
               />
               <button
                 onClick={handleAddParagraph}
                 disabled={saving}
-                className="w-full px-4 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full px-4 py-2.5 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 <Plus className="w-4 h-4" />
                 Add Paragraph

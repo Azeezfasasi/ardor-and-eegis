@@ -3,8 +3,12 @@ import User from "@/app/server/models/User.js";
 import Programme from "@/app/server/models/Programme.js";
 import ProgrammeRegistration from "@/app/server/models/ProgrammeRegistration.js";
 import { Subscriber } from "@/app/server/models/Newsletter.js";
+import Blog from "@/app/server/models/Blog.js";
+import Quote from "@/app/server/models/Quote.js";
+import Contact from "@/app/server/models/Contact.js";
 import { connectDB } from "@/app/server/db/connect.js";
 import { NextResponse } from "next/server";
+
 
 // GET /api/dashboard/stats
 // Fetch aggregated statistics from all collections
@@ -15,21 +19,37 @@ export async function GET(req) {
         await connectDB();
 
         // Fetch counts from all collections in parallel
-        const [activeUsersCount, registrationsCount, programmesCount, adminsCount, subscribersCount] = await Promise.all([
+        const [
+          activeUsersCount,
+          adminsCount,
+          staffMembersCount,
+          totalBlogsCount,
+          pendingQuoteRequestsCount,
+          pendingContactFormsCount,
+          totalSubscribersCount,
+        ] = await Promise.all([
+          // Active users: exclude admins (matching old logic)
           User.countDocuments({ isActive: true, role: { $ne: "admin" } }),
-          ProgrammeRegistration.countDocuments(),
-          Programme.countDocuments(),
           User.countDocuments({ role: "admin" }),
+          User.countDocuments({ role: "staff-member" }),
+          // Total blogs (published)
+          Blog.countDocuments({ status: "published" }),
+          Quote.countDocuments({ status: "pending" }),
+          Contact.countDocuments({ status: "pending" }),
           Subscriber.countDocuments({ subscriptionStatus: "active" }),
         ]);
 
         const stats = {
           activeUsers: activeUsersCount,
-          registrations: registrationsCount,
-          programmes: programmesCount,
           admins: adminsCount,
-          subscribers: subscribersCount,
+          staffMembers: staffMembersCount,
+          totalBlogs: totalBlogsCount,
+          pendingQuoteRequests: pendingQuoteRequestsCount,
+          pendingContactForms: pendingContactFormsCount,
+          totalSubscribers: totalSubscribersCount,
         };
+
+
 
         return NextResponse.json(
           {

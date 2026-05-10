@@ -231,7 +231,7 @@ export default function HeroSliderManager() {
     return (
       <ProtectedRoute allowedRoles={['admin', 'staff-member']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <Loader className="w-8 h-8 animate-spin text-blue-600" />
+          <Loader className="w-8 h-8 animate-spin text-[#7B542F]" />
         </div>
       </ProtectedRoute>
     );
@@ -249,7 +249,7 @@ export default function HeroSliderManager() {
             </div>
             <button
               onClick={() => setIsFormOpen(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors w-full sm:w-auto justify-center sm:justify-start"
+              className="flex items-center gap-2 px-4 py-2.5 bg-[#7B542F] text-white rounded-lg font-medium hover:bg-[#7B542F]/80 transition-colors w-full sm:w-auto justify-center sm:justify-start"
             >
               <Plus className="w-5 h-5" />
               Add New Slide
@@ -263,7 +263,7 @@ export default function HeroSliderManager() {
                 <p className="text-gray-500 mb-4">No slides created yet</p>
                 <button
                   onClick={() => setIsFormOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80"
                 >
                   <Plus className="w-4 h-4" />
                   Create First Slide
@@ -307,14 +307,14 @@ export default function HeroSliderManager() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleEdit(slide)}
-                          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors text-sm font-medium"
+                          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#7B542F] text-white rounded hover:bg-[#7B542F]/80 transition-colors text-sm font-medium"
                         >
                           <Edit2 className="w-4 h-4" />
                           Edit
                         </button>
                         <button
                           onClick={() => handleDelete(slide._id)}
-                          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors text-sm font-medium"
+                          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors text-sm font-medium"
                         >
                           <Trash2 className="w-4 h-4" />
                           Delete
@@ -382,7 +382,7 @@ export default function HeroSliderManager() {
                       value={formData.title}
                       onChange={handleInputChange}
                       placeholder="e.g., Innovative Engineering, Strategic Management!"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -397,7 +397,7 @@ export default function HeroSliderManager() {
                       onChange={handleInputChange}
                       placeholder="e.g., We build robust infrastructure and engineering solutions tailored to your needs."
                       rows="3"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -413,7 +413,7 @@ export default function HeroSliderManager() {
                         value={formData.ctaLabel}
                         onChange={handleInputChange}
                         placeholder="e.g., Request a Quote"
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                       />
                     </div>
                     <div>
@@ -426,7 +426,7 @@ export default function HeroSliderManager() {
                         value={formData.ctaHref}
                         onChange={handleInputChange}
                         placeholder="e.g., /request-a-quote"
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                       />
                     </div>
                   </div>
@@ -442,14 +442,14 @@ export default function HeroSliderManager() {
                       value={formData.alt}
                       onChange={handleInputChange}
                       placeholder="Describe the image for accessibility"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                     />
                   </div>
 
                   {/* Image Upload */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Slide Image * {imageUploading && <span className="text-blue-600">(Uploading...)</span>}
+                      Slide Image * {imageUploading && <span className="text-[#7B542F]">(Uploading...)</span>}
                     </label>
 
                     {formData.image ? (
@@ -478,7 +478,7 @@ export default function HeroSliderManager() {
                           accept="image/*"
                           onChange={handleImageUpload}
                           disabled={imageUploading}
-                          className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 disabled:opacity-50"
+                          className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#7B542F]/10 file:text-[#7B542F] hover:file:bg-[#7B542F]/15 disabled:opacity-50"
                         />
                       </div>
                     )}
@@ -511,7 +511,7 @@ export default function HeroSliderManager() {
                     <button
                       type="submit"
                       disabled={isSaving || imageUploading}
-                      className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2.5 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {(isSaving || imageUploading) && <Loader className="w-4 h-4 animate-spin" />}
                       {imageUploading ? 'Uploading Image...' : editingId ? 'Update Slide' : 'Create Slide'}

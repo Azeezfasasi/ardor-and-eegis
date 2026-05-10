@@ -7,8 +7,8 @@ import { fetchGallery, updateGallery, uploadImageToCloudinary, deleteImageFromCl
 import { Upload, X, Loader, ArrowLeft } from 'lucide-react';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 
-const CATEGORIES = ['project', 'engineering', 'fibre', 'maintenance', 'other'];
-const TAGS = ['vip', 'active', 'engaged', 'new', 'featured', 'recommended'];
+const CATEGORIES = ['security', 'training', 'tips & tricks', 'other'];
+const TAGS = ['training', 'active', 'engaged', 'new', 'featured', 'recommended'];
 
 export default function EditGalleryPage() {
   const router = useRouter();
@@ -22,7 +22,7 @@ export default function EditGalleryPage() {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    category: 'project',
+    category: 'security',
     featured: false,
     status: 'active',
     businessName: '',
@@ -173,7 +173,7 @@ export default function EditGalleryPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader className="h-8 w-8 animate-spin text-blue-600" />
+        <Loader className="h-8 w-8 animate-spin text-[#7B542F]" />
       </div>
     );
   }
@@ -185,7 +185,7 @@ export default function EditGalleryPage() {
         {/* Back Button */}
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-6 sm:mb-8"
+          className="flex items-center gap-2 text-[#7B542F] hover:text-[#7B542F]/80 mb-6 sm:mb-8"
         >
           <ArrowLeft className="h-5 w-5" />
           Back
@@ -217,7 +217,7 @@ export default function EditGalleryPage() {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 placeholder="Gallery title"
               />
             </div>
@@ -232,7 +232,7 @@ export default function EditGalleryPage() {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows="4"
-                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 placeholder="Gallery description"
               />
             </div>
@@ -246,7 +246,7 @@ export default function EditGalleryPage() {
                 name="category"
                 value={formData.category}
                 onChange={handleInputChange}
-                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat} value={cat}>
@@ -267,7 +267,7 @@ export default function EditGalleryPage() {
                   name="businessName"
                   value={formData.businessName}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                   placeholder="Business name"
                 />
               </div>
@@ -280,7 +280,7 @@ export default function EditGalleryPage() {
                   name="location"
                   value={formData.location}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                   placeholder="Location"
                 />
               </div>
@@ -296,7 +296,7 @@ export default function EditGalleryPage() {
                   name="status"
                   value={formData.status}
                   onChange={handleInputChange}
-                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -329,7 +329,7 @@ export default function EditGalleryPage() {
                     onClick={() => handleTagToggle(tag)}
                     className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                       formData.tags.includes(tag)
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-[#7B542F] text-white'
                         : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
                     }`}
                   >
@@ -388,14 +388,14 @@ export default function EditGalleryPage() {
                     accept="image/*"
                     onChange={handleImageUpload}
                     disabled={uploading}
-                    className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    className="block mx-auto text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#7B542F] file:text-white hover:file:bg-[#7B542F]/80"
                   />
                 </div>
               </div>
             </div>
 
             {uploading && (
-              <div className="flex items-center gap-2 text-blue-600">
+              <div className="flex items-center gap-2 text-[#7B542F]">
                 <Loader className="h-4 w-4 animate-spin" />
                 <span>Uploading images...</span>
               </div>
@@ -406,7 +406,7 @@ export default function EditGalleryPage() {
               <button
                 type="submit"
                 disabled={saving || uploading || formData.images.length === 0}
-                className="flex-1 bg-blue-600 text-white py-2.5 px-4 text-sm sm:text-base rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 transition-colors"
+                className="flex-1 bg-[#7B542F] text-white py-2.5 px-4 text-sm sm:text-base rounded-lg font-medium hover:bg-[#7B542F]/80 disabled:bg-gray-400 transition-colors"
               >
                 {saving ? (
                   <span className="flex items-center justify-center gap-2">

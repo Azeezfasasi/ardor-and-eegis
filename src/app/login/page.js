@@ -50,10 +50,10 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6 mt-[150px] lg:mt-[200px]">
       {!mounted || (loading && !user) ? (
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#7B542F]"></div>
           <p className="mt-4 text-gray-600">Loading...</p>
         </div>
       ) : (
@@ -75,7 +75,7 @@ export default function Login() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F]"
               placeholder="you@example.com"
             />
           </div>
@@ -89,7 +89,7 @@ export default function Login() {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-900"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F]"
                 placeholder="Enter your password"
               />
               <button
@@ -99,9 +99,9 @@ export default function Login() {
                 title={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? (
-                  <Eye className="w-5 h-5 text-purple-800" />
+                  <Eye className="w-5 h-5 text-[#7B542F]" />
                 ) : (
-                  <EyeOff className="w-5 h-5 text-purple-800" />
+                  <EyeOff className="w-5 h-5 text-[#7B542F]" />
                 )}
               </button>
             </div>
@@ -114,30 +114,25 @@ export default function Login() {
                 name="remember"
                 checked={formData.remember}
                 onChange={handleChange}
-                className="h-4 w-4 rounded border-gray-300 focus:ring-2 focus:ring-purple-900"
+                className="h-4 w-4 rounded border-gray-300 focus:ring-2 focus:ring-[#7B542F]"
               />
               Remember me
             </label>
-            <Link href="/forgot-password" className="text-purple-900 hover:text-purple-800 font-medium">
+            <Link href="/forgot-password" className="text-[#7B542F] hover:text-[#7B542F]/80 font-medium">
               Forgot password?
             </Link>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-purple-900 text-white py-3 rounded-lg font-semibold shadow hover:bg-purple-800 transition"
+            className="w-full bg-[#7B542F] text-white py-3 rounded-lg font-semibold shadow hover:bg-[#7B542F]/80 transition"
             disabled={submitting}
           >
             {submitting ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-6">
-          Don&apos;t have an account?{" "}
-          <Link href="/register" className="text-purple-900 hover:text-purple-800 font-medium">
-            Register
-          </Link>
-        </p>
+        {/*  */}
       </div>
       )}
     </div>

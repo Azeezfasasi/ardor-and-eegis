@@ -56,8 +56,8 @@ export default function BlogNews() {
               onClick={() => setSelectedCategory(category)}
               className={`px-5 py-2 rounded-full font-medium transition ${
                 selectedCategory === category
-                  ? "bg-blue-900 text-white"
-                  : "bg-white text-gray-800 border border-gray-300 hover:bg-blue-800 hover:text-white"
+                  ? "bg-[#7B542F] text-white"
+                  : "bg-white text-gray-800 border border-gray-300 hover:bg-[#7B542F]/80 hover:text-white"
               }`}
             >
               {category}
@@ -68,7 +68,7 @@ export default function BlogNews() {
         {/* Loading State */}
         {loading && (
           <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7B542F]"></div>
           </div>
         )}
 
@@ -97,7 +97,7 @@ export default function BlogNews() {
                   )}
                 </div>
                 <div className="p-6">
-                  <span className="text-sm text-blue-900 font-semibold uppercase">
+                  <span className="text-sm text-[#7B542F] font-semibold uppercase">
                     {post.category}
                   </span>
                   <h3 className="text-xl font-bold text-gray-800 mt-2 mb-2">{post.postTitle.split(" ").slice(0, 8).join(" ") + "…"}</h3>
@@ -109,7 +109,7 @@ export default function BlogNews() {
                   </div>
                   <Link
                     href={`/blog/${post.urlSlug}`}
-                    className="text-blue-900 font-semibold hover:text-blue-800 transition"
+                    className="text-[#7B542F] font-semibold hover:text-[#7B542F]/80 transition"
                   >
                     Read More →
                   </Link>

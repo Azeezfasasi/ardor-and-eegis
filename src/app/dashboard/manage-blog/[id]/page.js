@@ -453,12 +453,9 @@ function EditBlogContent() {
 									className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
 								>
 									<option value="">Select a category</option>
-									<option value="construction">Construction</option>
-									<option value="project-updates">Project Updates</option>
-									<option value="industry-news">Industry News</option>
+									<option value="security">Security</option>
+									<option value="training">Training</option>
 									<option value="tips-tricks">Tips & Tricks</option>
-									<option value="company-news">Company News</option>
-									<option value="case-studies">Case Studies</option>
 								</select>
 							</div>
 						<div>

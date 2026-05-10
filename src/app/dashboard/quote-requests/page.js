@@ -239,7 +239,7 @@ const ManageQuoteRequests = () => {
 	if (loading) {
 		return (
 			<div className="flex justify-center items-center py-12">
-				<p className="text-gray-600"><Commet color="#155dfc" size="medium" text="Loading" textColor="#155dfc" /></p>
+				<p className="text-gray-600"><Commet color="#7B542F" size="medium" text="Loading" textColor="#7B542F" /></p>
 			</div>
 		)
 	}
@@ -310,7 +310,7 @@ const ManageQuoteRequests = () => {
 									onClick={() => handleStatusFilter('replied')}
 									className={`px-4 py-2 rounded-lg font-medium transition ${
 										statusFilter === 'replied'
-											? 'bg-purple-600 text-white'
+											? 'bg-[#7B542F] text-white'
 											: 'bg-gray-100 text-gray-700 hover:bg-gray-200'
 									}`}
 								>
@@ -421,7 +421,7 @@ const ManageQuoteRequests = () => {
 															setNewStatus(request.status)
 															setShowStatusModal(true)
 														}}
-														className="p-2 text-purple-600 hover:bg-purple-50 rounded-lg transition"
+														className="p-2 text-[#7B542F] hover:bg-[#7B542F]/80 rounded-lg transition"
 														title="Change Status"
 													>
 														<CheckCircle className="w-4 h-4" />
@@ -664,7 +664,7 @@ const ManageQuoteRequests = () => {
 									<select
 										value={newStatus}
 										onChange={(e) => setNewStatus(e.target.value)}
-										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
+										className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent outline-none"
 									>
 										<option value="">Select a status</option>
 										<option value="pending">Pending</option>
@@ -685,7 +685,7 @@ const ManageQuoteRequests = () => {
 								</button>
 								<button
 									onClick={handleChangeStatus}
-									className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 font-medium transition flex items-center gap-2"
+									className="px-4 py-2 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80 font-medium transition flex items-center gap-2"
 								>
 									<CheckCircle className="w-4 h-4" />
 									Update Status

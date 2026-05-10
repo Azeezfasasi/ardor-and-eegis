@@ -20,6 +20,7 @@ export default function MainHeader() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about-us', label: 'About Us' },
+    { href: '/blog', label: 'Blog' },
     { href: '/services', label: 'Services' },
     { href: '/contact-us', label: 'Contact Us' }
   ]

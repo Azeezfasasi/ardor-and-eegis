@@ -148,7 +148,7 @@ export default function BlogDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7B542F]"></div>
       </div>
     );
   }
@@ -157,7 +157,7 @@ export default function BlogDetailPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <p className="text-red-600 text-lg mb-4">{error || 'Blog not found'}</p>
-        <Link href="/blog" className="text-blue-500 hover:text-blue-700">
+        <Link href="/blog" className="text-[#7B542F] hover:text-[#7B542F]/90">
           Back to blogs
         </Link>
       </div>
@@ -165,17 +165,17 @@ export default function BlogDetailPage() {
   }
 
   return (
-    <article className="min-h-screen bg-gray-50 py-12">
+    <article className="min-h-screen bg-gray-50 py-12 mt-[150px] lg:mt-[200px]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <Link href="/blog" className="text-blue-900 hover:text-blue-800 mb-4 inline-block">
+          <Link href="/blog" className="text-[#7B542F] hover:text-[#7B542F]/90 mb-4 inline-block">
             ← Back to blogs
           </Link>
           <h1 className="text-[26px] md:text-5xl font-bold text-gray-900 mb-4">{blog.postTitle}</h1>
           
           <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-6">
-            <span className="text-sm font-semibold text-blue-900 uppercase">{blog.category}</span>-
+            <span className="text-sm font-semibold text-[#7B542F] uppercase">{blog.category}</span>-
             <span>By {blog.author}</span>-
             <span>{new Date(blog.publishDate).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -219,7 +219,7 @@ export default function BlogDetailPage() {
             className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition ${
               isLiked
                 ? 'bg-red-100 text-red-600 hover:bg-red-200'
-                : 'bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-600'
+                : 'bg-gray-100 text-gray-700 hover:bg-[#7B542F]/10 hover:text-[#7B542F]'
             }`}
           >
             <span className="text-xl">❤️</span>
@@ -239,7 +239,7 @@ export default function BlogDetailPage() {
                   {user.avatar ? (
                     <img src={user.avatar} alt={user.firstName} className="w-full h-full object-cover" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-blue-900 text-white font-bold">
+                    <div className="w-full h-full flex items-center justify-center bg-[#7B542F] text-white font-bold">
                       {user.firstName?.charAt(0)}
                     </div>
                   )}
@@ -250,14 +250,14 @@ export default function BlogDetailPage() {
                     value={commentText}
                     onChange={(e) => setCommentText(e.target.value)}
                     placeholder="Share your thoughts..."
-                    className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900 resize-none"
+                    className="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F] resize-none"
                     rows="4"
                     disabled={submittingComment}
                   />
                   <button
                     type="submit"
                     disabled={submittingComment || !commentText.trim()}
-                    className="mt-3 px-6 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium cursor-pointer"
+                    className="mt-3 px-6 py-2 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/90 disabled:opacity-50 disabled:cursor-not-allowed transition font-medium cursor-pointer"
                   >
                     {submittingComment ? 'Posting...' : 'Post Comment'}
                   </button>
@@ -267,7 +267,7 @@ export default function BlogDetailPage() {
           ) : (
             <div className="mb-8 pb-8 border-b bg-gray-50 p-4 rounded-lg">
               <p className="text-gray-600">
-                <Link href="/login" className="text-blue-900 hover:text-blue-800 font-medium">
+                <Link href="/login" className="text-[#7B542F] hover:text-[#7B542F]/90 font-medium">
                   Login
                 </Link>
                 {' '}to post a comment
@@ -284,7 +284,7 @@ export default function BlogDetailPage() {
                     {comment.userAvatar ? (
                       <img src={comment.userAvatar} alt={comment.userName} className="w-full h-full object-cover" />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-blue-900 text-white font-bold text-sm">
+                      <div className="w-full h-full flex items-center justify-center bg-[#7B542F] text-white font-bold text-sm">
                         {comment.userName?.charAt(0)}
                       </div>
                     )}

@@ -238,7 +238,7 @@ export default function OurServicesContentsManager() {
     return (
       <ProtectedRoute allowedRoles={['admin', 'staff-member']}>
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <Loader className="w-8 h-8 animate-spin text-blue-600" />
+          <Loader className="w-8 h-8 animate-spin text-[#7B542F]" />
         </div>
       </ProtectedRoute>
     );
@@ -256,7 +256,7 @@ export default function OurServicesContentsManager() {
             </div>
             <button
               onClick={() => setIsFormOpen(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors w-full sm:w-auto justify-center sm:justify-start"
+              className="flex items-center gap-2 px-4 py-2.5 bg-[#7B542F] text-white rounded-lg font-medium hover:bg-[#7B542F]/80 transition-colors w-full sm:w-auto justify-center sm:justify-start"
             >
               <Plus className="w-5 h-5" />
               Add New Service
@@ -270,7 +270,7 @@ export default function OurServicesContentsManager() {
                 <p className="text-gray-500 mb-4">No services created yet</p>
                 <button
                   onClick={() => setIsFormOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80"
                 >
                   <Plus className="w-4 h-4" />
                   Create First Service
@@ -285,7 +285,7 @@ export default function OurServicesContentsManager() {
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-4 mb-2">
-                        <div className={`bg-gradient-to-br ${service.color || 'from-blue-600 to-blue-700'} w-12 h-12 rounded-lg flex-shrink-0`} />
+                        <div className={`bg-gradient-to-br ${service.color || 'from-[#7B542F] to-[#7B542F]'} w-12 h-12 rounded-lg flex-shrink-0`} />
                         <div>
                           <h3 className="text-lg font-semibold text-gray-900">{service.title}</h3>
                           <p className="text-sm text-gray-600">{service.shortDesc}</p>
@@ -323,7 +323,7 @@ export default function OurServicesContentsManager() {
                         <div className="flex gap-2 flex-wrap">
                           <button
                             onClick={() => handleEdit(service)}
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors text-sm font-medium flex-1"
+                            className="flex items-center justify-center gap-2 px-3 py-2 bg-[#7B542F]/80 text-white rounded hover:bg-[#7B542F]/80 transition-colors text-sm font-medium flex-1"
                           >
                             <Edit2 className="w-4 h-4" />
                             Edit
@@ -399,7 +399,7 @@ export default function OurServicesContentsManager() {
                       value={formData.title}
                       onChange={handleInputChange}
                       placeholder="e.g., Engineering Services"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -414,7 +414,7 @@ export default function OurServicesContentsManager() {
                       onChange={handleInputChange}
                       placeholder="Brief description that appears on the services card"
                       rows="3"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                     />
                   </div>
 
@@ -429,7 +429,7 @@ export default function OurServicesContentsManager() {
                       value={formData.icon}
                       onChange={handleInputChange}
                       placeholder="e.g., engineering services"
-                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7B542F] focus:border-transparent text-sm"
                     />
                     <p className="text-xs text-gray-500 mt-1">Used to select the appropriate icon for this service</p>
                   </div>
@@ -508,7 +508,7 @@ export default function OurServicesContentsManager() {
                                 setFormData(prev => ({ ...prev, images: newImages }));
                               }}
                               placeholder="Alt text"
-                              className="w-full mt-2 px-2 py-1 border border-gray-300 rounded text-xs focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              className="w-full mt-2 px-2 py-1 border border-gray-300 rounded text-xs focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                             />
                           </div>
                         ))}
@@ -573,7 +573,7 @@ export default function OurServicesContentsManager() {
                                   setFormData(prev => ({ ...prev, details: newDetails }));
                                 }}
                                 placeholder="e.g., Our Scope of Engineering Services"
-                                className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                               />
                             </div>
 
@@ -591,7 +591,7 @@ export default function OurServicesContentsManager() {
                                 }}
                                 placeholder="Main description text for this section"
                                 rows="2"
-                                className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                               />
                             </div>
 
@@ -611,7 +611,7 @@ export default function OurServicesContentsManager() {
                                     newDetails[idx].items.push('');
                                     setFormData(prev => ({ ...prev, details: newDetails }));
                                   }}
-                                  className="text-blue-600 hover:text-blue-700 text-xs font-medium"
+                                  className="text-[#7B542F] hover:text-[#7B542F]/80 text-xs font-medium"
                                 >
                                   + Add Point
                                 </button>
@@ -629,7 +629,7 @@ export default function OurServicesContentsManager() {
                                         setFormData(prev => ({ ...prev, details: newDetails }));
                                       }}
                                       placeholder={`Bullet point ${itemIdx + 1}`}
-                                      className="flex-1 px-3 py-1.5 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                      className="flex-1 px-3 py-1.5 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-[#7B542F] focus:border-transparent"
                                     />
                                     <button
                                       type="button"
@@ -667,7 +667,7 @@ export default function OurServicesContentsManager() {
                     <button
                       type="submit"
                       disabled={saving}
-                      className="flex-1 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="flex-1 px-4 py-2.5 bg-[#7B542F] text-white rounded-lg hover:bg-[#7B542F]/80 font-medium disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {saving && <Loader className="w-4 h-4 animate-spin" />}
                       {editingId ? 'Update Service' : 'Create Service'}

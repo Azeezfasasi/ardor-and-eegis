@@ -23,41 +23,62 @@ function Icon({ name }) {
   switch (name) {
     case 'activeUsers':
       return (
-        <svg className="w-6 h-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
           <circle cx="12" cy="7" r="4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )
-    case 'registrations':
-      return (
-        <svg className="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M9 12h6M9 16h6" />
-        </svg>
-      )
-    case 'programmes':
-      return (
-        <svg className="w-6 h-6 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C6.5 6.253 2 10.771 2 16.5S6.5 26.75 12 26.75s10-4.518 10-10.25S17.5 6.253 12 6.253z" />
-          <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2" />
         </svg>
       )
     case 'admins':
       return (
-        <svg className="w-6 h-6 text-pink-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" />
-          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
           <circle cx="12" cy="7" r="4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
         </svg>
       )
-    case 'subscribers':
+    case 'staffMembers':
       return (
-        <svg className="w-6 h-6 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+          <circle cx="8.5" cy="7" r="4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M20 8v6" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M23 11h-6" />
+        </svg>
+      )
+    case 'totalBlogs':
+      return (
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 19.5A2.5 2.5 0 006.5 22H20" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M14 2H6.5A2.5 2.5 0 004 4.5V18" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M14 2h6v6" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M20 2l-7 7" />
+        </svg>
+      )
+    case 'pendingQuoteRequests':
+      return (
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 9v2" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M12 17h.01" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M10 2h4l1 2h3l-1 17H7L6 4h3l1-2z" />
+        </svg>
+      )
+    case 'pendingContactForms':
+      return (
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M21 15a4 4 0 01-4 4H7l-4 4V7a4 4 0 014-4h10a4 4 0 014 4v8z" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 8h10" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 12h6" />
+        </svg>
+      )
+    case 'totalSubscribers':
+      return (
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
+          <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       )
     default:
-      return null
+      return null;
   }
 }
 
@@ -117,12 +138,15 @@ export default function DashboardStats({ data = {} }) {
         // Fallback to provided data or defaults
         const defaults = {
           activeUsers: 0,
-          registrations: 0,
-          programmes: 0,
           admins: 0,
-          subscribers: 0,
+          staffMembers: 0,
+          totalBlogs: 0,
+          pendingQuoteRequests: 0,
+          pendingContactForms: 0,
+          totalSubscribers: 0,
         };
         setStats({ ...defaults, ...data });
+
       } finally {
         setLoading(false);
       }
@@ -141,19 +165,24 @@ export default function DashboardStats({ data = {} }) {
   // Use provided data if no token, otherwise use fetched stats
   const displayStats = stats || data || {
     activeUsers: 0,
-    registrations: 0,
-    programmes: 0,
     admins: 0,
-    subscribers: 0,
+    staffMembers: 0,
+    totalBlogs: 0,
+    pendingQuoteRequests: 0,
+    pendingContactForms: 0,
+    totalSubscribers: 0,
   };
 
   const items = [
-    { key: 'activeUsers', label: 'Active Users', value: displayStats.activeUsers, icon: 'activeUsers' },
-    { key: 'registrations', label: 'Programme Registrations', value: displayStats.registrations, icon: 'registrations' },
-    { key: 'programmes', label: 'Total Programmes', value: displayStats.programmes, icon: 'programmes' },
-    { key: 'admins', label: 'Admin Users', value: displayStats.admins, icon: 'admins' },
-    { key: 'subscribers', label: 'Subscribers', value: displayStats.subscribers, icon: 'subscribers' },
+    { key: 'activeUsers', label: 'Active Users', value: displayStats.activeUsers, icon: 'activeUsers', gradient: 'from-indigo-500 to-indigo-700' },
+    { key: 'admins', label: 'Admin Users', value: displayStats.admins, icon: 'admins', gradient: 'from-pink-500 to-pink-700' },
+    { key: 'staffMembers', label: 'Staff Members', value: displayStats.staffMembers, icon: 'staffMembers', gradient: 'from-emerald-500 to-emerald-700' },
+    { key: 'totalBlogs', label: 'Total Blogs', value: displayStats.totalBlogs, icon: 'totalBlogs', gradient: 'from-amber-500 to-amber-700' },
+    { key: 'pendingQuoteRequests', label: 'Pending Quote Requests', value: displayStats.pendingQuoteRequests, icon: 'pendingQuoteRequests', gradient: 'from-orange-500 to-orange-700' },
+    { key: 'pendingContactForms', label: 'Pending Contact Forms', value: displayStats.pendingContactForms, icon: 'pendingContactForms', gradient: 'from-rose-500 to-rose-700' },
+    { key: 'totalSubscribers', label: 'Total Subscribers', value: displayStats.totalSubscribers, icon: 'totalSubscribers', gradient: 'from-cyan-500 to-cyan-700' },
   ];
+
 
   if (error && !stats) {
     return (
@@ -178,26 +207,41 @@ export default function DashboardStats({ data = {} }) {
         {items.map((item) => (
           <div
             key={item.key}
-            className={`bg-white rounded-lg shadow-sm p-3 md:p-4 flex items-start gap-4 ${
+            className={`group relative overflow-hidden rounded-2xl bg-white shadow-sm border border-gray-100 p-3 md:p-4 flex items-start gap-4 transition-all hover:shadow-md hover:-translate-y-0.5 ${
               loading ? 'opacity-60' : ''
             }`}
           >
+            {/* Decorative gradient accent */}
+            <div
+              aria-hidden="true"
+              className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${item.gradient} opacity-90`}
+            />
+
             <div className="shrink-0">
-              <Icon name={item.icon} />
+              <div
+                className={`h-12 w-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-sm`}
+              >
+                <Icon name={item.icon} />
+              </div>
             </div>
+
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <div className="lg:truncate">
-                  <div className="text-xs font-medium text-gray-500">{item.label}</div>
-                  <div className="mt-1">
+                  <div className="text-xs font-semibold text-gray-500">{item.label}</div>
+                  <div className="mt-2">
                     {loading ? (
-                      <div className="h-6 bg-gray-200 rounded animate-pulse w-12"></div>
+                      <div className="h-8 bg-gray-200 rounded animate-pulse w-16"></div>
                     ) : (
                       <Count value={item.value} />
                     )}
                   </div>
                 </div>
-                <div className="text-right text-xs text-gray-400">&nbsp;</div>
+
+                <div className="text-right text-xs text-gray-400">
+                  {/* subtle dot */}
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-gray-200 group-hover:bg-gray-300 transition" />
+                </div>
               </div>
             </div>
           </div>

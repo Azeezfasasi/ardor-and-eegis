@@ -61,14 +61,14 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-100 px-4 sm:px-6 lg:px-8 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#7B542F]/10 to-[#7B542F]/20 px-4 sm:px-6 lg:px-8 py-12 mt-[150px] lg:mt-[200px]">
       <div className="w-full max-w-md">
         {/* Card Container */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header Section */}
-          <div className="bg-gradient-to-r from-blue-900 to-blue-800 px-6 sm:px-8 py-8 sm:py-10">
+          <div className="bg-gradient-to-r from-[#7B542F] to-[#7B542F]/80 px-6 sm:px-8 py-8 sm:py-10">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-700 rounded-full mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-[#7B542F] rounded-full mb-4">
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -86,7 +86,7 @@ export default function ForgotPassword() {
               <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 Reset Password
               </h1>
-              <p className="text-blue-100 text-sm">
+              <p className="text-[#7B542F]/80 text-sm">
                 We&apos;ll help you regain access to your account
               </p>
             </div>
@@ -163,7 +163,7 @@ export default function ForgotPassword() {
                     onChange={handleChange}
                     required
                     placeholder="you@example.com"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7B542F] focus:border-transparent transition"
                     disabled={submitting}
                   />
                   <p className="text-xs text-gray-500 mt-2">
@@ -174,7 +174,7 @@ export default function ForgotPassword() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full bg-gradient-to-r from-blue-900 to-blue-800 text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg hover:from-blue-800 hover:to-blue-700 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-[#7B542F] to-[#7B542F]/80 text-white py-3 rounded-lg font-semibold shadow-md hover:shadow-lg hover:from-[#7B542F]/80 hover:to-[#7B542F]/60 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {submitting ? (
                     <>
@@ -225,7 +225,7 @@ export default function ForgotPassword() {
                 <p className="text-gray-600 mb-4">
                   Redirecting to login...
                 </p>
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-900"></div>
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#7B542F]"></div>
               </div>
             )}
 
@@ -245,20 +245,20 @@ export default function ForgotPassword() {
                 Remember your password?{" "}
                 <Link
                   href="/login"
-                  className="font-semibold text-blue-900 hover:text-blue-800 transition"
+                  className="font-semibold text-[#7B542F] hover:text-[#7B542F]/80 transition"
                 >
                   Back to login
                 </Link>
               </p>
-              <p className="text-gray-600">
+              {/* <p className="text-gray-600">
                 Need an account?{" "}
                 <Link
                   href="/register"
-                  className="font-semibold text-blue-900 hover:text-blue-800 transition"
+                  className="font-semibold text-[#7B542F] hover:text-[#7B542F]/80 transition"
                 >
                   Sign up
                 </Link>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
