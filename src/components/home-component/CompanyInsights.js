@@ -130,7 +130,7 @@ export default function CompanyInsights() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
               <div className="relative h-48 md:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
                 <Image
-                  src="/img/security1.jpg"
+                  src="/img/place2.jpeg"
                   alt="Security Operations Team"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -145,7 +145,7 @@ export default function CompanyInsights() {
 
               <div className="relative h-48 md:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
                 <Image
-                  src="/img/security4.jpeg"
+                  src="/img/place2.jpeg"
                   alt="Security Leadership Team"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

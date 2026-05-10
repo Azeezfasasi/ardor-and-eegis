@@ -155,7 +155,7 @@ export default function CompanyOverview() {
               <div className="order-2 lg:order-1">
                 <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/img/security3.jpg"
+                    src="/img/place2.jpeg"
                     alt="Ador Aegis Security Services"
                     fill
                     sizes="100%"

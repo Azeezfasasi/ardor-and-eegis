@@ -31,9 +31,9 @@ export default function OurGallantOfficers() {
 
   const images = useMemo(
     () => [
-      { id: 1, src: '/img/security3.jpg', alt: 'Our Gallant Officers - Group 1' },
-      { id: 2, src: '/img/security2.jpg', alt: 'Our Gallant Officers - Group 2' },
-      { id: 3, src: '/img/security4.jpeg', alt: 'Our Gallant Officers - Group 3' },
+      { id: 1, src: '/img/place3.jpeg', alt: 'Our Gallant Officers - Group 1' },
+      { id: 2, src: '/img/place2.jpeg', alt: 'Our Gallant Officers - Group 2' },
+      { id: 3, src: '/img/place1.jpeg', alt: 'Our Gallant Officers - Group 3' },
     ],
     []
   );

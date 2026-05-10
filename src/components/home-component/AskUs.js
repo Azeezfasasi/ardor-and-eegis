@@ -27,50 +27,46 @@ function useInView(options) {
 
 export default function AskUs() {
   const brand = '#7B542F';
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
+  const { ref: sectionRef, inView } = useInView({ threshold: 0.15 });
+  const title = useMemo(() => 'Ask Us Anything', []);
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const { ref: sectionRef, inView } = useInView({ threshold: 0.15 });
-
-  const title = useMemo(() => 'Ask Us Anything', []);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    setSubmitStatus(null);
     try {
-      const response = await fetch('/api/contact/send-message', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
-      if (response.ok) {
+      const data = await res.json();
+      if (data.success) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setSubmitStatus(null), 3000);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        // Clear success message after 10 seconds
+        setTimeout(() => setSubmitStatus(null), 10000);
       } else {
         setSubmitStatus('error');
-        setTimeout(() => setSubmitStatus(null), 3000);
+        setTimeout(() => setSubmitStatus(null), 10000);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
       setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus(null), 3000);
+      console.error("Contact form error:", error);
+      setTimeout(() => setSubmitStatus(null), 10000);
     } finally {
       setLoading(false);
     }
@@ -105,7 +101,7 @@ export default function AskUs() {
           <div className={`flex justify-center ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out`}>
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-2xl border border-white/10">
               <Image
-                src="/img/security1.jpg"
+                src="/img/place2.jpeg"
                 alt="Our Officers"
                 fill
                 className="object-cover"
@@ -122,6 +118,17 @@ export default function AskUs() {
           <div className={`w-full ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out`}>
             <div className="bg-white/5 backdrop-blur border border-white/10 rounded-3xl shadow-[0_0_0_1px_rgba(123,84,47,0.08)] p-6 sm:p-8">
               <form onSubmit={handleSubmit} className="space-y-5">
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-500/20 border border-green-500/30 text-green-200 rounded-xl text-sm md:text-base">
+                    ✓ Message sent successfully! We'll get back to you soon.
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-500/20 border border-red-500/30 text-red-200 rounded-xl text-sm md:text-base">
+                    ✕ Failed to send message. Please try again.
+                  </div>
+                )}
                 <div>
                   <label htmlFor="name" className="block text-white font-semibold mb-2 text-sm md:text-base">
                     Your Name <span style={{ color: '#D4A574' }}>*</span>
@@ -156,6 +163,23 @@ export default function AskUs() {
                       placeholder="Your email address"
                       required
                       className="w-full pl-12 pr-4 py-3 md:py-4 bg-white/95 text-gray-900 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 placeholder-gray-400"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-white font-semibold mb-2 text-sm md:text-base">
+                    Subject <span style={{ color: '#D4A574' }}>*</span>
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-3 w-5 h-5 text-[#7B542F]" strokeWidth={1.5} />
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="Subject"
+                      className="w-full pl-12 pr-4 py-3 md:py-4 bg-white/95 text-gray-900 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 placeholder-gray-40"
                     />
                   </div>
                 </div>
