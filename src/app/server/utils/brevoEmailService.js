@@ -71,9 +71,13 @@ export const sendEmailViaBrevo = async (emailData) => {
       },
       subject,
       htmlContent: htmlContent || '',
-      textContent: textContent || subject, // ← Fallback to subject if textContent is empty (required by Brevo)
-      tags: tags || [],
+      textContent: textContent || subject,
     };
+
+    // Only add tags if provided and non-empty
+    if (tags && tags.length > 0) {
+      emailPayload.tags = tags;
+    }
 
     // Add optional fields
     if (cc.length > 0) {

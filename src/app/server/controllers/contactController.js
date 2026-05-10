@@ -2,6 +2,9 @@ import Contact from "../models/Contact";
 import User from "../models/User";
 import { connectDB } from "../db/connect";
 import { NextResponse } from "next/server";
+import * as emailTemplates from "../utils/emailTemplates.js";
+import { sendEmailViaBrevo } from "../utils/brevoEmailService.js";
+import { notifyAdminsNewContact } from "../utils/adminNotifications.js";
 
 // 1. Create contact form submission
 export const createContact = async (req) => {
@@ -10,6 +13,35 @@ export const createContact = async (req) => {
     const body = await req.json();
     const contact = new Contact({ ...body });
     await contact.save();
+
+    // Send confirmation email to user
+    try {
+      const userEmailContent = emailTemplates.contactFormSubmissionEmail(
+        body.name.split(' ')[0],
+        body.subject,
+        body.message
+      );
+      await sendEmailViaBrevo({
+        to: body.email,
+        subject: `We Received Your Message - ${body.subject}`,
+        htmlContent: userEmailContent,
+      });
+    } catch (emailError) {
+      console.error("Error sending user confirmation email:", emailError);
+    }
+
+    // Send admin notification to all admins
+    try {
+      await notifyAdminsNewContact(
+        body.name,
+        body.email,
+        body.subject,
+        body.message
+      );
+    } catch (emailError) {
+      console.error("Error sending admin notification:", emailError);
+    }
+
     return NextResponse.json({ success: true, contact }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
@@ -51,9 +83,27 @@ export const replyToContact = async (req, contactId) => {
     }
     const contact = await Contact.findById(contactId);
     if (!contact) return NextResponse.json({ success: false, message: "Contact not found" }, { status: 404 });
+    
     contact.replies.push({ sender: senderId, senderName: sender.firstName + ' ' + sender.lastName, message });
     contact.status = "replied";
     await contact.save();
+
+    // Send reply email to user
+    try {
+      const replyEmailContent = emailTemplates.adminReplyContactFormEmail(
+        contact.name.split(' ')[0],
+        contact.subject,
+        message
+      );
+      await sendEmailViaBrevo({
+        to: contact.email,
+        subject: `Reply to Your Message - ${contact.subject}`,
+        htmlContent: replyEmailContent,
+      });
+    } catch (emailError) {
+      console.error("Error sending reply email:", emailError);
+    }
+
     return NextResponse.json({ success: true, contact }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });

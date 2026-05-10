@@ -1,5 +1,6 @@
 import { Subscriber, Campaign, Template, ActivityLog } from '../models/Newsletter.js';
 import { connectDB } from '@/utils/db.js';
+import * as emailTemplates from '../utils/emailTemplates.js';
 import {
   sendEmailViaBrevo,
   sendBulkEmailsViaBrevo,
@@ -69,81 +70,31 @@ export const subscribeToNewsletter = async (subscriberData) => {
 
     // Send welcome email
     try {
-      const emailResult = await sendEmailViaBrevo({
+      const emailContent = emailTemplates.newsletterSubscriptionEmail(firstName || 'Subscriber');
+      await sendEmailViaBrevo({
         to: email,
-        subject: 'Welcome to Potter House Newsletter',
-        htmlContent: `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <style>
-                body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-                .content { padding: 20px; background: #f9f9f9; border-radius: 8px; }
-                .footer { text-align: center; margin-top: 20px; font-size: 12px; color: #666; }
-                a { color: #667eea; text-decoration: none; }
-              </style>
-            </head>
-            <body>
-              <div class="container">
-                <div class="header">
-                  <h1>Welcome to Potter House Newsletter!</h1>
-                </div>
-                <div class="content">
-                  <p>Hi ${firstName || 'there'},</p>
-                  <p>Thank you for subscribing to our newsletter! We're excited to share the latest updates, insights, and innovations from Potter House.</p>
-                  <p>You'll receive:</p>
-                  <ul>
-                    <li>Latest industry news and trends</li>
-                    <li>Product updates and announcements</li>
-                    <li>Exclusive insights from our team</li>
-                    <li>Special offers and promotions</li>
-                  </ul>
-                  <p>If you have any questions or feedback, feel free to reach out to us.</p>
-                  <p>Best regards,<br/>The Potter House Team</p>
-                </div>
-                <div class="footer">
-                  <p>© 2025 Potter House. All rights reserved.</p>
-                  <p><a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/newsletter/unsubscribe?email=${email}">Unsubscribe</a></p>
-                </div>
-              </div>
-            </body>
-          </html>
-        `,
-        textContent: `Welcome to Potter House Newsletter!
-
-Hi ${firstName || 'there'},
-
-Thank you for subscribing to our newsletter! We're excited to share the latest updates, insights, and innovations from Potter House.
-
-You'll receive:
-- Latest industry news and trends
-- Product updates and announcements
-- Exclusive insights from our team
-- Special offers and promotions
-
-If you have any questions or feedback, feel free to reach out to us.
-
-Best regards,
-The Potter House Team
-
----
-To unsubscribe: ${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/newsletter/unsubscribe?email=${email}
-        `,
-        senderEmail: process.env.BREVO_SENDER_EMAIL || 'noreply@potterhouse.com',
-        senderName: process.env.BREVO_SENDER_NAME || 'Potter House',
-        tags: ['welcome', 'subscription'],
+        subject: 'Welcome to Ador Aegis Newsletter!',
+        htmlContent: emailContent,
       });
-      
-      if (!emailResult.success) {
-        console.error('❌ Welcome email send failed:', emailResult);
-      } else {
-        console.log('✓ Welcome email sent to:', email, 'Message ID:', emailResult.messageId);
-      }
     } catch (emailError) {
-      console.error('❌ Error sending welcome email:', emailError.message, emailError);
+      console.error('❌ Error sending welcome email:', emailError.message);
       // Don't fail the subscription if email sending fails
+    }
+
+    // Send admin notification
+    try {
+      const adminEmailContent = emailTemplates.adminNewSubscriberNotificationEmail(
+        email,
+        firstName || 'New Subscriber',
+        new Date()
+      );
+      await sendEmailViaBrevo({
+        to: process.env.ADMIN_EMAIL || 'admin@ardoraegis.org',
+        subject: `New Newsletter Subscriber - ${email}`,
+        htmlContent: adminEmailContent,
+      });
+    } catch (emailError) {
+      console.error('Error sending admin notification:', emailError);
     }
 
     // Log activity
@@ -185,6 +136,34 @@ export const unsubscribeFromNewsletter = async (email) => {
       });
     } catch (brevoError) {
       console.warn('Warning: Could not update Brevo contact:', brevoError.message);
+    }
+
+    // Send unsubscription confirmation email to user
+    try {
+      const emailContent = emailTemplates.newsletterUnsubscriptionEmail(subscriber.firstName || 'Subscriber');
+      await sendEmailViaBrevo({
+        to: email,
+        subject: 'You\'ve Unsubscribed from Ador Aegis Newsletter',
+        htmlContent: emailContent,
+      });
+    } catch (emailError) {
+      console.error('Error sending unsubscription email:', emailError);
+    }
+
+    // Send admin notification
+    try {
+      const adminEmailContent = emailTemplates.adminUnsubscriberNotificationEmail(
+        email,
+        subscriber.firstName || 'Subscriber',
+        new Date()
+      );
+      await sendEmailViaBrevo({
+        to: process.env.ADMIN_EMAIL || 'admin@ardoraegis.org',
+        subject: `Newsletter Unsubscription - ${email}`,
+        htmlContent: adminEmailContent,
+      });
+    } catch (emailError) {
+      console.error('Error sending admin notification:', emailError);
     }
 
     // Log activity
@@ -461,28 +440,19 @@ export const sendNewsletter = async (campaignId, userId) => {
     // Prepare emails for Brevo
     const emailList = subscribers.map(subscriber => {
       const unsubscribeLink = `${process.env.NEXT_PUBLIC_APP_URL}/api/newsletter/unsubscribe?email=${subscriber.email}`;
-      const htmlContent = `
-        ${campaign.htmlContent || campaign.content}
-        <footer style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-size: 12px; color: #666;">
-          <p><a href="${unsubscribeLink}">Unsubscribe from this newsletter</a></p>
-        </footer>
-      `;
-
-      // Create plain text version from campaign subject and a generic message
-      const textContent = `
-${campaign.subject}
-
----
-
-To unsubscribe from this newsletter, click the link below:
-${unsubscribeLink}
-      `.trim();
+      
+      // Use the newsletter campaign template
+      const htmlContent = emailTemplates.newsletterCampaignEmail(
+        subscriber.firstName || 'Subscriber',
+        campaign.title,
+        campaign.htmlContent || campaign.content,
+        unsubscribeLink
+      );
 
       return {
         to: subscriber.email,
         subject: campaign.subject,
         htmlContent,
-        textContent, // ← THIS WAS MISSING!
         senderEmail: process.env.BREVO_SENDER_EMAIL || campaign.senderEmail,
         senderName: process.env.BREVO_SENDER_NAME || campaign.senderName,
         tags: ['newsletter', campaign.campaignType],
@@ -520,6 +490,22 @@ ${unsubscribeLink}
       unsubscribeRate: 0,
     };
     await campaign.save();
+
+    // Send admin notification
+    try {
+      const adminEmailContent = emailTemplates.adminCampaignSentNotificationEmail(
+        campaign.title,
+        results.totalSent,
+        new Date()
+      );
+      await sendEmailViaBrevo({
+        to: process.env.ADMIN_EMAIL || 'admin@ardoraegis.org',
+        subject: `Newsletter Campaign Sent - ${campaign.title}`,
+        htmlContent: adminEmailContent,
+      });
+    } catch (emailError) {
+      console.error('Error sending admin notification:', emailError);
+    }
 
     return {
       success: true,

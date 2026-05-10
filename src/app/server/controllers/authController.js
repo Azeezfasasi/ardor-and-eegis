@@ -4,6 +4,8 @@ import crypto from "crypto";
 import User from "../models/User.js";
 import { connectDB } from "../db/connect.js";
 import nodemailer from "nodemailer";
+import * as emailTemplates from "../utils/emailTemplates.js";
+import { notifyAdminsNewUser, notifyAdminsPasswordReset } from "../utils/adminNotifications.js";
 
 // JWT Secret
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
@@ -23,8 +25,8 @@ const transporter = nodemailer.createTransport({
 // Brevo API endpoint and key
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
-const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@potterhouse.com";
-const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Potter House";
+const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@adoraegis.org";
+const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Ador Aegis";
 
 // Helper function to send emails via Brevo
 const sendEmailViaBrevo = async (toEmail, subject, htmlContent) => {
@@ -175,10 +177,10 @@ export const register = async (req) => {
     try {
       await sendEmailViaBrevo(
         email,
-        "Welcome to Potter House - Email Verification & Login Details",
-        `<h2>Welcome to Potter House Registry</h2>
+        "Welcome to Ardor Aegis- Email Verification & Login Details",
+        `<h2>Welcome to Ardor AegisRegistry</h2>
          <p>Dear ${firstName} ${lastName},</p>
-         <p>Thank you for registering with Potter House!</p>
+         <p>Thank you for registering with Ardor Aegis!</p>
          <p><strong>Your Believer ID:</strong> <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">${believerID}</code></p>
          <p><strong>Your Temporary Password:</strong> <code style="background: #f0f0f0; padding: 5px 10px; border-radius: 3px;">${tempPassword}</code></p>
          <p>Please click the link below to verify your email address:</p>
@@ -192,11 +194,24 @@ export const register = async (req) => {
          <p><em>This link expires in 24 hours.</em></p>
          <p>If you did not register for this account, please ignore this email and contact our support team.</p>
          <hr>
-         <p>Best regards,<br><strong>Potter House Team</strong></p>`
+         <p>Best regards,<br><strong>Ardor AegisTeam</strong></p>`
       );
     } catch (mailError) {
       console.log("Email sending failed, but user created:", mailError.message);
       // Continue even if email fails
+    }
+
+    // Notify all admins of new user registration
+    try {
+      await notifyAdminsNewUser(
+        firstName,
+        lastName,
+        email,
+        believerID
+      );
+    } catch (notificationError) {
+      console.error("Error notifying admins of new user:", notificationError);
+      // Continue even if notification fails
     }
 
     // Generate token (optional - can be used for immediate login)
@@ -509,7 +524,7 @@ export const forgotPassword = async (req) => {
             </div>
             <div class="content">
               <p>Hello ${user.firstName},</p>
-              <p>We received a request to reset your password for your Potter House account.</p>
+              <p>We received a request to reset your password for your Ardor Aegisaccount.</p>
               <p>Click the button below to reset your password:</p>
               <a href="${resetLink}" class="button">Reset Password</a>
               <div class="warning">
@@ -518,10 +533,10 @@ export const forgotPassword = async (req) => {
               </div>
               <p>Or copy and paste this link in your browser:<br><small>${resetLink}</small></p>
               <hr>
-              <p><small>Best regards,<br>Potter House Team</small></p>
+              <p><small>Best regards,<br>Ardor AegisTeam</small></p>
             </div>
             <div class="footer">
-              <p>© 2026 Potter House. All rights reserved.</p>
+              <p>© 2026 Ardor Aegis. All rights reserved.</p>
             </div>
           </div>
         </body>
@@ -529,7 +544,7 @@ export const forgotPassword = async (req) => {
     `;
 
     try {
-      await sendEmailViaBrevo(email, "Password Reset - Potter House", htmlContent);
+      await sendEmailViaBrevo(email, "Password Reset - Ardor Aegis", htmlContent);
       console.log(`Password reset email sent to ${email}`);
     } catch (mailError) {
       console.error("Failed to send password reset email:", mailError.message);
@@ -1067,7 +1082,7 @@ export const adminResetPassword = async (req, userId) => {
     user.notes += `Password reset by admin on ${new Date().toISOString()}`;
     await user.save();
 
-    // Send notification email
+    // Send notification email to user
     try {
       await transporter.sendMail({
         to: user.email,
@@ -1078,6 +1093,16 @@ export const adminResetPassword = async (req, userId) => {
       });
     } catch (mailError) {
       console.log("Email notification failed:", mailError.message);
+    }
+
+    // Notify all admins of password reset
+    try {
+      await notifyAdminsPasswordReset(
+        `${user.firstName} ${user.lastName}`,
+        user.email
+      );
+    } catch (notificationError) {
+      console.error("Error notifying admins of password reset:", notificationError);
     }
 
     return NextResponse.json(

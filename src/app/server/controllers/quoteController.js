@@ -2,6 +2,9 @@ import Quote from "../models/Quote";
 import { connectDB } from "../db/connect";
 import User from "../models/User";
 import { NextResponse } from "next/server";
+import { notifyAdminsNewQuote } from "../utils/adminNotifications.js";
+import * as emailTemplates from "../utils/emailTemplates.js";
+import { sendEmailViaBrevo } from "../utils/brevoEmailService.js";
 
 // 1. Create quote request
 export const createQuote = async (req) => {
@@ -10,6 +13,35 @@ export const createQuote = async (req) => {
     const body = await req.json();
     const quote = new Quote({ ...body });
     await quote.save();
+
+    // Send confirmation email to user
+    try {
+      const userEmailContent = emailTemplates.quoteRequestSubmissionEmail(
+        body.name.split(' ')[0],
+        body.service || 'Quote Request'
+      );
+      await sendEmailViaBrevo({
+        to: body.email,
+        subject: 'Quote Request Received - Ador Aegis',
+        htmlContent: userEmailContent,
+      });
+    } catch (emailError) {
+      console.error("Error sending user confirmation email:", emailError);
+    }
+
+    // Notify all admins of new quote request
+    try {
+      await notifyAdminsNewQuote(
+        body.name,
+        body.email,
+        body.service || 'General Inquiry',
+        body.message
+      );
+    } catch (notificationError) {
+      console.error("Error notifying admins of new quote:", notificationError);
+      // Continue even if notification fails
+    }
+
     return NextResponse.json({ success: true, quote }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });

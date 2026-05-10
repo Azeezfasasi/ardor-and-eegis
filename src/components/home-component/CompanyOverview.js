@@ -9,7 +9,7 @@ const DEFAULT_DATA = {
     image: "/images/fibre1.jpeg",
     paragraphs: [
       {
-        text: "Potter House is a dynamic, solutions-driven Engineering and Management Company committed to delivering world-class services across multiple sectors. Established in 2020 and legally incorporated in Nigeria in 2025 with a passion for innovation, engineering excellence, and sustainable project delivery.",
+        text: "Ardor Aegis is a dynamic, solutions-driven Engineering and Management Company committed to delivering world-class services across multiple sectors. Established in 2020 and legally incorporated in Nigeria in 2025 with a passion for innovation, engineering excellence, and sustainable project delivery.",
         order: 0,
       },
       {

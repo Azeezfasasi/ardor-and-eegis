@@ -45,7 +45,7 @@ const ContactFormResponses = () => {
 					name: 'Mary Johnson',
 					email: 'mary.j@company.com',
 					subject: 'Partnership Opportunity',
-					message: 'We are interested in partnering with Potter House for upcoming projects...',
+					message: 'We are interested in partnering with Ardor Aegis for upcoming projects...',
 					status: 'replied',
 					createdAt: new Date('2025-01-14T14:20:00'),
 					replied: true,

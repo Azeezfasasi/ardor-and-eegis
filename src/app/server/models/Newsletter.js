@@ -91,7 +91,7 @@ const campaignSchema = new mongoose.Schema({
   },
   senderName: {
     type: String,
-    default: 'Potter House',
+    default: 'Ardor Aegis',
   },
   recipients: {
     type: {

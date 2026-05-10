@@ -86,7 +86,7 @@ async function testEmailSend() {
         email: brevoSenderEmail,
         name: brevoSenderName,
       },
-      subject: '[TEST] Potter House - Email Service Test',
+      subject: '[TEST] Ardor Aegis - Email Service Test',
       htmlContent: `
         <!DOCTYPE html>
         <html>
