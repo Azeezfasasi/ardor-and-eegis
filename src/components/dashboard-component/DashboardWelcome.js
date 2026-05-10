@@ -69,7 +69,7 @@ export default function DashboardWelcome() {
 
         {user?.role === 'admin' || user?.role === 'staff-member' ? (
         <div className="flex flex-col lg:flex-row md:items-center gap-3">
-          <Link href="/dashboard/all-quote-requests" className="inline-flex justify-center items-center gap-2 px-3 py-1 md:py-2 bg-[#7B542F] text-white rounded-md text-sm hover:bg-[#7B542F]/80 cursor-pointer">
+          <Link href="/dashboard/quote-requests" className="inline-flex justify-center items-center gap-2 px-3 py-1 md:py-2 bg-[#7B542F] text-white rounded-md text-sm hover:bg-[#7B542F]/80 cursor-pointer">
             <Briefcase />
             Manage Quotes Requests
           </Link>
