@@ -1,5 +1,3 @@
-// SEO Configuration template for root layout
-// Add these to your root layout.js metadata
 
 export const seoMetadata = {
   title: {
@@ -22,13 +20,13 @@ export const seoMetadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ardor-aegis.com',
+    url: 'https://ardoraegis.org',
     siteName: 'Ardor Aegis',
     title: 'Ardor Aegis - Professional Security & Protection Services',
     description: 'Cutting-edge security and protection solutions for communities. Professional services you can trust.',
     images: [
       {
-        url: 'https://ardor-aegis.com/og-image.png',
+        url: 'https://ardoraegis.org/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Ardor Aegis - Security Solutions',
@@ -41,7 +39,7 @@ export const seoMetadata = {
     title: 'Ardor Aegis - Professional Security & Protection Services',
     description: 'Cutting-edge security and protection solutions for communities.',
     creator: '@ardor-aegis',
-    images: ['https://ardor-aegis.com/og-image.png'],
+    images: ['https://ardoraegis.org/og-image.png'],
   },
   robots: {
     index: true,
@@ -55,6 +53,6 @@ export const seoMetadata = {
     },
   },
   alternates: {
-    canonical: 'https://ardor-aegis.com',
+    canonical: 'https://ardoraegis.org',
   },
 };
