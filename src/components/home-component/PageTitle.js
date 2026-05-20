@@ -1,6 +1,6 @@
 export default function PageTitle({ title, subtitle, breadcrumbs }) {
   return (
-    <section className="bg-[#B59C5B]/20 py-16 pt-[130px] lg:pt-[200px]">
+    <section className="bg-[#B59C5B]/20 py-16 pt-[200px] lg:pt-[200px]">
       <div className="container mx-auto px-6 lg:px-20 text-center">
         {/* Breadcrumbs */}
         {breadcrumbs && (
