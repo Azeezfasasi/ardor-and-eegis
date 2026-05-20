@@ -8,11 +8,13 @@ Disallow: /login
 Disallow: /register
 Disallow: /forgot-password
 Disallow: /reset-password
+Disallow: /available-programmes
+Disallow: /programme-registration
 Disallow: /id-finder
 Disallow: /api/
 
 # Sitemaps
-Sitemap: https://ardor-aegis.com/sitemap.xml
+Sitemap: https://ardoraegis.org/sitemap.xml
 
 # Allow specific bots
 User-agent: Googlebot
