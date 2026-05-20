@@ -26,6 +26,8 @@
     "recharts": "^3.7.0"
   },
   "devDependencies": {
+    "@types/node": "25.9.1",
+    "@types/react": "19.2.15",
     "autoprefixer": "^10",
     "eslint": "^9",
     "eslint-config-next": "^15.2.0",

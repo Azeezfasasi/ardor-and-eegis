@@ -1,0 +1,22 @@
+# Allow all bots to crawl
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin-register
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /id-finder
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://ardor-aegis.com/sitemap.xml
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
