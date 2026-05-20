@@ -6,7 +6,7 @@ import MainHeader from '@/components/home-component/MainHeader'
 import FooterSection from '@/components/home-component/Footer';
 import JsonLd from './json-ld';
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ardor-aegis.com';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ardoraegis.org';
 
 export const metadata = {
   metadataBase: new URL(baseUrl),
@@ -64,7 +64,7 @@ export default function RootLayout({ children }) {
         <JsonLd />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <link rel="canonical" href="https://ardor-aegis.com" />
+        <link rel="canonical" href="https://ardoraegis.org" />
       </head>
       <body>
         <AuthProvider>
