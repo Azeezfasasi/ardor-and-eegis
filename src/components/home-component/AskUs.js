@@ -101,7 +101,7 @@ export default function AskUs() {
           <div className={`flex justify-center ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out`}>
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-2xl border border-white/10">
               <Image
-                src="/img/place2.jpeg"
+                src="/img/ardor5.jpg"
                 alt="Our Officers"
                 fill
                 className="object-cover"

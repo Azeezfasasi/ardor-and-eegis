@@ -6,7 +6,7 @@ import { Loader } from "lucide-react";
 const DEFAULT_DATA = {
   companyInfo: {
     title: "Who We Are",
-    image: "/images/fibre1.jpeg",
+    image: "/img/ardor6.jpg",
     paragraphs: [
       {
         text: "Ardor Aegis is a dynamic, solutions-driven Engineering and Management Company committed to delivering world-class services across multiple sectors. Established in 2020 and legally incorporated in Nigeria in 2025 with a passion for innovation, engineering excellence, and sustainable project delivery.",
@@ -155,7 +155,7 @@ export default function CompanyOverview() {
               <div className="order-2 lg:order-1">
                 <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-xl">
                   <Image
-                    src="/img/place2.jpeg"
+                    src={data?.companyInfo?.image || "/img/ardor6.jpg"}
                     alt="Ador Aegis Security Services"
                     fill
                     sizes="100%"

@@ -130,11 +130,11 @@ export default function CompanyInsights() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-16">
               <div className="relative h-48 md:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
                 <Image
-                  src="/img/place2.jpeg"
+                  src="/img/ardor4.jpg"
                   alt="Security Operations Team"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-[1.05] transition-transform duration-700"
+                  className="object-cover object-top group-hover:scale-[1.05] transition-transform duration-700"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
@@ -145,11 +145,11 @@ export default function CompanyInsights() {
 
               <div className="relative h-48 md:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group">
                 <Image
-                  src="/img/place2.jpeg"
+                  src="/img/ardor7.jpg"
                   alt="Security Leadership Team"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-[1.05] transition-transform duration-700"
+                  className="object-cover object-top group-hover:scale-[1.05] transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
                 <div className="absolute bottom-5 left-5 right-5">
