@@ -153,7 +153,7 @@ export default function CompanyOverview() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Image */}
               <div className="order-2 lg:order-1">
-                <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-xl">
+                <div className="relative w-full h-[400px] sm:h-80 lg:h-[400px] rounded-2xl overflow-hidden shadow-xl">
                   <Image
                     src={data?.companyInfo?.image || "/img/ardor6.jpg"}
                     alt="Ador Aegis Security Services"
