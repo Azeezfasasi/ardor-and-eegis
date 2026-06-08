@@ -11,17 +11,17 @@ export async function getWhyRayobContent() {
     const defaultReasons = [
       {
         id: 1,
-        title: "Proven Multidisciplinary Engineering Expertise",
+        title: "Unmatched Expertise in Security Solutions",
         description:
-          "Rayob Engineering & Mgt. Co. Ltd brings together deep expertise across civil engineering, telecommunications infrastructure, fibre-optic networks, and project management. This multidisciplinary strength enables the company to deliver integrated, end-to-end solutions that are technically sound, cost-effective, and aligned with client objectives.",
+          "Ardor Aegis boasts a team of highly skilled professionals with extensive experience across security and protection..",
         icon: "Zap",
         order: 1,
       },
       {
         id: 2,
-        title: "Innovative, Extensive Industry Experience with Real Project Success",
+        title: "Proven Track Record of Successful Project Delivery",
         description:
-          "With years of hands-on experience executing complex projects in construction, telecoms, and infrastructure development, Rayob has a strong track record of successfully delivering projects of varying scale and complexity. Clients benefit from practical know-how, foresight, innovations, and lessons learned from real-world project environments.",
+          "With a portfolio of successful projects across various sectors, Ardor Aegis has consistently demonstrated its ability to deliver high-quality security solutions that meet and exceed client expectations.",
         icon: "Target",
         order: 2,
       },
@@ -29,15 +29,15 @@ export async function getWhyRayobContent() {
         id: 3,
         title: "Strong Project Management and Delivery Discipline",
         description:
-          "Rayob adopts globally accepted project management best practices to ensure projects are delivered on time, within budget, and to the highest quality standards. Clear planning, risk management, progress tracking, and stakeholder coordination are embedded in every project, giving clients confidence and transparency throughout execution.",
+          "Ardor Aegis employs rigorous security approaches and disciplined execution to ensure that communities are protected.",
         icon: "Briefcase",
         order: 3,
       },
       {
         id: 4,
-        title: "Commitment to Quality, Safety, and Standards Compliance",
+        title: "Commitment to Quality, Safety, and Compliance",
         description:
-          "Quality assurance and safety are non-negotiable at Rayob. All projects are executed in strict compliance with industry standards, regulatory requirements, and best engineering practices. This commitment minimizes rework, enhances asset longevity, and ensures safe, reliable, and sustainable project outcomes.",
+          "Quality assurance and safety are non-negotiable at Ardor Aegis. The company adheres to the highest industry standards and regulatory requirements, ensuring that all projects are executed with a strong focus on safety, reliability, and compliance.",
         icon: "Shield",
         order: 4,
       },
@@ -45,7 +45,7 @@ export async function getWhyRayobContent() {
         id: 5,
         title: "Client-Centric and Solution-Driven Approach",
         description:
-          "Rayob places clients at the center of every engagement, taking time to understand specific needs, challenges, and expectations. Rather than offering generic solutions, the company delivers tailored, practical, and innovative approaches that add real value and align with each client’s strategic goals",
+          "Ardor Aegis prioritizes client satisfaction and works closely with clients to understand their unique security needs. The company is dedicated to providing tailored solutions that address specific challenges and deliver tangible results, fostering long-term partnerships based on trust and mutual success.",
         icon: "Users",
         order: 5,
       },
@@ -53,7 +53,7 @@ export async function getWhyRayobContent() {
         id: 6,
         title: "Strong Technical Leadership and Skilled Workforce",
         description:
-          "Projects at Rayob are led by experienced engineers and managed by skilled professionals with strong technical and leadership capabilities. The company invests in continuous training and capacity development, ensuring that clients benefit from competent personnel who are up-to- date with modern technologies and industry trends.",
+          "Ardor Aegis is led by experienced professionals with deep industry knowledge and a commitment to excellence. The company invests in continuous training and development to ensure that its workforce remains at the forefront of security technology and best practices.",
         icon: "Target",
         order: 6,
       },
@@ -61,7 +61,7 @@ export async function getWhyRayobContent() {
         id: 7,
         title: "Integrity, Reliability, and Long-Term Partnership Focus",
         description:
-          "Rayob Engineering & Mgt. Co. Ltd operates with a strong culture of integrity, professionalism, and accountability. Clients can rely on honest communication, dependable delivery, and ethical business practices, making Rayob not just a contractor, but a trusted long-term project partner.",
+          "Ardor Aegis operates with a strong culture of integrity, professionalism, and accountability. Clients can rely on honest communication, dependable delivery, and ethical business practices, making Ardor Aegis not just a service provider, but a trusted partner in security solutions.",
         icon: "Handshake",
         order: 7,
       },

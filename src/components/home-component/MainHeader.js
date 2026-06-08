@@ -276,7 +276,7 @@ export default function MainHeader() {
           }}
         />
 
-        {/* Drawer */}
+        {/* Drawer. */}
         <div
           className={`absolute right-0 top-0 h-full w-80 max-w-full bg-white shadow-2xl border-l border-gray-100 transition-transform duration-220 ease-out ${open && !isClosing ? 'translate-x-0' : 'translate-x-full'}`}
         >
@@ -288,7 +288,7 @@ export default function MainHeader() {
                   <Link href="/" className="flex items-center gap-3">
                     <Image
                       src="/img/ardorlogotrans.png"
-                      alt="Ador Aegis Logo"
+                      alt="Ardor Aegis Logo"
                       width={100}
                       height={50}
                       className="w-[84px] block rounded-md"

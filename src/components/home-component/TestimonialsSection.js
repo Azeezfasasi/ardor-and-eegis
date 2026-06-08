@@ -11,7 +11,7 @@ const DEFAULT_TESTIMONIALS = [
     name: 'John Adewale',
     position: 'Project Manager, Alpha Industries',
     message:
-      'Rayob Engineering delivered beyond expectations. Their team showed exceptional professionalism and technical expertise throughout our factory upgrade project.',
+      'Ardor Aegis provided top-notch security solutions that exceeded our expectations. Their team was professional, responsive, and truly cared about our safety. We highly recommend their services to anyone looking for reliable security expertise.',
     rating: 5,
   },
   {
@@ -19,7 +19,7 @@ const DEFAULT_TESTIMONIALS = [
     name: 'Maria Okafor',
     position: 'Director, GreenBuild Ltd.',
     message:
-      'The Rayob team provided innovative solutions that reduced our construction costs and improved overall efficiency. Highly recommended for quality engineering services.',
+      'The Ardor Aegis team provided innovative solutions that reduced our construction costs and improved overall efficiency. Their expertise in security planning and implementation was evident throughout the project. Highly recommended for quality security services.',
     rating: 5,
   },
   {
@@ -27,7 +27,7 @@ const DEFAULT_TESTIMONIALS = [
     name: 'Engr. David Uche',
     position: 'CEO, Uche Group',
     message:
-      'They combine strong technical skills with a great sense of client service. Every project we’ve done with Rayob Engineering has been a success story.',
+      'They combine strong technical skills with a great sense of client service. Every project we\'ve done with Ardor Aegis has been a success story. Their commitment to excellence and attention to detail is unmatched in the industry.',
     rating: 5,
   },
 ];
@@ -112,7 +112,7 @@ export default function TestimonialsSection() {
 
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
           <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hear from satisfied clients who trusted Rayob Engineering with their projects—backed by professionalism, quality, and results.
+            Hear from satisfied clients who trusted Ardor Aegis with their security projects—backed by professionalism, quality, and results.
           </p>
         </div>
 

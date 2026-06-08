@@ -25,8 +25,8 @@ const transporter = nodemailer.createTransport({
 // Brevo API endpoint and key
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
-const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@adoraegis.org";
-const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Ador Aegis";
+const SENDER_EMAIL = process.env.BREVO_SENDER_EMAIL || "info@ardoraegis.org";
+const SENDER_NAME = process.env.BREVO_SENDER_NAME || "Ardor Aegis";
 
 // Helper function to send emails via Brevo
 const sendEmailViaBrevo = async (toEmail, subject, htmlContent) => {

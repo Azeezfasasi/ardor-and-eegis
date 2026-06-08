@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { Loader } from 'lucide-react';
 
 const DEFAULT_MILESTONES = [
-  { year: '2010', title: 'Company Founded', description: 'Rayob Engineering was established to deliver quality engineering solutions across industrial and commercial sectors.' },
-  { year: '2013', title: 'First Major Industrial Project', description: 'Completed our first large-scale industrial plant project, setting a standard for quality and efficiency.' },
-  { year: '2016', title: 'Expansion of Services', description: 'Expanded our service portfolio to include mechanical works and electrical installations.' },
-  { year: '2019', title: 'Award Recognition', description: 'Received industry awards for excellence in engineering and project management.' },
+  { year: '2010', title: 'Company Founded', description: 'Ardor Aegis was established to deliver quality security solutions across industrial and commercial sectors.' },
+  { year: '2013', title: 'First Major Industrial Project', description: 'Completed our first large-scale industrial project, setting a standard for quality and efficiency.' },
+  { year: '2016', title: 'Expansion of Services', description: 'Expanded our service portfolio to include comprehensive security solutions.' },
+  { year: '2019', title: 'Award Recognition', description: 'Received industry awards for excellence in security services.' },
   { year: '2023', title: 'Global Partnerships', description: 'Established partnerships with international firms, enhancing our global project reach.' },
 ];
 
@@ -53,7 +53,7 @@ export default function HistoryMilestones() {
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Our History & Milestones</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Over the years, Rayob Engineering has achieved significant milestones that reflect our commitment to excellence and innovation.
+            Over the years, Ardor Aegis has achieved significant milestones that reflect our commitment to excellence and innovation.
           </p>
         </div>
 

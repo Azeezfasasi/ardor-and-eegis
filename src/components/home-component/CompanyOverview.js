@@ -156,7 +156,7 @@ export default function CompanyOverview() {
                 <div className="relative w-full h-[400px] sm:h-80 lg:h-[400px] rounded-2xl overflow-hidden shadow-xl">
                   <Image
                     src={data?.companyInfo?.image || "/img/ardor6.jpg"}
-                    alt="Ador Aegis Security Services"
+                    alt="Ardor Aegis Security Services"
                     fill
                     sizes="100%"
                     className="object-cover object-top"

@@ -23,13 +23,13 @@ export default function FooterSectionNew() {
                 <span className="text-[28px] leading-none font-black text-[#7B542F]">A</span>
               </span>
               <div>
-                <h3 className="text-white text-xl font-bold leading-tight">Ador Aegis Security</h3>
+                <h3 className="text-white text-xl font-bold leading-tight">Ardor Aegis Security</h3>
                 <p className="text-xs text-gray-400 mt-0.5">Discipline • Vigilance • Elite Protection</p>
               </div>
             </div>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Ador Aegis Security Company stands for trust and readiness—combining trained personnel,
+              Ardor Aegis Security Company stands for trust and readiness—combining trained personnel,
               modern surveillance, and proactive protection strategies.
             </p>
 
@@ -188,8 +188,8 @@ export default function FooterSectionNew() {
 
                 <li className="flex items-center gap-3">
                   <Mail size={18} className="text-[#7B542F]" />
-                  <a href="mailto:info@adoreagis.com" className="hover:text-white transition">
-                    info@adoreagis.com
+                  <a href="mailto:info@ardoragis.com" className="hover:text-white transition">
+                    info@ardoragis.com
                   </a>
                 </li>
               </ul>
@@ -199,7 +199,7 @@ export default function FooterSectionNew() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-gray-500 animate-[fadeIn_600ms_ease-out_forwards] opacity-0 [animation-delay:320ms]">
-          © {new Date().getFullYear()} <span className="text-gray-200 font-semibold">Ador Aegis Security</span>. All rights reserved. | Developed by{" "}
+          © {new Date().getFullYear()} <span className="text-gray-200 font-semibold">Ardor Aegis Security</span>. All rights reserved. | Developed by{" "}
           <a
             href="https://wa.me/2348117256648"
             target="_blank"

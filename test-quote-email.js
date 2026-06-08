@@ -14,7 +14,7 @@ const testEmail = async () => {
 
     const result = await sendEmailViaBrevo({
       to: userEmail,
-      subject: "Quote Request Received - Ador Aegis",
+      subject: "Quote Request Received - Ardor Aegis",
       htmlContent: emailContent,
     });
 

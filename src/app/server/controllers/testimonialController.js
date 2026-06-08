@@ -5,8 +5,8 @@ const DEFAULT_TESTIMONIALS = {
   testimonials: [
     {
       name: 'John Adewale',
-      position: 'Project Manager, Alpha Industries',
-      message: 'Rayob Engineering delivered beyond expectations. Their team showed exceptional professionalism and technical expertise throughout our factory upgrade project.',
+      position: 'CEO, Adewale Enterprises',
+      message: 'Ardor Aegis provided exceptional security services for our corporate headquarters. Their team was professional, responsive, and highly effective in ensuring the safety of our premises and personnel.',
       rating: 5,
       order: 0,
       active: true,
@@ -14,7 +14,7 @@ const DEFAULT_TESTIMONIALS = {
     {
       name: 'Maria Okafor',
       position: 'Director, GreenBuild Ltd.',
-      message: 'The Rayob team provided innovative solutions that reduced our construction costs and improved overall efficiency. Highly recommended for quality engineering services.',
+      message: 'The Ardor Aegis team provided innovative solutions that reduced our construction costs and improved overall efficiency. Highly recommended for quality security services.',
       rating: 5,
       order: 1,
       active: true,
@@ -22,7 +22,7 @@ const DEFAULT_TESTIMONIALS = {
     {
       name: 'Engr. David Uche',
       position: 'CEO, Uche Group',
-      message: "They combine strong technical skills with a great sense of client service. Every project we've done with Rayob Engineering has been a success story.",
+      message: "They combine strong technical skills with a great sense of client service. Every project we've done with Ardor Aegis has been a success story.",
       rating: 5,
       order: 2,
       active: true,

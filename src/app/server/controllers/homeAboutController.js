@@ -10,22 +10,22 @@ export async function getHomeAbout() {
   // Initialize with default content if doesn't exist
   if (!homeAbout) {
     homeAbout = await HomeAbout.create({
-      title: "About Rayob Engineering & Mgt. Co. Ltd.",
+      title: "About Ardor Aegis",
       paragraphs: [
         {
           _id: new mongoose.Types.ObjectId(),
-          text: "Rayob Engineering & Mgt. Co. Ltd is a dynamic, solutions-driven Engineering and Management Company committed to delivering world-class services across multiple sectors. Established in 2020 and legally incorporated in Nigeria in 2025 with a passion for innovation, engineering excellence, and sustainable project delivery.",
+          text: "Ardor Aegis security company is a dynamic strong protector and a trusted partner in the security industry. We are committed to providing top-notch security solutions that safeguard our clients' assets, people, and information. With a team of highly trained professionals and cutting-edge technology, we offer comprehensive security services tailored to meet the unique needs of each client.",
           order: 0,
         },
         {
           _id: new mongoose.Types.ObjectId(),
-          text: "We bring together nearly two decades of multidisciplinary experience spanning construction, telecommunications, optical fibre implementation, operations and maintenance, project management, corporate governance, and corporate social responsibility.",
+          text: "We understand that security is not just about protection; it's about peace of mind. That's why we go above and beyond to ensure that our clients feel safe and secure in their environments. Whether it's physical security, cybersecurity, or risk management, we are dedicated to delivering exceptional service and innovative solutions that exceed expectations.",
           order: 1,
         }
       ],
       image: {
         url: "/images/telecom2.jpeg",
-        alt: "Rayob Engineering Team",
+        alt: "Ardor Aegis Security Team",
       },
       ctaButton: {
         label: "Learn More",
