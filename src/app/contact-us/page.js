@@ -2,10 +2,10 @@ import ContactUsMain from "@/components/home-component/ContactUsMain";
 import PageTitle from "@/components/home-component/PageTitle";
 
 export const metadata = {
-  title: 'Contact Us - Ardor Aegis',
-  description: 'Get in touch with Ardor Aegis. Have questions about our security services? Contact us today and let\'s discuss how we can help protect your community.',
+  title: 'Contact Us - Ardor Aegis Limited',
+  description: 'Get in touch with Ardor Aegis Limited. Have questions about our security services? Contact us today and let\'s discuss how we can help protect your community.',
   openGraph: {
-    title: 'Contact Us - Ardor Aegis',
+    title: 'Contact Us - Ardor Aegis Limited',
     description: 'Reach out to our team to learn more about our security solutions.',
     url: 'https://ardor-aegis.com/contact-us',
     type: 'website',

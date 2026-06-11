@@ -1,13 +1,13 @@
 
 export const seoMetadata = {
   title: {
-    template: '%s | Ardor Aegis - Security Solutions',
-    default: 'Ardor Aegis - Professional Security & Protection Services',
+    template: '%s | Ardor Aegis Limited - Security Solutions',
+    default: 'Ardor Aegis Limited - Professional Security & Protection Services',
   },
-  description: 'Ardor Aegis provides cutting-edge security and protection solutions for communities. Trust us to keep your community safe, secure, and protected with professional services.',
+  description: 'Ardor Aegis Limited provides cutting-edge security and protection solutions for communities. Trust us to keep your community safe, secure, and protected with professional services.',
   keywords: 'security services, protection solutions, community safety, professional security, surveillance, security personnel',
-  creator: 'Ardor Aegis',
-  publisher: 'Ardor Aegis',
+  creator: 'Ardor Aegis Limited',
+  publisher: 'Ardor Aegis Limited',
   formatDetection: {
     email: false,
     telephone: false,
@@ -21,22 +21,22 @@ export const seoMetadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://ardoraegis.org',
-    siteName: 'Ardor Aegis',
-    title: 'Ardor Aegis - Professional Security & Protection Services',
+    siteName: 'Ardor Aegis Limited',
+    title: 'Ardor Aegis Limited - Professional Security & Protection Services',
     description: 'Cutting-edge security and protection solutions for communities. Professional services you can trust.',
     images: [
       {
         url: 'https://ardoraegis.org/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Ardor Aegis - Security Solutions',
+        alt: 'Ardor Aegis Limited - Security Solutions',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ardor Aegis - Professional Security & Protection Services',
+    title: 'Ardor Aegis Limited - Professional Security & Protection Services',
     description: 'Cutting-edge security and protection solutions for communities.',
     creator: '@ardor-aegis',
     images: ['https://ardoraegis.org/og-image.png'],

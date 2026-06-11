@@ -5,8 +5,8 @@ import WhyChooseUs from '@/components/home-component/WhyChooseUs'
 import React from 'react'
 
 export const metadata = {
-  title: 'About Us - Ardor Aegis Security Solutions',
-  description: 'Learn about Ardor Aegis, our mission, values, and the team dedicated to providing professional security and protection solutions for communities.',
+  title: 'About Us - Ardor Aegis Limited',
+  description: 'Learn about Ardor Aegis Limited, our mission, values, and the team dedicated to providing professional security and protection solutions for communities.',
   openGraph: {
     title: 'About Us - Ardor Aegis',
     description: 'Discover who we are and our commitment to community security.',

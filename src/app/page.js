@@ -10,10 +10,10 @@ import AskUs from '@/components/home-component/AskUs'
 import CompanyInsights from '@/components/home-component/CompanyInsights'
 
 export const metadata = {
-  title: 'Ardor Aegis - Professional Security & Protection Services',
-  description: 'Ardor Aegis provides cutting-edge security and protection solutions for communities. Trust us to keep your community safe, secure, and protected with professional services.',
+  title: 'Ardor Aegis Limited - Professional Security & Protection Services',
+  description: 'Ardor Aegis Limited provides cutting-edge security and protection solutions for communities. Trust us to keep your community safe, secure, and protected with professional services.',
   openGraph: {
-    title: 'Ardor Aegis - Professional Security & Protection Services',
+    title: 'Ardor Aegis Limited - Professional Security & Protection Services',
     description: 'Cutting-edge security and protection solutions for communities.',
     url: 'https://ardor-aegis.com',
     type: 'website',

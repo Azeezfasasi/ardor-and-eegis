@@ -2,10 +2,10 @@ import React from 'react'
 import Gallery from '@/components/home-component/Gallery'
 
 export const metadata = {
-  title: 'Gallery - Ardor Aegis Security Solutions',
+  title: 'Gallery - Ardor Aegis Limited',
   description: 'Explore our gallery showcasing our team, operations, and community engagement. See Ardor Aegis in action.',
   openGraph: {
-    title: 'Gallery - Ardor Aegis',
+    title: 'Gallery - Ardor Aegis Limited',
     description: 'View our work and team in action.',
     url: 'https://ardor-aegis.com/gallery',
     type: 'website',

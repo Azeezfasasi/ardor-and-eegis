@@ -80,7 +80,7 @@ function FeatureCard({ feature, delayMs = 0 }) {
 }
 
 export default function WhyChooseUs() {
-  const header = useMemo(() => ({ title: 'Why Choose Ardors Aegis', subtitle: 'Trusted security solutions driven by vigilance, professionalism, and rapid response. At Ador Aegis Security Company, we combine highly trained personnel, modern security strategies, and a commitment to excellence to provide dependable protection for individuals, businesses, and organizations.' }), []);
+  const header = useMemo(() => ({ title: 'Why Choose Ardors Aegis Limited', subtitle: 'Trusted security solutions driven by vigilance, professionalism, and rapid response. At Ador Aegis Security Company, we combine highly trained personnel, modern security strategies, and a commitment to excellence to provide dependable protection for individuals, businesses, and organizations.' }), []);
 
   const { ref: headerRef, inView: headerInView } = useInView({ threshold: 0.15 });
 
