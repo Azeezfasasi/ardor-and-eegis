@@ -31,7 +31,7 @@ const WhyRayobSchema = new mongoose.Schema(
   {
     heading: {
       type: String,
-      default: "Why Choose Rayob Engineering & Mgt. Co. Ltd?",
+      default: "Why Choose ?",
     },
     subheading: {
       type: String,
@@ -44,7 +44,7 @@ const WhyRayobSchema = new mongoose.Schema(
     },
     ctaDescription: {
       type: String,
-      default: "Experience the Rayob difference in your next project. Let's turn your engineering challenges into innovative solutions.",
+      default: "Experience the difference of working with a trusted security partner. Contact Ardor Aegis today to discuss your security needs and discover how we can help protect what matters most to you.",
     },
     ctaButton1: {
       label: {

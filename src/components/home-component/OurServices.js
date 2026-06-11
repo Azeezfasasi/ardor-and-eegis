@@ -307,7 +307,7 @@ export default function OurServices() {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Our Services</h2>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              At Ador Aegis Security Company, we deliver professional security and protection services designed to safeguard people, properties, businesses, and critical assets. Our highly trained personnel and advanced security strategies ensure reliable protection, rapid response, and peace of mind for every client.
+              At Ardor Aegis Security Company, we deliver professional security and protection services designed to safeguard people, properties, businesses, and critical assets. Our highly trained personnel and advanced security strategies ensure reliable protection, rapid response, and peace of mind for every client.
             </p>
           </div>
 

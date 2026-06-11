@@ -100,7 +100,7 @@ export default function RequestQuote() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                      <p className="text-gray-600">info@adoreagis.com</p>
+                      <p className="text-gray-600">info@ardoreagis.com</p>
                     </div>
                   </div>
                 </div>

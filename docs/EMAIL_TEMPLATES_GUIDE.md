@@ -1,12 +1,12 @@
-# Email Templates Guide - Ador Aegis
+# Email Templates Guide - Ardor Aegis
 
 ## Overview
 
-Comprehensive email templates have been created for all key user and admin interactions in the Ador Aegis application. All templates feature:
+Comprehensive email templates have been created for all key user and admin interactions in the Ardor Aegis application. All templates feature:
 
 - Professional design with brand color (#7B542F)
 - Responsive HTML layout
-- Consistent branding with Ador Aegis logo and styling
+- Consistent branding with Ardor Aegis logo and styling
 - Clear call-to-action buttons
 - Professional footer with contact info
 - Mobile-friendly formatting
@@ -197,7 +197,7 @@ const emailContent = emailTemplates.forgotPasswordEmail(userFirstName, resetLink
 
 await sendEmailViaBrevo({
   to: user.email,
-  subject: "Reset Your Password - Ador Aegis",
+  subject: "Reset Your Password - Ardor Aegis",
   htmlContent: emailContent,
 });
 ```
@@ -243,7 +243,7 @@ Add these to your `.env.local`:
 # Brevo Email Service
 BREVO_API_KEY=your_brevo_api_key
 BREVO_SENDER_EMAIL=info@ardoraegis.org
-BREVO_SENDER_NAME=Ador Aegis
+BREVO_SENDER_NAME=Ardor Aegis
 
 # Admin Email
 ADMIN_EMAIL=admin@ardoraegis.org
@@ -275,7 +275,7 @@ const BRAND_COLOR = '#7B542F'; // Change this hex color
 ### Changing Brand Name
 
 ```javascript
-const BRAND_NAME = 'Ador Aegis'; // Change this
+const BRAND_NAME = 'Ardor Aegis'; // Change this
 ```
 
 ### Changing Footer Content
@@ -416,4 +416,4 @@ For questions or updates needed:
 **Last Updated:** May 10, 2026
 **Template Version:** 1.0
 **Brand Color:** #7B542F
-**Brand Name:** Ador Aegis
+**Brand Name:** Ardor Aegis

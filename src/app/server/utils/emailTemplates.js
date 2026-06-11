@@ -1,10 +1,10 @@
 /**
- * Email Templates for Ador Aegis
+ * Email Templates for Ardor Aegis
  * All email templates with professional styling and brand colors
  */
 
 const BRAND_COLOR = '#7B542F';
-const BRAND_NAME = 'Ador Aegis';
+const BRAND_NAME = 'Ardor Aegis';
 const WEBSITE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 /**
@@ -267,7 +267,7 @@ export const userRegistrationEmail = (firstName, verificationLink, tempPassword)
     </p>
   `;
   
-  return createEmailTemplate(content, 'Welcome to Ador Aegis!');
+  return createEmailTemplate(content, 'Welcome to Ardor Aegis!');
 };
 
 // ============================================
@@ -572,7 +572,7 @@ export const quoteRequestSubmissionEmail = (firstName, serviceType, subject = ''
   const content = `
     <p class="greeting">Hello <span class="highlight">${firstName}</span>,</p>
     
-    <p>Thank you for requesting a quote from Ador Aegis! We have received your inquiry and will get back to you shortly with a customized quote.</p>
+    <p>Thank you for requesting a quote from Ardor Aegis! We have received your inquiry and will get back to you shortly with a customized quote.</p>
     
     <div class="info-box">
       <strong>Service Requested:</strong> ${serviceType}<br>
@@ -593,7 +593,7 @@ export const quoteRequestSubmissionEmail = (firstName, serviceType, subject = ''
     </div>
   `;
   
-  return createEmailTemplate(content, 'Quote Request Received - Ador Aegis');
+  return createEmailTemplate(content, 'Quote Request Received - Ardor Aegis');
 };
 
 export default {

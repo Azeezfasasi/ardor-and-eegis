@@ -23,7 +23,7 @@ const features = [
   },
   {
     title: 'Integrity & Vigilance',
-    description: 'At Ador Aegis, integrity, vigilance, and protection are at the core of everything we do. We are committed to maintaining the highest standards of trust, confidentiality, and operational excellence.',
+    description: 'At Ardor Aegis, integrity, vigilance, and protection are at the core of everything we do. We are committed to maintaining the highest standards of trust, confidentiality, and operational excellence.',
     icon: Wrench,
   },
 ];
@@ -80,7 +80,11 @@ function FeatureCard({ feature, delayMs = 0 }) {
 }
 
 export default function WhyChooseUs() {
+<<<<<<< HEAD
   const header = useMemo(() => ({ title: 'Why Choose Ardors Aegis Limited', subtitle: 'Trusted security solutions driven by vigilance, professionalism, and rapid response. At Ador Aegis Security Company, we combine highly trained personnel, modern security strategies, and a commitment to excellence to provide dependable protection for individuals, businesses, and organizations.' }), []);
+=======
+  const header = useMemo(() => ({ title: 'Why Choose Ardor Aegis', subtitle: 'Trusted security solutions driven by vigilance, professionalism, and rapid response. At Ardor Aegis Security Company, we combine highly trained personnel, modern security strategies, and a commitment to excellence to provide dependable protection for individuals, businesses, and organizations.' }), []);
+>>>>>>> dbd0ccaef93e96b62c6698e3911106270a2d9692
 
   const { ref: headerRef, inView: headerInView } = useInView({ threshold: 0.15 });
 

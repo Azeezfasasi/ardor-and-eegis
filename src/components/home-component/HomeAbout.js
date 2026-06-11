@@ -4,22 +4,22 @@ import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 const DEFAULT_CONTENT = {
-  title: 'About Rayob Engineering & Mgt. Co. Ltd.',
+  title: 'About Ardor Aegis',
   paragraphs: [
     {
       _id: '1',
-      text: 'Rayob Engineering & Mgt. Co. Ltd is a dynamic, solutions-driven Engineering and Management Company committed to delivering world-class services across multiple sectors. Established in 2020 and legally incorporated in Nigeria in 2025 with a passion for innovation, engineering excellence, and sustainable project delivery.',
+      text: 'Ardor Aegis is a leading security solutions provider dedicated to safeguarding critical assets and infrastructure across various industries. With a strong focus on vigilance, integrity, and protection, Ardor Aegis delivers comprehensive security services that encompass risk assessment, security system design, implementation, and ongoing management.',
       order: 0,
     },
     {
       _id: '2',
-      text: 'We bring together nearly two decades of multidisciplinary experience spanning construction, telecommunications, optical fibre implementation, operations and maintenance, project management, corporate governance, and corporate social responsibility.',
+      text: 'At Ardor Aegis, we understand that security is not just about protection; it\'s about peace of mind. That\'s why we go above and beyond to ensure that our clients feel safe and secure in their environments. Whether it\'s physical security, cybersecurity, or risk management, we are dedicated to delivering exceptional service and innovative solutions that exceed expectations.',
       order: 1,
     },
   ],
   image: {
     url: '/images/telecom2.jpeg',
-    alt: 'Rayob Engineering Team',
+    alt: 'Ardor Aegis Security Team',
   },
   ctaButton: {
     label: 'Learn More',

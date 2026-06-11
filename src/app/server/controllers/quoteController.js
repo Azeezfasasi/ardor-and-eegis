@@ -22,7 +22,7 @@ export const createQuote = async (req) => {
       );
       await sendEmailViaBrevo({
         to: body.email,
-        subject: 'Quote Request Received - Ador Aegis',
+        subject: 'Quote Request Received - Ardor Aegis',
         htmlContent: userEmailContent,
       });
     } catch (emailError) {

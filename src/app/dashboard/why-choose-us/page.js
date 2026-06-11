@@ -234,7 +234,7 @@ export default function WhyChooseUs() {
 
   return (
     <div className="p-6 space-y-8">
-      <h1 className="text-3xl font-bold text-gray-900">Manage Why Choose Rayob</h1>
+      <h1 className="text-3xl font-bold text-gray-900">Manage Why Choose Ardor Aegis</h1>
 
       {/* Heading Section */}
       <div className="bg-white rounded-lg shadow p-6">

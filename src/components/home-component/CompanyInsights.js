@@ -123,7 +123,7 @@ export default function CompanyInsights() {
               <div className="w-20 h-1 mx-auto rounded-full mb-6" style={{ backgroundColor: brand }} />
 
               <p className="text-gray-700 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
-                Ador Aegis Security Company stands as a symbol of trust, discipline, and elite protection in today&apos;s evolving security landscape. Our insight is driven by the understanding that modern security goes beyond physical presence, it requires intelligence, vigilance, rapid response, and strategic risk management.
+                Ardor Aegis Security Company stands as a symbol of trust, discipline, and elite protection in today&apos;s evolving security landscape. Our insight is driven by the understanding that modern security goes beyond physical presence, it requires intelligence, vigilance, rapid response, and strategic risk management.
               </p>
             </div>
 
@@ -197,7 +197,7 @@ export default function CompanyInsights() {
 
             <div className="text-center px-2">
               <p className="text-gray-700 text-sm md:text-base max-w-3xl mx-auto leading-relaxed">
-                At Ador Aegis, we believe that every client deserves a security solution tailored to their unique environment and challenges. By combining professionally trained personnel, advanced surveillance systems, and proactive security strategies, we provide comprehensive protection that ensures confidence and peace of mind.
+                At Ardor Aegis, we believe that every client deserves a security solution tailored to their unique environment and challenges. By combining professionally trained personnel, advanced surveillance systems, and proactive security strategies, we provide comprehensive protection that ensures confidence and peace of mind.
               </p>
             </div>
           </div>

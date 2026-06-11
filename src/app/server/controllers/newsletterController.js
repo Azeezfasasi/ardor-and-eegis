@@ -73,7 +73,7 @@ export const subscribeToNewsletter = async (subscriberData) => {
       const emailContent = emailTemplates.newsletterSubscriptionEmail(firstName || 'Subscriber');
       await sendEmailViaBrevo({
         to: email,
-        subject: 'Welcome to Ador Aegis Newsletter!',
+        subject: 'Welcome to Ardor Aegis Newsletter!',
         htmlContent: emailContent,
       });
     } catch (emailError) {
@@ -143,7 +143,7 @@ export const unsubscribeFromNewsletter = async (email) => {
       const emailContent = emailTemplates.newsletterUnsubscriptionEmail(subscriber.firstName || 'Subscriber');
       await sendEmailViaBrevo({
         to: email,
-        subject: 'You\'ve Unsubscribed from Ador Aegis Newsletter',
+        subject: 'You\'ve Unsubscribed from Ardor Aegis Newsletter',
         htmlContent: emailContent,
       });
     } catch (emailError) {

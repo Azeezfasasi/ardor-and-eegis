@@ -21,13 +21,13 @@ export default function FooterSection() {
                 <span className="text-[28px] leading-none font-black text-[#7B542F]">A</span>
               </span>
               <div>
-                <h3 className="text-white text-xl font-bold leading-tight">Ador Aegis Security</h3>
+                <h3 className="text-white text-xl font-bold leading-tight">Ardor Aegis Security</h3>
                 <p className="text-xs text-gray-200 mt-0.5">Vigilance • Integrity • Protection</p>
               </div>
             </div>
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Ador Aegis Security Company stands for trust and readiness—combining trained personnel,
+              Ardor Aegis Security Company stands for trust and readiness—combining trained personnel,
               modern surveillance, and proactive protection strategies.
             </p>
 
@@ -190,8 +190,8 @@ export default function FooterSection() {
                   <div className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
                     <Mail size={18} className="text-[#7B542F]" />
                   </div>
-                  <a href="mailto:info@adoreagis.com" className="text-gray-300 hover:text-white transition">
-                    info@adoreagis.com
+                  <a href="mailto:info@ardoragis.com" className="text-gray-300 hover:text-white transition">
+                    info@ardoragis.com
                   </a>
                 </li>
               </ul>
@@ -201,7 +201,7 @@ export default function FooterSection() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-gray-500 animate-[fadeIn_600ms_ease-out_forwards] opacity-0 [animation-delay:320ms]">
-          © {new Date().getFullYear()} <span className="text-gray-200 font-semibold">Ador Aegis Security</span>. All rights reserved. | Developed by{" "}
+          © {new Date().getFullYear()} <span className="text-gray-200 font-semibold">Ardor Aegis Security</span>. All rights reserved. | Developed by{" "}
           <a
             href="https://wa.me/2348117256648"
             target="_blank"
