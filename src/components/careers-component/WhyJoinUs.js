@@ -39,13 +39,13 @@ export default function WhyJoinUs() {
     {
       icon: Target,
       title: 'Meaningful Impact',
-      description: 'Contribute to projects that make a real difference in security and engineering sectors.',
+      description: 'Contribute to security and protection solutions that make a real difference in the world.',
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: Zap,
       title: 'Innovation Focus',
-      description: 'Be part of a company that embraces cutting-edge technology and continuous improvement.',
+      description: 'Be part of a company that embraces protection in the communities.',
       color: 'from-yellow-500 to-orange-500'
     },
     {
