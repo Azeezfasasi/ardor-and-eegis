@@ -119,6 +119,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
         { href: '/dashboard/team-section', label: 'Our Team', roles: ['admin'] },
         { href: '/dashboard/testimonials', label: 'Testimonials', roles: ['admin'] },
         { href: '/dashboard/our-gallant-officers', label: 'Our Gallant Officers', roles: ['admin'] },
+        { href: '/dashboard/manage-career-jobs', label: 'Manage Career Jobs', roles: ['admin'] },
       ]
     },
     {

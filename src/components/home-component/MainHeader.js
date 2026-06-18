@@ -22,6 +22,7 @@ export default function MainHeader() {
     { href: '/about-us', label: 'About Us' },
     { href: '/blog', label: 'Blog' },
     { href: '/services', label: 'Services' },
+    { href: '/careers', label: 'Careers' },
     { href: '/contact-us', label: 'Contact Us' }
   ]
   const pathname = usePathname()

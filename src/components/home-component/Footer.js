@@ -190,8 +190,8 @@ export default function FooterSection() {
                   <div className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
                     <Mail size={18} className="text-[#7B542F]" />
                   </div>
-                  <a href="mailto:info@ardoragis.com" className="text-gray-300 hover:text-white transition">
-                    info@ardoragis.com
+                  <a href="mailto:info@ardoraegis.com" className="text-gray-300 hover:text-white transition">
+                    info@ardoraegis.com
                   </a>
                 </li>
               </ul>

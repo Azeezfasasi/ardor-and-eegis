@@ -124,8 +124,8 @@ export default function ContactUsMain() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="text-[#B59C5B]" />
-                <a href="mailto:info@potterhouse.com" className="hover:text-[#B59C5B] transition">
-                  info@potterhouse.com
+                <a href="mailto:info@ardoraegis.com" className="hover:text-[#B59C5B] transition">
+                  info@ardoraegis.com
                 </a>
               </div>
               <div className="flex items-center gap-3">

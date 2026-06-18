@@ -36,6 +36,10 @@ body.hide-site-header .site-main-header {
   animation: softGlow 900ms ease-out both;
 }
 
+.animate-fadeInUp {
+  animation: fadeUp 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
 /* Helps when using fade-up before IntersectionObserver sets classes */
 .opacity-0 {
   opacity: 0;
