@@ -85,11 +85,11 @@ export default function FooterSection() {
               </li>
               <li>
                 <Link
-                  href="/programmes"
+                  href="/careers"
                   className="group inline-flex items-center gap-2 text-gray-300 hover:text-white transition"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-[#7B542F] opacity-100 group-hover:opacity-100 transition" />
-                  Programmes
+                  Careers
                   <span className="ml-auto text-gray-500 group-hover:text-gray-300 transition">→</span>
                 </Link>
               </li>
@@ -141,7 +141,7 @@ export default function FooterSection() {
                     <MapPin size={18} className="text-[#7B542F] mt-0.5 w-[38px]" />
                   </div>
                   <span className="text-gray-300">
-                    Plot 104, House 3, tos Douglas kaura district, 
+                    Plot 104, House 3, Tos Douglas Kaura District, 
                     <br /> 
                     Abuja, Nigeria
                   </span>
@@ -151,8 +151,8 @@ export default function FooterSection() {
                   <div className="inline-flex h-6 w-6 items-center justify-center rounded-lg border border-white/10 bg-white/60">
                     <Phone size={18} className="text-[#7B542F]" />
                   </div>
-                  <a href="tel:+2348152260336" className="text-gray-300 hover:text-white transition relative">
-                    (+234) 08152260336
+                  <a href="tel:+2348168230279" className="text-gray-300 hover:text-white transition relative">
+                    (+234) 08168230279
                     <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[#7B542F] transition-all group-hover:w-full" />
                   </a>
                 </li>
@@ -181,8 +181,8 @@ export default function FooterSection() {
                       </g>
                     </svg>
                   </span>
-                  <a href="https://wa.me/08030960533" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition">
-                    (+234) 08030960533
+                  <a href="https://wa.me/08168230279" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white transition">
+                    (+234) 08168230279
                   </a>
                 </li>
 
