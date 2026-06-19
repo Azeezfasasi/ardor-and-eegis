@@ -21,7 +21,7 @@ export default function NotificationModal({ isOpen, onClose, notifications, unre
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-purple-900 to-purple-800 px-6 py-6 text-white">
+          <div className="bg-gradient-to-r from-[#7B542F]/80 to-[#7B542F] px-6 py-6 text-white">
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold">Notifications</h2>
