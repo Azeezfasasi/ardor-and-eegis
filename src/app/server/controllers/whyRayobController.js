@@ -21,7 +21,7 @@ export async function getWhyRayobContent() {
         id: 2,
         title: "Proven Track Record of Successful Project Delivery",
         description:
-          "With a portfolio of successful projects across various sectors, Ardor Aegis has consistently demonstrated its ability to deliver high-quality security solutions that meet and exceed client expectations.",
+          "With a portfolio of successful projects across various sectors, Ardor Aegis Security Company Limited has consistently demonstrated its ability to deliver high-quality security solutions that meet and exceed client expectations.",
         icon: "Target",
         order: 2,
       },

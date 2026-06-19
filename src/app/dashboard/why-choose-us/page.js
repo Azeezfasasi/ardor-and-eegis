@@ -405,7 +405,7 @@ export default function WhyChooseUs() {
       </div>
 
       {/* Reasons Section */}
-      <div className="bg-white rounded-lg shadow p-6">
+      {/* <div className="bg-white rounded-lg shadow p-6">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold text-gray-900">Reasons ({content.reasons?.length || 0})</h2>
           {!addingNewReason && (
@@ -419,7 +419,7 @@ export default function WhyChooseUs() {
           )}
         </div>
 
-        {/* Add New Reason Form */}
+        
         {addingNewReason && (
           <div className="bg-gray-50 p-4 rounded-lg mb-6 space-y-4">
             <div className="flex justify-between items-center">
@@ -487,7 +487,7 @@ export default function WhyChooseUs() {
           </div>
         )}
 
-        {/* Reasons List */}
+       
         <div className="space-y-4">
           {content.reasons && content.reasons.filter(r => r).length > 0 ? (
             content.reasons
@@ -600,7 +600,7 @@ export default function WhyChooseUs() {
             <p className="text-gray-600 text-center py-4">No reasons yet</p>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

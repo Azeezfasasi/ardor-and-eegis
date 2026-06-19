@@ -108,7 +108,7 @@ export default function ContactUsMain() {
               <div className="flex items-center gap-3 border border-[#B59C5B]/30 rounded-lg p-4">
                 <MapPin className="text-[#B59C5B]" />
                 <p>
-                  Plot 104, House 3, tos Douglas kaura district, Abuja</p>
+                  Plot 104, House 3, Tos Douglas Kaura District, Abuja</p>
               </div>
               <div className="flex items-center gap-3 border border-[#B59C5B]/30 rounded-lg p-4">
                 <Phone className="text-[#B59C5B]" />
