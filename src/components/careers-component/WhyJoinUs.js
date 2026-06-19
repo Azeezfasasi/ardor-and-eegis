@@ -71,8 +71,7 @@ export default function WhyJoinUs() {
             Why Join Ardor Aegis?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            We offer more than just a job—we offer an environment where your talents are valued, 
-            your ideas matter, and your future is bright.
+            We offer more than just a job, we offer an environment where your talents are valued, your ideas matter, and your future is bright.
           </p>
         </div>
 

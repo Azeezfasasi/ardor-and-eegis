@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from 'react'
-import { MapPin, Briefcase, Clock, ChevronDown, ChevronUp } from 'lucide-react'
+import { MapPin, Briefcase, Clock, ChevronDown, ChevronUp, X } from 'lucide-react'
 
 export default function JobListings() {
   const sectionRef = useRef(null)
@@ -9,6 +9,17 @@ export default function JobListings() {
   const [selectedDepartment, setSelectedDepartment] = useState('all')
   const [jobs, setJobs] = useState([])
   const [loading, setLoading] = useState(true)
+  const [applicationModal, setApplicationModal] = useState({ isOpen: false, job: null })
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    resume: null,
+    coverLetter: '',
+    experience: '',
+    linkedinUrl: ''
+  })
+  const [submitting, setSubmitting] = useState(false)
 
   // Default job listings
   const DEFAULT_JOBS = [
@@ -30,101 +41,6 @@ export default function JobListings() {
         'Excellent problem-solving skills'
       ],
       benefits: ['Health Insurance', 'Professional Development', 'Flexible Hours', 'Remote Work Options']
-    },
-    {
-      _id: '2',
-      title: 'Civil Engineer',
-      department: 'Engineering',
-      location: 'Abuja, Nigeria',
-      type: 'Full-time',
-      level: 'Mid-level',
-      salary: 'Competitive',
-      postedDate: '1 week ago',
-      description: 'Join our engineering team to design and oversee construction projects that shape our future infrastructure.',
-      requirements: [
-        'Bachelor\'s degree in Civil Engineering',
-        '3+ years of project experience',
-        'Proficiency in CAD and project management tools',
-        'Strong understanding of building codes and regulations',
-        'Excellent communication skills'
-      ],
-      benefits: ['Health Insurance', 'Performance Bonus', 'Professional Development', 'Team Building Activities']
-    },
-    {
-      _id: '3',
-      title: 'Network Infrastructure Specialist',
-      department: 'Engineering',
-      location: 'Lagos, Nigeria',
-      type: 'Full-time',
-      level: 'Mid-level',
-      salary: 'Competitive',
-      postedDate: '3 days ago',
-      description: 'Design and maintain robust network infrastructure solutions for our clients across various industries.',
-      requirements: [
-        '4+ years of network infrastructure experience',
-        'Expertise in routing, switching, and firewalls',
-        'Knowledge of cloud networking (AWS/Azure preferred)',
-        'Vendor certifications (Cisco, Juniper, or equivalent)',
-        'Strong documentation and troubleshooting skills'
-      ],
-      benefits: ['Health Insurance', 'Training Budget', 'Competitive Salary', 'Career Growth']
-    },
-    {
-      _id: '4',
-      title: 'Customer Success Manager',
-      department: 'Business',
-      location: 'Lagos, Nigeria',
-      type: 'Full-time',
-      level: 'Mid-level',
-      salary: 'Competitive',
-      postedDate: '5 days ago',
-      description: 'Build lasting relationships with our clients and ensure they achieve their goals with our solutions.',
-      requirements: [
-        '3+ years of customer success or account management experience',
-        'Excellent communication and interpersonal skills',
-        'Problem-solving and organizational abilities',
-        'Experience with CRM software',
-        'Track record of achieving customer satisfaction goals'
-      ],
-      benefits: ['Performance Bonus', 'Health Insurance', 'Flexible Schedule', 'Professional Development']
-    },
-    {
-      _id: '5',
-      title: 'Project Manager',
-      department: 'Operations',
-      location: 'Lagos, Nigeria',
-      type: 'Full-time',
-      level: 'Senior',
-      salary: 'Competitive',
-      postedDate: '1 week ago',
-      description: 'Lead complex projects from inception to completion, ensuring timely delivery and client satisfaction.',
-      requirements: [
-        'PMP or PRINCE2 certification',
-        '5+ years of project management experience',
-        'Expertise in managing multi-disciplinary teams',
-        'Strong risk management and stakeholder management skills',
-        'Proficiency in project management software'
-      ],
-      benefits: ['Health Insurance', 'Performance Bonus', 'Professional Development', 'Flexible Work']
-    },
-    {
-      _id: '6',
-      title: 'Systems Administrator',
-      department: 'IT',
-      location: 'Lagos, Nigeria',
-      type: 'Full-time',
-      level: 'Entry-level',
-      salary: 'Competitive',
-      postedDate: '4 days ago',
-      description: 'Support and maintain our IT infrastructure to ensure smooth operations across all departments.',
-      requirements: [
-        'Bachelor\'s degree in IT or related field',
-        '2+ years of systems administration experience',
-        'Knowledge of Windows and Linux environments',
-        'Experience with Active Directory and Group Policy',
-        'Strong troubleshooting and support skills'
-      ],
-      benefits: ['Health Insurance', 'Training Opportunities', 'Mentorship Program', 'Career Path']
     }
   ]
 
@@ -169,6 +85,71 @@ export default function JobListings() {
   const filteredJobs = selectedDepartment === 'all'
     ? jobs
     : jobs.filter(job => job.department === selectedDepartment)
+
+  const openApplicationModal = (job) => {
+    setApplicationModal({ isOpen: true, job })
+  }
+
+  const closeApplicationModal = () => {
+    setApplicationModal({ isOpen: false, job: null })
+    setFormData({
+      fullName: '',
+      email: '',
+      phone: '',
+      resume: null,
+      coverLetter: '',
+      experience: '',
+      linkedinUrl: ''
+    })
+  }
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleResumeChange = (e) => {
+    const file = e.target.files?.[0]
+    setFormData(prev => ({ ...prev, resume: file }))
+  }
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitting(true)
+
+    try {
+      const formDataToSend = new FormData()
+      formDataToSend.append('jobId', applicationModal.job._id)
+      formDataToSend.append('jobTitle', applicationModal.job.title)
+      formDataToSend.append('fullName', formData.fullName)
+      formDataToSend.append('email', formData.email)
+      formDataToSend.append('phone', formData.phone)
+      formDataToSend.append('coverLetter', formData.coverLetter)
+      formDataToSend.append('experience', formData.experience)
+      formDataToSend.append('linkedinUrl', formData.linkedinUrl)
+      
+      if (formData.resume) {
+        formDataToSend.append('resume', formData.resume)
+      }
+
+      const response = await fetch('/api/careers/apply', {
+        method: 'POST',
+        body: formDataToSend
+      })
+
+      if (response.ok) {
+        alert('Application submitted successfully! We will review your application and contact you soon.')
+        closeApplicationModal()
+      } else {
+        alert('Failed to submit application. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting application:', error)
+      alert('An error occurred while submitting your application.')
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <section ref={sectionRef} id="job-listings" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -290,8 +271,8 @@ export default function JobListings() {
                         </div>
 
                         <a
-                          href="#apply-now"
-                          className="block w-full px-4 py-3 bg-gradient-to-r from-[#7b542f] to-[#7b542f] text-white rounded-lg font-semibold text-center hover:shadow-lg hover:shadow-[#7b542f]/50 transition-all duration-300 transform hover:scale-105"
+                          onClick={() => openApplicationModal(job)}
+                          className="block w-full px-4 py-3 bg-gradient-to-r from-[#7b542f] to-[#7b542f] text-white rounded-lg font-semibold text-center hover:shadow-lg hover:shadow-[#7b542f]/50 transition-all duration-300 transform hover:scale-105 cursor-pointer"
                         >
                           Apply Now
                         </a>
@@ -316,12 +297,164 @@ export default function JobListings() {
             Send us your CV and let's explore opportunities together.
           </p>
           <a
-            href="mailto:careers@adoraegis.org"
+            href="mailto:careers@ardoraegis.org"
             className="inline-block px-8 py-3 border-2 border-[#7b542f] text-[#7b542f] rounded-lg font-semibold hover:bg-[#7b542f]/10 transition-all duration-300"
           >
             Send Your CV
           </a>
         </div>
+
+        {/* Application Modal */}
+        {applicationModal.isOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              {/* Modal Header */}
+              <div className="sticky top-0 bg-gradient-to-r from-[#7b542f] to-[#7b542f] text-white p-6 flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold">{applicationModal.job?.title}</h3>
+                  <p className="text-[#7b542f]/20">{applicationModal.job?.department}</p>
+                </div>
+                <button
+                  onClick={closeApplicationModal}
+                  className="text-white hover:bg-white/20 p-2 rounded-lg transition"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Modal Body */}
+              <form onSubmit={handleFormSubmit} className="p-6 space-y-6">
+                {/* Full Name */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                    placeholder="John Doe"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                    placeholder="+234 (0) 1234567890"
+                  />
+                </div>
+
+                {/* Years of Experience */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Years of Experience *
+                  </label>
+                  <input
+                    type="text"
+                    name="experience"
+                    value={formData.experience}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                    placeholder="e.g., 5 years in Security"
+                  />
+                </div>
+
+                {/* LinkedIn URL */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    LinkedIn URL
+                  </label>
+                  <input
+                    type="url"
+                    name="linkedinUrl"
+                    value={formData.linkedinUrl}
+                    onChange={handleFormChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                    placeholder="https://linkedin.com/in/yourprofile"
+                  />
+                </div>
+
+                {/* Resume Upload */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Upload Resume *
+                  </label>
+                  <input
+                    type="file"
+                    onChange={handleResumeChange}
+                    required
+                    accept=".pdf,.doc,.docx"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Accepted formats: PDF, DOC, DOCX (Max 5MB)</p>
+                </div>
+
+                {/* Cover Letter */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
+                    Cover Letter *
+                  </label>
+                  <textarea
+                    name="coverLetter"
+                    value={formData.coverLetter}
+                    onChange={handleFormChange}
+                    required
+                    rows="5"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#7b542f] focus:ring-2 focus:ring-[#7b542f]/10"
+                    placeholder="Tell us why you're a great fit for this role..."
+                  />
+                </div>
+
+                {/* Form Actions */}
+                <div className="flex gap-3 pt-4 border-t border-gray-200">
+                  <button
+                    type="button"
+                    onClick={closeApplicationModal}
+                    className="flex-1 px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="flex-1 px-4 py-3 bg-gradient-to-r from-[#7b542f] to-[#7b542f] text-white rounded-lg font-semibold hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {submitting ? 'Submitting...' : 'Submit Application'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -123,10 +123,10 @@ export default function CultureShowcase() {
               {/* Stat 3 */}
               <div className="text-center">
                 <p className="text-4xl font-bold mb-2 text-white text-transparent bg-clip-text">
-                  1000+
+                  2000+
                 </p>
                 <p className="text-white text-lg">
-                  Successful Projects
+                  Service Locations
                 </p>
               </div>
             </div>
@@ -134,12 +134,11 @@ export default function CultureShowcase() {
             {/* Testimonial */}
             <div className="mt-12 pt-12 border-t border-[#7b542f]/30">
               <p className="text-xl mb-6 italic leading-relaxed max-w-2xl">
-                "Working at Ardor Aegis has been transformative. The collaborative environment, continuous learning opportunities, 
-                and the chance to work on impactful projects make this an exceptional place to build a career."
+                "Working at Ardor Aegis has been transformative. The collaborative environment, continuous learning opportunities, and the chance to protect the communities make this an exceptional place to build a career."
               </p>
-              <p className="font-semibold">
+              {/* <p className="font-semibold">
                 — Recent Team Member
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

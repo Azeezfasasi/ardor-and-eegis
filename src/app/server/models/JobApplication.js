@@ -30,6 +30,14 @@ const jobApplicationSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    experience: {
+      type: String,
+      trim: true,
+    },
+    linkedinUrl: {
+      type: String,
+      trim: true,
+    },
     resumeUrl: {
       type: String,
       // URL to uploaded resume

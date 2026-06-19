@@ -1,8 +1,17 @@
 import { NextResponse } from 'next/server'
+import { v2 as cloudinary } from 'cloudinary'
 import { connectDB } from '@/app/server/db/connect'
 import JobApplication from '@/app/server/models/JobApplication'
 import CareerJob from '@/app/server/models/CareerJob'
-import nodemailer from 'nodemailer'
+import { sendEmailViaBrevo } from '@/app/server/utils/brevoEmailService'
+import { getAllAdminEmails } from '@/app/server/utils/adminNotifications'
+import * as emailTemplates from '@/app/server/utils/emailTemplates'
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+})
 
 export async function POST(request) {
   try {
@@ -13,19 +22,57 @@ export async function POST(request) {
     const fullName = formData.get('fullName')
     const email = formData.get('email')
     const phone = formData.get('phone')
-    const position = formData.get('position')
-    const message = formData.get('message')
+    const jobTitle = formData.get('jobTitle')
+    const coverLetter = formData.get('coverLetter')
     const jobId = formData.get('jobId')
+    const experience = formData.get('experience')
+    const linkedinUrl = formData.get('linkedinUrl')
     const resume = formData.get('resume')
 
     // Validation
-    if (!fullName || !email || !position) {
+    if (!fullName || !email || !jobTitle || !coverLetter) {
       return NextResponse.json({
         success: false,
         error: 'Please provide all required fields'
       }, {
         status: 400
       })
+    }
+
+    if (!resume) {
+      return NextResponse.json({
+        success: false,
+        error: 'Resume is required'
+      }, {
+        status: 400
+      })
+    }
+
+    // Upload resume to Cloudinary
+    let resumeUrl = null
+    try {
+      const bytes = await resume.arrayBuffer()
+      const buffer = Buffer.from(bytes)
+      
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          {
+            folder: 'career-applications',
+            resource_type: 'auto',
+            public_id: `${Date.now()}-${resume.name.replace(/[^a-zA-Z0-9.-]/g, '')}`
+          },
+          (error, result) => {
+            if (error) reject(error)
+            else resolve(result)
+          }
+        )
+        stream.end(buffer)
+      })
+      
+      resumeUrl = result.secure_url
+    } catch (uploadError) {
+      console.error('Resume upload error:', uploadError)
+      // Continue without resume URL - it's not critical
     }
 
     // Find the job or create application without job reference
@@ -42,8 +89,11 @@ export async function POST(request) {
       fullName,
       email,
       phone: phone || '',
-      position,
-      message: message || '',
+      position: jobTitle,
+      message: coverLetter || '',
+      experience: experience || '',
+      linkedinUrl: linkedinUrl || '',
+      resumeUrl: resumeUrl || '',
       job: findJobId,
       status: 'Received'
     }
@@ -55,55 +105,51 @@ export async function POST(request) {
       await CareerJob.findByIdAndUpdate(findJobId, { $inc: { applicationsCount: 1 } })
     }
 
-    // Try to send email notifications
+    // Send emails via Brevo
     try {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || 'smtp.gmail.com',
-        port: process.env.SMTP_PORT || 587,
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASSWORD,
-        },
-      })
-
-      // Email to HR
-      const applicationDetails = `
-        <h2>New Career Application Received</h2>
-        <p><strong>Full Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Position:</strong> ${position}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message || 'No additional message'}</p>
-        <hr>
-        <p>Resume/CV: ${resume ? 'Attached' : 'Not attached'}</p>
-      `
-
-      await transporter.sendMail({
-        from: process.env.SMTP_USER,
-        to: 'careers@adoraegis.org',
-        subject: `New Application: ${position} from ${fullName}`,
-        html: applicationDetails,
-      })
-
-      // Email to applicant
-      await transporter.sendMail({
-        from: process.env.SMTP_USER,
+      // 1. Send confirmation email to candidate
+      const candidateEmailContent = emailTemplates.jobApplicationConfirmationEmail(
+        fullName,
+        jobTitle,
+        new Date()
+      )
+      
+      await sendEmailViaBrevo({
         to: email,
-        subject: 'Application Received - Ardor Aegis Limited',
-        html: `
-          <h2>Thank You for Your Application!</h2>
-          <p>Dear ${fullName},</p>
-          <p>We have received your application for the position of <strong>${position}</strong>.</p>
-          <p>Our HR team will review your application and get back to you within 2-3 business days.</p>
-          <p>We appreciate your interest in Ardor Aegis Limited!</p>
-          <br>
-          <p>Best regards,<br>Ardor Aegis Limited HR Team</p>
-        `,
+        subject: `Application Received - ${jobTitle} Position`,
+        htmlContent: candidateEmailContent,
       })
+
+      // 2. Send notification to all admins
+      const adminEmails = await getAllAdminEmails()
+      if (adminEmails && adminEmails.length > 0) {
+        const adminEmailContent = emailTemplates.adminNewJobApplicationEmail(
+          fullName,
+          email,
+          jobTitle,
+          experience,
+          linkedinUrl,
+          resumeUrl,
+          new Date()
+        )
+
+        // Send to each admin
+        for (const adminEmail of adminEmails) {
+          try {
+            await sendEmailViaBrevo({
+              to: adminEmail,
+              subject: `New Job Application - ${jobTitle} from ${fullName}`,
+              htmlContent: adminEmailContent,
+            })
+            console.log(`✓ Admin notification sent to: ${adminEmail}`)
+          } catch (adminEmailError) {
+            console.error(`✗ Failed to send admin email to ${adminEmail}:`, adminEmailError.message)
+          }
+        }
+      }
     } catch (emailError) {
-      console.error('Email sending error:', emailError)
+      console.error('Email sending error:', emailError.message)
+      // Continue without failing - emails are not critical for application submission
     }
 
     return NextResponse.json({

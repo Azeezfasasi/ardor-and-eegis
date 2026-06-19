@@ -104,6 +104,7 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
       ]
     },
     { href: '/dashboard/my-profile', label: 'Profile', icon: 'dashboard', roles: ['admin', 'client', 'staff-member'] },
+    { href: '/dashboard/manage-career-jobs', label: 'Manage Career Jobs', icon: 'projects', roles: ['admin', 'staff-member'] },
     {
       href: '/dashboard/homepage-content',
       label: 'Homepage Content',
@@ -118,8 +119,8 @@ export default function DashboardMenu({ collapsed, mobileOpen = false, onClose =
         { href: '/dashboard/our-clients', label: 'Our Clients', roles: ['admin'] },
         { href: '/dashboard/team-section', label: 'Our Team', roles: ['admin'] },
         { href: '/dashboard/testimonials', label: 'Testimonials', roles: ['admin'] },
-        { href: '/dashboard/our-gallant-officers', label: 'Our Gallant Officers', roles: ['admin'] },
-        { href: '/dashboard/manage-career-jobs', label: 'Manage Career Jobs', roles: ['admin'] },
+        // { href: '/dashboard/our-gallant-officers', label: 'Our Gallant Officers', roles: ['admin'] },
+        // { href: '/dashboard/manage-career-jobs', label: 'Manage Career Jobs', roles: ['admin'] },
       ]
     },
     {

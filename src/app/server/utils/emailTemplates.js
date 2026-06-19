@@ -4,7 +4,7 @@
  */
 
 const BRAND_COLOR = '#7B542F';
-const BRAND_NAME = 'Ardor Aegis';
+const BRAND_NAME = 'Ardor Aegis Security Company Limited';
 const WEBSITE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
 /**
@@ -596,6 +596,281 @@ export const quoteRequestSubmissionEmail = (firstName, serviceType, subject = ''
   return createEmailTemplate(content, 'Quote Request Received - Ardor Aegis');
 };
 
+// ============================================
+// 17. JOB APPLICATION SUBMISSION - CANDIDATE CONFIRMATION
+// ============================================
+export const jobApplicationConfirmationEmail = (candidateName, jobTitle, applicationDate) => {
+  const content = `
+    <p class="greeting">Hello <span class="highlight">${candidateName}</span>,</p>
+    
+    <p>Thank you for submitting your application for the position of <span class="highlight">${jobTitle}</span>!</p>
+    
+    <p>We have successfully received your application and will review it carefully. Our HR team will evaluate your qualifications and experience against the role requirements.</p>
+    
+    <div class="info-box">
+      <strong>Application Details:</strong><br>
+      <strong>Position Applied For:</strong> ${jobTitle}<br>
+      <strong>Application Received On:</strong> ${new Date(applicationDate).toLocaleString()}
+    </div>
+    
+    <p><strong>What happens next?</strong></p>
+    <ul style="margin-left: 20px; margin-top: 10px; font-size: 14px;">
+      <li>Your application will be reviewed by our HR team</li>
+      <li>If your profile matches our requirements, we'll contact you for an interview</li>
+      <li>You'll hear from us within 2-3 business days</li>
+    </ul>
+    
+    <p style="margin-top: 20px;">
+      In the meantime, feel free to explore more about ${BRAND_NAME} and our opportunities on our website.
+    </p>
+    
+    <p style="text-align: center; margin-top: 30px;">
+      <a href="${WEBSITE_URL}/careers" class="button">Explore Other Positions</a>
+    </p>
+    
+    <div class="info-box" style="margin-top: 30px;">
+      <strong>Have questions?</strong><br>
+      If you have any questions about your application, feel free to reach out to us at <a href="mailto:careers@ardoraegis.org">careers@ardoraegis.org</a>
+    </div>
+  `;
+  
+  return createEmailTemplate(content, 'Your Application Has Been Received');
+};
+
+// ============================================
+// 18. ADMIN NOTIFICATION - NEW JOB APPLICATION
+// ============================================
+export const adminNewJobApplicationEmail = (candidateName, candidateEmail, jobTitle, experience, linkedinUrl, resumeUrl, timestamp) => {
+  const content = `
+    <p class="greeting">Hello Admin,</p>
+    
+    <p>A new job application has been submitted for review. Here are the candidate details:</p>
+    
+    <div class="info-box">
+      <strong>Candidate Name:</strong> ${candidateName}<br>
+      <strong>Email:</strong> <a href="mailto:${candidateEmail}">${candidateEmail}</a><br>
+      <strong>Position Applied For:</strong> ${jobTitle}<br>
+      <strong>Years of Experience:</strong> ${experience || 'Not provided'}<br>
+      <strong>LinkedIn Profile:</strong> ${linkedinUrl ? `<a href="${linkedinUrl}" target="_blank">View Profile</a>` : 'Not provided'}<br>
+      <strong>Application Submitted:</strong> ${new Date(timestamp).toLocaleString()}
+    </div>
+    
+    <p style="text-align: center; margin-top: 30px;">
+      ${resumeUrl ? `<a href="${resumeUrl}" class="button">Download Resume</a>` : '<p style="color: #999;">Resume file not available</p>'}
+    </p>
+    
+    <p style="margin-top: 30px;">
+      <a href="${WEBSITE_URL}/dashboard" class="button">View in Dashboard</a>
+    </p>
+    
+    <p style="margin-top: 20px; font-size: 13px; color: #666;">
+      Review the application details and take action by updating the application status in your admin dashboard.
+    </p>
+  `;
+  
+  return createEmailTemplate(content, 'New Job Application Received');
+};
+
+// ============================================
+// 19. JOB APPLICATION STATUS UPDATE - REVIEWING
+// ============================================
+export const jobApplicationReviewingEmail = (candidateName, jobTitle) => {
+  const content = `
+    <p class="greeting">Hello <span class="highlight">${candidateName}</span>,</p>
+    
+    <p>Thank you for your patience! We're pleased to inform you that your application for the position of <span class="highlight">${jobTitle}</span> is currently under review.</p>
+    
+    <div class="info-box">
+      <strong>Current Status:</strong> Reviewing<br>
+      <strong>Position:</strong> ${jobTitle}<br>
+      <strong>Status Updated:</strong> ${new Date().toLocaleString()}
+    </div>
+    
+    <p>Our HR team is carefully evaluating your qualifications and will be in touch with you soon. We typically complete our review within 3-5 business days.</p>
+    
+    <p style="margin-top: 20px;">
+      In the meantime, feel free to reach out if you have any questions about the position or application process.
+    </p>
+    
+    <div class="info-box" style="margin-top: 30px;">
+      <strong>Stay Connected:</strong><br>
+      Keep an eye on your email for further updates. We look forward to hearing more about you!
+    </div>
+  `;
+  
+  return createEmailTemplate(content, 'Your Application is Under Review');
+};
+
+// ============================================
+// 20. JOB APPLICATION STATUS UPDATE - SHORTLISTED
+// ============================================
+export const jobApplicationShortlistedEmail = (candidateName, jobTitle) => {
+  const content = `
+    <p class="greeting">Hello <span class="highlight">${candidateName}</span>,</p>
+    
+    <p>Great news! 🎉 Your application for the position of <span class="highlight">${jobTitle}</span> has been shortlisted!</p>
+    
+    <div class="info-box">
+      <strong>Current Status:</strong> Shortlisted<br>
+      <strong>Position:</strong> ${jobTitle}<br>
+      <strong>Status Updated:</strong> ${new Date().toLocaleString()}
+    </div>
+    
+    <p>Your qualifications and experience have impressed our team. We would like to move forward with your application and have you for an interview.</p>
+    
+    <p><strong>Next Steps:</strong></p>
+    <ul style="margin-left: 20px; margin-top: 10px; font-size: 14px;">
+      <li>Our HR team will reach out to you within 2-3 business days</li>
+      <li>We will propose available interview times</li>
+      <li>The interview will be conducted via video call or in-person</li>
+    </ul>
+    
+    <p style="margin-top: 20px;">
+      Congratulations again! We're excited to learn more about you and discuss how you can contribute to our team.
+    </p>
+    
+    <p style="text-align: center; margin-top: 30px;">
+      <a href="${WEBSITE_URL}" class="button">Learn More About Ardor Aegis</a>
+    </p>
+  `;
+  
+  return createEmailTemplate(content, 'Exciting News - You\'ve Been Shortlisted!');
+};
+
+// ============================================
+// 21. JOB APPLICATION STATUS UPDATE - REJECTED
+// ============================================
+export const jobApplicationRejectedEmail = (candidateName, jobTitle) => {
+  const content = `
+    <p class="greeting">Hello <span class="highlight">${candidateName}</span>,</p>
+    
+    <p>Thank you for your interest in ${BRAND_NAME} and for applying for the position of <span class="highlight">${jobTitle}</span>.</p>
+    
+    <div class="info-box">
+      <strong>Current Status:</strong> Application Not Selected<br>
+      <strong>Position:</strong> ${jobTitle}<br>
+      <strong>Status Updated:</strong> ${new Date().toLocaleString()}
+    </div>
+    
+    <p>After careful consideration of all applications, we have decided to move forward with other candidates whose qualifications more closely match our current requirements.</p>
+    
+    <p>This decision should not discourage you. We encourage you to:</p>
+    <ul style="margin-left: 20px; margin-top: 10px; font-size: 14px;">
+      <li>Keep an eye on our <a href="${WEBSITE_URL}/careers">careers page</a> for future opportunities</li>
+      <li>Apply again for positions that match your skills and experience</li>
+      <li>Connect with us on social media to stay updated</li>
+    </ul>
+    
+    <p style="margin-top: 20px;">
+      We genuinely appreciate your time and effort in applying. We wish you the very best in your career endeavors!
+    </p>
+    
+    <p style="text-align: center; margin-top: 30px;">
+      <a href="${WEBSITE_URL}/careers" class="button">Explore Other Positions</a>
+    </p>
+  `;
+  
+  return createEmailTemplate(content, 'Thank You for Your Application');
+};
+
+// ============================================
+// 22. JOB APPLICATION STATUS UPDATE - HIRED
+// ============================================
+export const jobApplicationHiredEmail = (candidateName, jobTitle) => {
+  const content = `
+    <p class="greeting">Hello <span class="highlight">${candidateName}</span>,</p>
+    
+    <p>Congratulations! 🎉 We are delighted to offer you the position of <span class="highlight">${jobTitle}</span> at ${BRAND_NAME}!</p>
+    
+    <div class="info-box">
+      <strong>Current Status:</strong> Hired<br>
+      <strong>Position:</strong> ${jobTitle}<br>
+      <strong>Status Updated:</strong> ${new Date().toLocaleString()}
+    </div>
+    
+    <p>Your skills, experience, and the exceptional performance throughout our interview process have convinced us that you are the perfect fit for this role.</p>
+    
+    <p><strong>Next Steps:</strong></p>
+    <ul style="margin-left: 20px; margin-top: 10px; font-size: 14px;">
+      <li>Our HR team will contact you shortly with the official offer letter</li>
+      <li>We will discuss salary, benefits, and start date</li>
+      <li>Onboarding process details will be provided</li>
+    </ul>
+    
+    <p style="margin-top: 20px;">
+      We are excited to welcome you to the ${BRAND_NAME} team! If you have any questions in the meantime, please don't hesitate to reach out.
+    </p>
+    
+    <div class="info-box" style="margin-top: 30px;">
+      <strong>Contact Information:</strong><br>
+      Email: <a href="mailto:careers@ardoraegis.org">careers@ardoraegis.org</a><br>
+      We look forward to working with you!
+    </div>
+  `;
+  
+  return createEmailTemplate(content, 'Congratulations - Welcome to Ardor Aegis!');
+};
+
+// ============================================
+// 23. JOB APPLICATION STATUS UPDATE - ON HOLD
+// ============================================
+export const jobApplicationOnHoldEmail = (candidateName, jobTitle) => {
+  const content = `
+    <p class="greeting">Hello <span class="highlight">${candidateName}</span>,</p>
+    
+    <p>Thank you for your application for the position of <span class="highlight">${jobTitle}</span> at ${BRAND_NAME}.</p>
+    
+    <div class="info-box">
+      <strong>Current Status:</strong> On Hold<br>
+      <strong>Position:</strong> ${jobTitle}<br>
+      <strong>Status Updated:</strong> ${new Date().toLocaleString()}
+    </div>
+    
+    <p>Your application is currently on hold as we are still in the process of reviewing other candidates. We appreciate your patience during this time.</p>
+    
+    <p>We will get back to you with an update within 1-2 weeks. Your application remains active, and we will be in touch soon.</p>
+    
+    <p style="margin-top: 20px;">
+      If you have any questions or need to provide additional information, please feel free to contact us.
+    </p>
+    
+    <div class="info-box">
+      <strong>Keep in Touch:</strong><br>
+      <a href="mailto:careers@ardoraegis.org">careers@ardoraegis.org</a>
+    </div>
+  `;
+  
+  return createEmailTemplate(content, 'Application Status Update');
+};
+
+// ============================================
+// 24. ADMIN NOTIFICATION - APPLICATION STATUS CHANGED
+// ============================================
+export const adminApplicationStatusChangedEmail = (candidateName, candidateEmail, jobTitle, oldStatus, newStatus, timestamp) => {
+  const content = `
+    <p class="greeting">Hello Admin,</p>
+    
+    <p>A job application status has been updated in the system. Here are the details:</p>
+    
+    <div class="info-box">
+      <strong>Candidate Name:</strong> ${candidateName}<br>
+      <strong>Email:</strong> <a href="mailto:${candidateEmail}">${candidateEmail}</a><br>
+      <strong>Position:</strong> ${jobTitle}<br>
+      <strong>Previous Status:</strong> ${oldStatus}<br>
+      <strong>New Status:</strong> <span style="color: #7B542F; font-weight: bold;">${newStatus}</span><br>
+      <strong>Updated:</strong> ${new Date(timestamp).toLocaleString()}
+    </div>
+    
+    <p>A notification has been sent to the candidate informing them of this status change.</p>
+    
+    <p style="text-align: center; margin-top: 30px;">
+      <a href="${WEBSITE_URL}/dashboard" class="button">View Application Details</a>
+    </p>
+  `;
+  
+  return createEmailTemplate(content, 'Application Status Updated');
+};
+
 export default {
   forgotPasswordEmail,
   passwordResetSuccessEmail,
@@ -613,4 +888,12 @@ export default {
   adminCampaignSentNotificationEmail,
   adminNewQuoteNotificationEmail,
   quoteRequestSubmissionEmail,
+  jobApplicationConfirmationEmail,
+  adminNewJobApplicationEmail,
+  jobApplicationReviewingEmail,
+  jobApplicationShortlistedEmail,
+  jobApplicationRejectedEmail,
+  jobApplicationHiredEmail,
+  jobApplicationOnHoldEmail,
+  adminApplicationStatusChangedEmail,
 };

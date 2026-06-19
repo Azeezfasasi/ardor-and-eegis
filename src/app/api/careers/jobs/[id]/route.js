@@ -6,7 +6,7 @@ export async function GET(req, { params }) {
   try {
     await connectDB()
 
-    const { id } = params
+    const { id } = await params
 
     const job = await CareerJob.findById(id).populate('createdBy', 'firstName lastName email')
 
@@ -34,7 +34,7 @@ export async function PUT(req, { params }) {
   try {
     await connectDB()
 
-    const { id } = params
+    const { id } = await params
     const body = await req.json()
 
     const job = await CareerJob.findByIdAndUpdate(id, body, {
@@ -66,7 +66,7 @@ export async function DELETE(req, { params }) {
   try {
     await connectDB()
 
-    const { id } = params
+    const { id } = await params
 
     const job = await CareerJob.findByIdAndDelete(id)
 

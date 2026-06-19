@@ -106,7 +106,7 @@ export default function ApplyNow() {
             Ready to Apply?
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Submit your application and let's explore the perfect opportunity for you at Ardor Aegis.
+            Submit your application and let's explore the perfect opportunity for you at Ardor Aegis Security Company Limited.
           </p>
         </div>
 
@@ -116,16 +116,16 @@ export default function ApplyNow() {
             inView ? 'animate-fadeInUp' : 'opacity-0'
           }`}>
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#7b542f]-to-[#7b542f] flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-[#7b542f] to-[#7b542f] flex items-center justify-center">
                 <Mail className="text-white" size={24} />
               </div>
               <h3 className="text-lg font-bold text-gray-900">Email</h3>
             </div>
             <a
-              href="mailto:careers@adoraegis.org"
+              href="mailto:careers@ardoraegis.org"
               className="text-[#7b542f] font-semibold hover:text-[#7b542f]/80 transition-colors"
             >
-              careers@adoraegis.org
+              careers@ardoraegis.org
             </a>
             <p className="text-gray-600 text-sm mt-3">
               Send us your CV and details directly
@@ -144,7 +144,7 @@ export default function ApplyNow() {
             </div>
             <p className="text-gray-700 font-semibold">Ardor Aegis Limited</p>
             <p className="text-gray-600 text-sm mt-3">
-              Lagos & Abuja, Nigeria
+              Plot 104, House 3, Tos Douglas Kaura District, Abuja, Nigeria
             </p>
           </div>
 
@@ -310,10 +310,10 @@ export default function ApplyNow() {
                 <p className="text-gray-600">
                   Prefer to send directly? Email us at{' '}
                   <a
-                    href="mailto:careers@adoraegis.org"
+                    href="mailto:careers@ardoraegis.org"
                     className="text-[#7b542f] font-semibold hover:text-[#7b542f]/80"
                   >
-                    careers@adoraegis.org
+                    careers@ardoraegis.org
                   </a>
                 </p>
               </div>

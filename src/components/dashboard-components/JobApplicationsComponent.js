@@ -133,7 +133,7 @@ export default function JobApplicationsComponent() {
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center gap-4 mb-8">
           <Link
             href="/dashboard/manage-career-jobs"
             className="p-2 hover:bg-gray-200 rounded-lg transition"
@@ -141,7 +141,7 @@ export default function JobApplicationsComponent() {
             <ArrowLeft size={24} className="text-gray-600" />
           </Link>
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
               Applications for {job?.title}
             </h1>
             <p className="text-gray-600 mt-2">
@@ -242,7 +242,7 @@ export default function JobApplicationsComponent() {
                   </div>
 
                   {/* Pagination */}
-                  <div className="px-6 py-4 border-t border-gray-200 flex justify-between items-center">
+                  <div className="px-6 py-4 border-t border-gray-200 flex flex-col md:flex-row gap-2 md:gap-0 justify-between items-center">
                     <p className="text-gray-600 text-sm">
                       Page {page} of {totalPages}
                     </p>

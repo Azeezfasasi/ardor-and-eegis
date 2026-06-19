@@ -44,8 +44,8 @@ export default function CareersHero() {
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            At Ardor Aegis Limited, we're not just a company—we're a community of innovators, professionals, and change-makers. 
-            If you're passionate about security, engineering, and making a real impact, we want to hear from you.
+            At Ardor Aegis Security Company Limited, we're not just a company, we're a community of innovators, professionals, and change-makers. 
+            If you're passionate about security and making a real impact, we want to hear from you.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -56,7 +56,7 @@ export default function CareersHero() {
               Explore Open Positions
             </a>
             <a
-              href="#apply-now"
+              href="mailto:careers@ardoraegis.org"
               className="px-8 py-3 border-2 border-white text-white rounded-lg font-semibold hover:bg-orange-600/10 transition-all duration-300"
             >
               Send Your CV
@@ -65,7 +65,7 @@ export default function CareersHero() {
         </div>
 
         {/* Scroll indicator */}
-        <div className={`absolute bottom-10 left-1/2 transform -translate-x-1/2 transition-all duration-1000 ${inView ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 transition-all duration-1000 ${inView ? 'opacity-100' : 'opacity-0'}`}>
           <ChevronDown className="text-white animate-bounce" size={32} />
         </div>
       </div>
